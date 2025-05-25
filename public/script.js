@@ -6,30 +6,30 @@ const RAYDIUM_POOL = "CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj";
 
 const goalUSD1 = 20000;
 
-// 🌐 Neue funktionierende Radio-Streams + Icons
+// 🌐 Radio-Streams + Icons (alle durch Proxy für CORS-Schutz)
 const radioStations = [
-  { stream: "https://dnbradio.com/320k", icon: "drum_and_bass_icon.png" },
-  { stream: "https://stream.rockradio.com/punkrock", icon: "skate_punk_icon.png" },
-  { stream: "https://reggae141.radioca.st/stream", icon: "reggae_icon.png" },
-  { stream: "https://hot108.com/stream", icon: "hip_hop_icon.png" },
-  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
-  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
-  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
-  { stream: "https://stream.181.fm/181-country", icon: "country_icon.png" },
-  { stream: "https://streaming.live365.com/a87226", icon: "folk_music_icon.png" },
-  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
-  { stream: "https://radio.gothville.com/stream", icon: "gothic_icon.png" },
-  { stream: "https://jazz24.streamguys1.com/jazz24.mp3", icon: "jazz_soul_icon.png" }
+  { stream: "/proxy/https%3A%2F%2Fuk3.internet-radio.com%3A8266%2F", icon: "drum_and_bass_icon.png" }, // DnB ✅
+  { stream: "/proxy/https%3A%2F%2Fus4.internet-radio.com%3A8266%2F", icon: "jazz_soul_icon.png" },     // Jazz/Soul ✅
+  { stream: "/proxy/https%3A%2F%2Freggae141.radioca.st%2Fstream", icon: "reggae_icon.png" },           // Reggae ✅
+  { stream: "/proxy/https%3A%2F%2Fhi5.streamingsoundtracks.com%3A8000%2F", icon: "hip_hop_icon.png" }, // Hip Hop Ersatz ✅
+  { stream: "/proxy/https%3A%2F%2Fstreaming.live365.com%2Fa76325", icon: "gothic_icon.png" },          // Gothic Rock ✅
+  { stream: "/proxy/https%3A%2F%2Fus1.internet-radio.com%3A8105%2F", icon: "skate_punk_icon.png" },     // Punk Rock ✅
+  { stream: "/proxy/https%3A%2F%2Fus3.internet-radio.com%3A8443%2F", icon: "country_icon.png" },        // Country ✅
+  { stream: "/proxy/https%3A%2F%2Fstreaming.live365.com%2Fa40121", icon: "folk_music_icon.png" },      // Folk ✅
+  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },                                  // House (funktioniert direkt)
+  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },                            // Electro (funktioniert direkt)
+  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },                        // Metal (funktioniert direkt)
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" }                                  // Pop (funktioniert direkt)
 ];
 
-// ⏳ Splash ausblenden
+// 📦 Splash ausblenden
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('splash').style.display = 'none';
   }, 2000);
 });
 
-// 💰 Preis-APIs
+// 📉 Preis-APIs
 async function fetchSolPrice() {
   try {
     const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
@@ -50,7 +50,7 @@ async function fetchPurpePriceUSD() {
   }
 }
 
-// 📊 Wallet-Daten
+// 🧾 Wallet Balances
 async function fetchWalletBalances() {
   try {
     const res = await fetch(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
@@ -66,14 +66,14 @@ async function fetchWalletBalances() {
   }
 }
 
-// 📈 Fortschritt aktualisieren
+// 🔁 Fortschritt aktualisieren
 function updateProgress(totalUSD) {
   const percent = Math.min((totalUSD / goalUSD1) * 100, 100);
   document.getElementById("progress-fill-1").style.width = `${percent}%`;
   document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
 }
 
-// 🔁 Tracker aktualisieren
+// 🕒 Tracker aktualisieren
 async function updateTracker() {
   const [wallet, solPrice, purpePriceUSD] = await Promise.all([
     fetchWalletBalances(),
@@ -91,7 +91,7 @@ async function updateTracker() {
   document.getElementById("last-updated").textContent = `Latest Update: ${formatted}`;
 }
 
-// 💸 Spenden
+// 💸 Donation-Buttons
 function setupDonationButtons() {
   document.getElementById("donate-sol").addEventListener("click", () => {
     const link = `solana:${walletAddress}?amount=1&label=Purple%20Pepe%20Donation`;
@@ -104,7 +104,7 @@ function setupDonationButtons() {
   });
 }
 
-// 📋 Adresse kopieren
+// 📋 Copy-Adresse
 function setupCopyButton() {
   document.getElementById("copy-button").addEventListener("click", () => {
     const address = document.getElementById("wallet-address").textContent.trim();
@@ -114,11 +114,10 @@ function setupCopyButton() {
   });
 }
 
-// 📻 Radio-Buttons mit Rotation + Stop
+// 📻 Radio-Buttons generieren
 function setupRadioButtons() {
   const container = document.getElementById("radio-buttons");
   const player = document.getElementById("radio-player");
-  let currentIcon = null;
 
   radioStations.forEach((station, index) => {
     const img = document.createElement("img");
@@ -127,29 +126,22 @@ function setupRadioButtons() {
     img.alt = `Station ${index + 1}`;
     img.addEventListener("click", () => {
       document.querySelectorAll(".radio-icon").forEach(el => el.classList.remove("active"));
-      if (player.src !== station.stream) {
-        player.src = station.stream;
-        player.play();
-        img.classList.add("active");
-        currentIcon = img;
-      } else {
-        player.pause();
-        player.src = "";
-        currentIcon = null;
-      }
+      img.classList.add("active");
+      player.src = station.stream;
+      player.play().catch(err => console.error("Playback failed:", err));
     });
     container.appendChild(img);
   });
 }
 
-// 🎯 Start
+// 🔁 Initialisierung
 updateTracker();
 setInterval(updateTracker, 30000);
 setupDonationButtons();
 setupCopyButton();
 setupRadioButtons();
 
-// 📷 QR-Code
+// 📷 QR-Code generieren
 new QRious({
   element: document.getElementById('wallet-qr'),
   value: `solana:${walletAddress}`,
