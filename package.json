@@ -1,7 +1,7 @@
 {
   "name": "purple-pepe-tracker",
   "version": "1.0.0",
-  "description": "Live Donation Tracker für Purple Pepe",
+  "description": "Live Donation Tracker für Purple Pepe mit integriertem Radio und Proxy-Streaming",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -10,7 +10,7 @@
     "express": "^4.18.2",
     "ws": "^8.13.0",
     "body-parser": "^1.20.2",
-    "qrious": "^4.0.2",
+    "cors": "^2.8.5",
     "node-fetch": "^3.3.2"
   }
 }
