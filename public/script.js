@@ -8,20 +8,19 @@ const goalUSD1 = 20000;
 
 // 🌐 Radio-Streams + Icons
 const radioStations = [
-  { stream: "https://stream.radioparadise.com/dnb-320", icon: "drum_and_bass_icon.png" },
-  { stream: "https://punkrockers-radio.de:8000/128", icon: "skate_punk_icon.png" },
-  { stream: "https://uk4.internet-radio.com:8276/stream", icon: "reggae_icon.png" },
-  { stream: "https://radio.streemlion.com:1830/stream", icon: "hip_hop_icon.png" },
-  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
-  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
-  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
-  { stream: "https://stream.radioparadise.com/country-320", icon: "country_icon.png" },
-  { stream: "https://stream.laut.fm/folkradio", icon: "folk_music_icon.png" },
-  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
-  { stream: "https://stream.laut.fm/gothicrock", icon: "gothic_icon.png" },
-  { stream: "https://stream.radioparadise.com/mellow-320", icon: "jazz_soul_icon.png" }
+  { stream: "https://uk4.internet-radio.com:8276/stream", icon: "drum_and_bass_icon.png" }, // DnB OK
+  { stream: "https://stream.rockradio.com/rock", icon: "skate_punk_icon.png" },              // Punk Ersatz
+  { stream: "https://reggae141.radioca.st/stream", icon: "reggae_icon.png" },                // Reggae OK
+  { stream: "https://stream.laut.fm/oldschool", icon: "hip_hop_icon.png" },                  // Hip Hop OK
+  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },             // Metal OK
+  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },                        // House OK
+  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },                 // Electro OK
+  { stream: "https://stream.radioparadise.com/country-320", icon: "country_icon.png" },      // Country OK
+  { stream: "https://stream.laut.fm/folkradio", icon: "folk_music_icon.png" },               // Folk OK
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },                      // Pop OK
+  { stream: "https://stream.laut.fm/gothicrock", icon: "gothic_icon.png" },                  // Gothic OK
+  { stream: "https://stream.radioparadise.com/mellow-320", icon: "jazz_soul_icon.png" }      // Jazz/Soul OK
 ];
-
 // 📦 Splash ausblenden
 window.addEventListener('load', () => {
   setTimeout(() => {
