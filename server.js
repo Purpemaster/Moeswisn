@@ -3,7 +3,9 @@ const http = require('http');
 const WebSocket = require('ws');
 const bodyParser = require('body-parser');
 const path = require('path');
-const request = require('request'); // <- für Proxy
+
+// Wenn node-fetch nicht global installiert ist:
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 const app = express();
 const server = http.createServer(app);
@@ -22,7 +24,7 @@ wss.on('connection', (ws) => {
 
 app.use(bodyParser.json());
 
-// 🔁 Webhook-Verarbeitung
+// 📡 Webhook (falls benötigt)
 app.post('/webhook', (req, res) => {
   console.log('Webhook erhalten:', req.body);
   sockets.forEach(ws => {
@@ -33,22 +35,28 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 
-// 🌐 Statische Dateien
+// 📦 Öffentliche Dateien (HTML, JS, CSS, Bilder...)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 🔁 Radio-CORS-Proxy
+// 🌍 CORS-Proxy für Radio-Streams
 app.get('/proxy/*', (req, res) => {
-  const streamUrl = decodeURIComponent(req.params[0]);
+  const targetUrl = decodeURIComponent(req.path.replace('/proxy/', ''));
+  console.log('Proxying:', targetUrl);
 
-  if (!streamUrl.startsWith('http')) {
-    return res.status(400).send('Ungültige Stream-URL');
-  }
-
-  console.log(`Proxy-Weiterleitung: ${streamUrl}`);
-  req.pipe(request(streamUrl)).pipe(res);
+  fetch(targetUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    .then(response => {
+      if (!response.ok) throw new Error('Stream Error');
+      res.setHeader('Content-Type', response.headers.get('content-type') || 'audio/mpeg');
+      response.body.pipe(res);
+    })
+    .catch(err => {
+      console.error('Proxy Error:', err.message);
+      res.status(500).send('Stream Error');
+    });
 });
 
+// 🚀 Server starten
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`🚀 Server läuft auf Port ${PORT}`);
+  console.log(`Server läuft auf Port ${PORT}`);
 });
