@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purple Pepe Donation Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- 🌐 Open Graph Meta Tags für Social Media Vorschau -->
+  <meta property="og:title" content="Purple Pepe Donation Tracker">
+  <meta property="og:description" content="Spende an das lila Meme-Projekt auf Solana – Ziel: $20.000 🚀">
+  <meta property="og:image" content="https://i.imgur.com/cc4aEnK.png">
+  <meta property="og:url" content="https://purple-pepe-bunker.onrender.com">
+  <meta property="og:type" content="website">
+
+  <!-- 🐦 Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Purple Pepe Donation Tracker">
+  <meta name="twitter:description" content="Spende an das lila Meme-Projekt auf Solana – Ziel: $20.000 🚀">
+  <meta name="twitter:image" content="https://i.imgur.com/cc4aEnK.png">
+
+  <!-- Wallet & Token Libraries -->
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+  <script src="https://unpkg.com/@solana/spl-token@latest/lib/index.iife.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+</head>
+
+<body>
+  <div id="splash">Loading...</div>
+
+  <div class="container">
+    <h1 class="title">Purple Pepe Donation Tracker</h1>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill-1"></div>
+    </div>
+
+    <div id="progress-info">
+      <div class="glow-box" id="current-amount">$0.00</div>
+      <div class="glow-box" id="last-updated">Letztes Update: --:--:--</div>
+      <div class="glow-box" id="goal-amount">$20,000</div>
+    </div>
+
+    <div class="qr-section">
+      <canvas id="wallet-qr"></canvas>
+      <div class="wallet-container">
+        <span id="wallet-address" class="glow-box single-line">
+          9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn
+        </span>
+        <button id="copy-button" title="Adresse kopieren">📋</button>
+      </div>
+    </div>
+
+    <div class="donate-buttons">
+      <a href="#" id="donate-sol" class="donate-button">Donation SOL</a>
+      <a href="#" id="donate-purpe" class="donate-button">Donation PURPE</a>
+    </div>
+
+    <div class="social-share">
+      <a href="https://x.com/purplepepes0l?s=21" target="_blank"><img src="x_icon.png" alt="X"></a>
+      <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/purplepepes0l?igsh=a2Q2NDRjc2lrbjEz" target="_blank"><img src="instagram_icon.png" alt="Instagram"></a>
+      <a href="https://www.tiktok.com/@purpe.factory?_t=ZN-8vweUeJUFPC&_r=1" target="_blank"><img src="tiktok_icon.png" alt="TikTok"></a>
+      <a href="https://t.me/Purpe_SOL" target="_blank"><img src="telegram_icon.png" alt="Telegram"></a>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
