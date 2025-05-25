@@ -1,17 +1,16 @@
-/* --Style.css content-- */
+/* 🌌 Grundlayout */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background: url('pepe_background.png') no-repeat center center;
+  background: url('pepe_background.png') no-repeat center center fixed;
   background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   color: white;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
+/* 🔄 Splash-Screen */
 #splash {
   position: fixed;
   top: 0; left: 0;
@@ -25,6 +24,7 @@ body {
   z-index: 9999;
 }
 
+/* 📦 Container */
 .container {
   max-width: 420px;
   margin: 50px auto;
@@ -32,6 +32,7 @@ body {
   text-align: center;
 }
 
+/* ✨ Titel-Animation */
 @keyframes nebulaPulse {
   0% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 30px #8000ff; }
   50% { text-shadow: 0 0 20px #a833ff, 0 0 40px #a833ff, 0 0 60px #a833ff; }
@@ -43,6 +44,7 @@ body {
   animation: nebulaPulse 3s infinite;
 }
 
+/* 📊 Fortschrittsbalken */
 .progress-bar {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 30px;
@@ -79,6 +81,7 @@ body {
   flex-shrink: 0;
 }
 
+/* 🧾 Wallet */
 #wallet-address {
   white-space: nowrap;
   overflow: hidden;
@@ -119,10 +122,12 @@ body {
   background: #8c33ff;
 }
 
+/* 📷 QR-Code */
 .qr-section {
   margin: 20px 0;
 }
 
+/* 💰 Spenden-Buttons */
 .donate-buttons {
   margin-top: 20px;
 }
@@ -144,6 +149,7 @@ body {
   background: #8c33ff;
 }
 
+/* 📢 Social Media Icons */
 @keyframes iconPulse {
   0% { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
   50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #a833ff); }
@@ -166,6 +172,48 @@ body {
   cursor: pointer;
 }
 
+/* 📻 Radio-Sektion */
+.radio-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.radio-title {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  color: white;
+  animation: nebulaPulse 3s infinite;
+}
+
+.radio-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.radio-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 6px #8000ff;
+}
+
+.radio-icon.active {
+  animation: rotateIcon 1s linear infinite;
+  box-shadow: 0 0 15px #a833ff;
+}
+
+@keyframes rotateIcon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 📱 Responsive */
 @media (max-width: 480px) {
   .container {
     width: 90%;
