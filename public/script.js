@@ -8,18 +8,18 @@ const goalUSD1 = 20000;
 
 // 🌐 Neue funktionierende Radio-Streams + Icons
 const radioStations = [
-  { stream: "https://stream.dnbradio.com/stream.mp3", icon: "drum_and_bass_icon.png" },
-  { stream: "https://stream.realpunkradio.com:8000/live", icon: "skate_punk_icon.png" },
-  { stream: "https://stream.reggae141.com:8000/stream", icon: "reggae_icon.png" },
-  { stream: "https://stream.laut.fm/oldschool", icon: "hip_hop_icon.png" },
-  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
-  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
-  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
-  { stream: "https://us4.internet-radio.com/proxy/countryradio?mp=/stream", icon: "country_icon.png" },
-  { stream: "https://us3.internet-radio.com/proxy/977thehits?mp=/stream", icon: "pop_music_icon.png" },
-  { stream: "https://stream.folkalley.com/folkalley", icon: "folk_music_icon.png" },
-  { stream: "https://stream.gothville.com:8000/gothville", icon: "gothic_icon.png" },
-  { stream: "https://stream.jazz24.org/jazz24.mp3", icon: "jazz_soul_icon.png" }
+  { stream: "https://uk4.internet-radio.com:8276/stream", icon: "drum_and_bass_icon.png" }, // Drum & Bass
+  { stream: "https://stream.rockradio.com/rock", icon: "skate_punk_icon.png" },             // Skate Punk
+  { stream: "https://reggae141.radioca.st/stream", icon: "reggae_icon.png" },               // Reggae
+  { stream: "https://stream.laut.fm/oldschool", icon: "hip_hop_icon.png" },                 // Hip Hop
+  { stream: "https://stream.laut.fm/folkradio", icon: "folk_music_icon.png" },              // Folk Music
+  { stream: "https://stream.laut.fm/gothicrock", icon: "gothic_icon.png" },                 // Gothic
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },                     // Pop Music
+  { stream: "https://stream.radioparadise.com/country-320", icon: "country_icon.png" },     // Country
+  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },                       // House
+  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },                // Electro
+  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },            // Heavy Metal
+  { stream: "https://stream.radioparadise.com/mellow-320", icon: "jazz_soul_icon.png" }     // Jazz & Soul
 ];
 
 // ⏳ Splash ausblenden
