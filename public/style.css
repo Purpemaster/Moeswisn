@@ -1,4 +1,4 @@
-/* 🌌 Grundlayout */
+/* Layout */
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +10,6 @@ body {
   overflow-x: hidden;
 }
 
-/* 🔄 Splash-Screen */
 #splash {
   position: fixed;
   top: 0; left: 0;
@@ -24,19 +23,18 @@ body {
   z-index: 9999;
 }
 
-/* 📦 Container */
 .container {
-  max-width: 420px;
+  max-width: 440px;
   margin: 50px auto;
   padding: 20px;
   text-align: center;
 }
 
-/* ✨ Titel-Animation */
+/* Title Animation */
 @keyframes nebulaPulse {
-  0% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 30px #8000ff; }
-  50% { text-shadow: 0 0 20px #a833ff, 0 0 40px #a833ff, 0 0 60px #a833ff; }
-  100% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 30px #8000ff; }
+  0% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff; }
+  50% { text-shadow: 0 0 20px #a833ff, 0 0 40px #a833ff; }
+  100% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff; }
 }
 
 .title {
@@ -44,7 +42,7 @@ body {
   animation: nebulaPulse 3s infinite;
 }
 
-/* 📊 Fortschrittsbalken */
+/* Progress Bar */
 .progress-bar {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 30px;
@@ -64,7 +62,6 @@ body {
 #progress-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 10px;
   flex-wrap: nowrap;
   margin-bottom: 20px;
@@ -81,16 +78,14 @@ body {
   flex-shrink: 0;
 }
 
-/* 🧾 Wallet */
+/* Wallet */
 #wallet-address {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 0.8em;
   width: 100%;
-  display: inline-block;
   padding: 10px;
-  text-align: center;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid white;
   border-radius: 12px;
@@ -102,7 +97,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  flex-wrap: wrap;
   margin-top: 10px;
 }
 
@@ -114,7 +108,6 @@ body {
   border-radius: 8px;
   font-size: 1.2em;
   cursor: pointer;
-  transition: background 0.3s;
   box-shadow: 0 0 6px #8000ff;
 }
 
@@ -122,12 +115,12 @@ body {
   background: #8c33ff;
 }
 
-/* 📷 QR-Code */
+/* QR */
 .qr-section {
   margin: 20px 0;
 }
 
-/* 💰 Spenden-Buttons */
+/* Donation */
 .donate-buttons {
   margin-top: 20px;
 }
@@ -142,14 +135,13 @@ body {
   margin: 5px;
   font-size: 1em;
   border: 1px solid white;
-  transition: background 0.3s;
 }
 
 .donate-button:hover {
   background: #8c33ff;
 }
 
-/* 📢 Social Media Icons */
+/* Social Media */
 @keyframes iconPulse {
   0% { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
   50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #a833ff); }
@@ -160,19 +152,19 @@ body {
   margin-top: 20px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .social-share img {
   width: 40px;
   height: 40px;
-  animation: iconPulse 2s infinite;
   border-radius: 50%;
+  animation: iconPulse 2s infinite;
   cursor: pointer;
 }
 
-/* 📻 Radio-Sektion */
+/* Radio */
 .radio-section {
   margin-top: 40px;
   text-align: center;
@@ -181,7 +173,6 @@ body {
 .radio-title {
   font-size: 1.4em;
   margin-bottom: 15px;
-  color: white;
   animation: nebulaPulse 3s infinite;
 }
 
@@ -197,10 +188,10 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  transition: transform 0.3s ease;
-  cursor: pointer;
   border: 2px solid white;
   box-shadow: 0 0 6px #8000ff;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .radio-icon.active {
@@ -213,7 +204,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* 📱 Responsive */
+/* Responsive */
 @media (max-width: 480px) {
   .container {
     width: 90%;
