@@ -3,7 +3,6 @@ const heliusApiKey = "9cf905ed-105d-46a7-b7fa-7440388b6e9f";
 
 const PURPE_MINT = "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL";
 const RAYDIUM_POOL = "CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj";
-
 const goalUSD1 = 20000;
 
 // 🌐 Radio-Streams über Proxy
@@ -22,14 +21,32 @@ const radioStations = [
   { stream: "https://purple-pepe-proxy.onrender.com/stream?url=https://streaming.exclusive.radio/er-jazz-128", icon: "jazz_soul_icon.png" }
 ];
 
-// Splash-Screen
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('splash').style.display = 'none';
-  }, 2000);
-});
+// 🔄 Fortschritt aktualisieren
+function updateProgress(totalUSD) {
+  const percent = Math.min((totalUSD / goalUSD1) * 100, 100);
+  document.getElementById("progress-fill-1").style.width = `${percent}%`;
+  document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
+}
 
-// Preis-APIs
+// 🕒 Tracker aktualisieren
+async function updateTracker() {
+  const [wallet, solPrice, purpePriceUSD] = await Promise.all([
+    fetchWalletBalances(),
+    fetchSolPrice(),
+    fetchPurpePriceUSD()
+  ]);
+
+  const totalUSD = (wallet.solBalance * solPrice) + (wallet.purpeBalance * purpePriceUSD);
+  updateProgress(totalUSD);
+
+  const now = new Date();
+  const formatted = now.toLocaleTimeString([], {
+    hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: "short"
+  });
+  document.getElementById("last-updated").textContent = `Latest Update: ${formatted}`;
+}
+
+// 🔢 Preise laden
 async function fetchSolPrice() {
   try {
     const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
@@ -50,7 +67,7 @@ async function fetchPurpePriceUSD() {
   }
 }
 
-// Wallet
+// 💰 Wallet Balances
 async function fetchWalletBalances() {
   try {
     const res = await fetch(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
@@ -66,29 +83,7 @@ async function fetchWalletBalances() {
   }
 }
 
-function updateProgress(totalUSD) {
-  const percent = Math.min((totalUSD / goalUSD1) * 100, 100);
-  document.getElementById("progress-fill-1").style.width = `${percent}%`;
-  document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
-}
-
-async function updateTracker() {
-  const [wallet, solPrice, purpePriceUSD] = await Promise.all([
-    fetchWalletBalances(),
-    fetchSolPrice(),
-    fetchPurpePriceUSD()
-  ]);
-
-  const totalUSD = (wallet.solBalance * solPrice) + (wallet.purpeBalance * purpePriceUSD);
-  updateProgress(totalUSD);
-
-  const now = new Date();
-  const formatted = now.toLocaleTimeString([], {
-    hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: "short"
-  });
-  document.getElementById("last-updated").textContent = `Latest Update: ${formatted}`;
-}
-
+// 💸 Spenden-Buttons
 function setupDonationButtons() {
   document.getElementById("donate-sol").addEventListener("click", () => {
     const link = `solana:${walletAddress}?amount=1&label=Purple%20Pepe%20Donation`;
@@ -101,6 +96,7 @@ function setupDonationButtons() {
   });
 }
 
+// 📋 Copy-Button
 function setupCopyButton() {
   document.getElementById("copy-button").addEventListener("click", () => {
     const address = document.getElementById("wallet-address").textContent.trim();
@@ -110,6 +106,7 @@ function setupCopyButton() {
   });
 }
 
+// 📻 Radio-Buttons
 function setupRadioButtons() {
   const container = document.getElementById("radio-buttons");
   const player = document.getElementById("radio-player");
@@ -123,20 +120,20 @@ function setupRadioButtons() {
       document.querySelectorAll(".radio-icon").forEach(el => el.classList.remove("active"));
       img.classList.add("active");
       player.src = station.stream;
-      player.play();
+      player.play().catch(err => console.error("Autoplay blocked or failed", err));
     });
     container.appendChild(img);
   });
 }
 
-// Starte alles
+// 🚀 Initialisierung
 updateTracker();
 setInterval(updateTracker, 30000);
 setupDonationButtons();
 setupCopyButton();
 setupRadioButtons();
 
-// QR-Code
+// 🧾 QR-Code generieren
 new QRious({
   element: document.getElementById('wallet-qr'),
   value: `solana:${walletAddress}`,
