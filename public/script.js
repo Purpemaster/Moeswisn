@@ -1,236 +1,151 @@
-/* 🌌 Grundlayout */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background: url('pepe_background.png') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+const walletAddress = "9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn";
+const heliusApiKey = "9cf905ed-105d-46a7-b7fa-7440388b6e9f";
 
-/* 🔄 Splash-Screen */
-#splash {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: black;
-  color: white;
-  font-size: 2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
+const PURPE_MINT = "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL";
+const RAYDIUM_POOL = "CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj";
 
-/* 📦 Container */
-.container {
-  max-width: 440px;
-  margin: 50px auto;
-  padding: 20px;
-  text-align: center;
-}
+const goalUSD1 = 20000;
 
-/* ✨ Titel-Animation */
-@keyframes nebulaPulse {
-  0% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 30px #8000ff; }
-  50% { text-shadow: 0 0 20px #a833ff, 0 0 40px #a833ff, 0 0 60px #a833ff; }
-  100% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff, 0 0 30px #8000ff; }
-}
+// 🌐 Radio-Streams + Icons
+const radioStations = [
+  { stream: "https://stream.radioparadise.com/dnb-320", icon: "drum_and_bass_icon.png" },
+  { stream: "https://punkrockers-radio.de:8000/128", icon: "skate_punk_icon.png" },
+  { stream: "https://uk4.internet-radio.com:8276/stream", icon: "reggae_icon.png" },
+  { stream: "https://radio.streemlion.com:1830/stream", icon: "hip_hop_icon.png" },
+  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
+  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
+  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
+  { stream: "https://stream.radioparadise.com/country-320", icon: "country_icon.png" },
+  { stream: "https://stream.laut.fm/folkradio", icon: "folk_music_icon.png" },
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
+  { stream: "https://stream.laut.fm/gothicrock", icon: "gothic_icon.png" },
+  { stream: "https://stream.radioparadise.com/mellow-320", icon: "jazz_soul_icon.png" }
+];
 
-.title {
-  font-size: 2.2em;
-  animation: nebulaPulse 3s infinite;
-}
+// 📦 Splash ausblenden
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('splash').style.display = 'none';
+  }, 2000);
+});
 
-/* 📊 Fortschrittsbalken */
-.progress-bar {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 30px;
-  overflow: hidden;
-  margin: 20px 0 10px;
-  height: 20px;
-  box-shadow: 0 0 10px 2px #8000ff;
-}
-
-.progress-fill {
-  background: linear-gradient(90deg, #8000ff, #d633ff, #ff66ff);
-  height: 100%;
-  width: 0%;
-  transition: width 0.5s ease-in-out;
-}
-
-#progress-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;
-  margin-bottom: 20px;
-}
-
-.glow-box {
-  padding: 6px 12px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid white;
-  font-size: 0.95em;
-  box-shadow: 0 0 8px #8000ff;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* 🧾 Wallet */
-#wallet-address {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 0.8em;
-  width: 100%;
-  display: inline-block;
-  padding: 10px;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid white;
-  border-radius: 12px;
-  box-shadow: 0 0 8px #8000ff;
-}
-
-.wallet-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-#copy-button {
-  background: #5e00c8;
-  color: white;
-  border: 1px solid white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: background 0.3s;
-  box-shadow: 0 0 6px #8000ff;
-}
-
-#copy-button:hover {
-  background: #8c33ff;
-}
-
-/* 📷 QR-Code */
-.qr-section {
-  margin: 20px 0;
-}
-
-/* 💰 Spenden-Buttons */
-.donate-buttons {
-  margin-top: 20px;
-}
-
-.donate-button {
-  display: inline-block;
-  background: #5e00c8;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 25px;
-  text-decoration: none;
-  margin: 5px;
-  font-size: 1em;
-  border: 1px solid white;
-  transition: background 0.3s;
-}
-
-.donate-button:hover {
-  background: #8c33ff;
-}
-
-/* 📢 Social Media Icons */
-@keyframes iconPulse {
-  0% { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
-  50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #a833ff); }
-  100% { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
-}
-
-.social-share {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.social-share img {
-  width: 40px;
-  height: 40px;
-  animation: iconPulse 2s infinite;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* 📻 Radio-Sektion */
-.radio-section {
-  margin-top: 40px;
-  text-align: center;
-}
-
-.radio-title {
-  font-size: 1.4em;
-  margin-bottom: 15px;
-  color: white;
-  animation: nebulaPulse 3s infinite;
-}
-
-.radio-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.radio-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  border: 2px solid white;
-  box-shadow: 0 0 6px #8000ff;
-}
-
-.radio-icon.active {
-  animation: rotateIcon 1s linear infinite;
-  box-shadow: 0 0 15px #a833ff;
-}
-
-@keyframes rotateIcon {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* 📱 Responsive */
-@media (max-width: 480px) {
-  .container {
-    width: 90%;
-    padding: 15px;
-  }
-
-  .title {
-    font-size: 1.6em;
-  }
-
-  #progress-info {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  #wallet-address {
-    font-size: 0.75em;
+// 📉 Preis-APIs
+async function fetchSolPrice() {
+  try {
+    const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
+    const data = await res.json();
+    return data.solana.usd || 0;
+  } catch {
+    return 0;
   }
 }
+
+async function fetchPurpePriceUSD() {
+  try {
+    const res = await fetch(`https://api.geckoterminal.com/api/v2/networks/solana/pools/${RAYDIUM_POOL}`);
+    const data = await res.json();
+    return parseFloat(data.data.attributes.base_token_price_usd);
+  } catch {
+    return 0;
+  }
+}
+
+// 🧾 Wallet Balances
+async function fetchWalletBalances() {
+  try {
+    const res = await fetch(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
+    const data = await res.json();
+    const solBalance = (data.nativeBalance || 0) / 1e9;
+
+    const purpeToken = data.tokens?.find(t => t.mint === PURPE_MINT);
+    const purpeBalance = purpeToken ? purpeToken.amount / Math.pow(10, purpeToken.decimals || 6) : 0;
+
+    return { solBalance, purpeBalance };
+  } catch {
+    return { solBalance: 0, purpeBalance: 0 };
+  }
+}
+
+// 🔁 Fortschritt aktualisieren
+function updateProgress(totalUSD) {
+  const percent = Math.min((totalUSD / goalUSD1) * 100, 100);
+  document.getElementById("progress-fill-1").style.width = `${percent}%`;
+  document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
+}
+
+// 🕒 Tracker aktualisieren
+async function updateTracker() {
+  const [wallet, solPrice, purpePriceUSD] = await Promise.all([
+    fetchWalletBalances(),
+    fetchSolPrice(),
+    fetchPurpePriceUSD()
+  ]);
+
+  const totalUSD = (wallet.solBalance * solPrice) + (wallet.purpeBalance * purpePriceUSD);
+  updateProgress(totalUSD);
+
+  const now = new Date();
+  const formatted = now.toLocaleTimeString([], {
+    hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: "short"
+  });
+  document.getElementById("last-updated").textContent = `Latest Update: ${formatted}`;
+}
+
+// 💸 Donation-Buttons
+function setupDonationButtons() {
+  document.getElementById("donate-sol").addEventListener("click", () => {
+    const link = `solana:${walletAddress}?amount=1&label=Purple%20Pepe%20Donation`;
+    window.location.href = link;
+  });
+
+  document.getElementById("donate-purpe").addEventListener("click", () => {
+    const link = `solana:${walletAddress}?amount=3000000&spl-token=${PURPE_MINT}&label=Purple%20Pepe%20Donation`;
+    window.location.href = link;
+  });
+}
+
+// 📋 Copy-Adresse
+function setupCopyButton() {
+  document.getElementById("copy-button").addEventListener("click", () => {
+    const address = document.getElementById("wallet-address").textContent.trim();
+    navigator.clipboard.writeText(address)
+      .then(() => alert("Wallet address copied!"))
+      .catch(() => alert("Copy failed."));
+  });
+}
+
+// 📻 Radio-Buttons generieren
+function setupRadioButtons() {
+  const container = document.getElementById("radio-buttons");
+  const player = document.getElementById("radio-player");
+
+  radioStations.forEach((station, index) => {
+    const img = document.createElement("img");
+    img.src = station.icon;
+    img.className = "radio-icon";
+    img.alt = `Station ${index + 1}`;
+    img.addEventListener("click", () => {
+      document.querySelectorAll(".radio-icon").forEach(el => el.classList.remove("active"));
+      img.classList.add("active");
+      player.src = station.stream;
+      player.play();
+    });
+    container.appendChild(img);
+  });
+}
+
+// 🔁 Initialisierung
+updateTracker();
+setInterval(updateTracker, 30000);
+setupDonationButtons();
+setupCopyButton();
+setupRadioButtons();
+
+// 📷 QR-Code generieren
+new QRious({
+  element: document.getElementById('wallet-qr'),
+  value: `solana:${walletAddress}`,
+  size: 200,
+  background: 'white',
+  foreground: '#8000ff'
+});
