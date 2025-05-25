@@ -10,15 +10,15 @@ const goalUSD1 = 20000;
 const radioStations = [
   { stream: "https://dnbradio.com/320k", icon: "drum_and_bass_icon.png" },
   { stream: "https://stream.rockradio.com/punkrock", icon: "skate_punk_icon.png" },
-  { stream: "https://somafm.com/reggae130.pls", icon: "reggae_icon.png" },
-  { stream: "https://hot108.com/hot108.m3u", icon: "hip_hop_icon.png" },
+  { stream: "https://reggae141.radioca.st/stream", icon: "reggae_icon.png" },
+  { stream: "https://hot108.com/stream", icon: "hip_hop_icon.png" },
   { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
   { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
   { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
   { stream: "https://stream.181.fm/181-country", icon: "country_icon.png" },
   { stream: "https://streaming.live365.com/a87226", icon: "folk_music_icon.png" },
   { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
-  { stream: "https://www.gothville.com/stream", icon: "gothic_icon.png" },
+  { stream: "https://radio.gothville.com/stream", icon: "gothic_icon.png" },
   { stream: "https://jazz24.streamguys1.com/jazz24.mp3", icon: "jazz_soul_icon.png" }
 ];
 
