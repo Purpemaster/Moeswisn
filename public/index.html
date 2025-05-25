@@ -6,19 +6,20 @@
   <title>Purple Pepe Donation Tracker + Radio</title>
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Social Preview -->
+  <!-- Meta Social -->
   <meta property="og:title" content="Purple Pepe Donation Tracker">
   <meta property="og:description" content="Spende an das lila Meme-Projekt auf Solana – Ziel: $20.000 🚀">
   <meta property="og:image" content="https://i.imgur.com/cc4aEnK.png">
   <meta property="og:url" content="https://purple-pepe-bunker.onrender.com">
   <meta property="og:type" content="website">
 
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Purple Pepe Donation Tracker">
   <meta name="twitter:description" content="Spende an das lila Meme-Projekt auf Solana – Ziel: $20.000 🚀">
   <meta name="twitter:image" content="https://i.imgur.com/cc4aEnK.png">
 
-  <!-- Libs -->
+  <!-- Libraries -->
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
   <script src="https://unpkg.com/@solana/spl-token@latest/lib/index.iife.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
@@ -51,15 +52,13 @@
     </div>
 
     <div class="donate-buttons">
-      <a href="#" id="donate-sol" class="donate-button">Donation SOL</a>
-      <a href="#" id="donate-purpe" class="donate-button">Donation PURPE</a>
+      <a href="#" id="donate-sol" class="donate-button">Donate SOL</a>
+      <a href="#" id="donate-purpe" class="donate-button">Donate PURPE</a>
     </div>
 
     <div class="radio-section">
-      <h2 class="radio-title">🎧 Purple Pepe Radio</h2>
-      <div class="radio-grid" id="radio-buttons">
-        <!-- Dynamisch befüllt durch JS -->
-      </div>
+      <h2 class="radio-title">Purple Pepe Radio</h2>
+      <div class="radio-grid" id="radio-buttons"></div>
       <audio id="radio-player" controls autoplay></audio>
     </div>
 
