@@ -10,7 +10,7 @@ const goalUSD1 = 20000;
 const radioStations = [
   { stream: "https://dnbradio.com/320k", icon: "drum_and_bass_icon.png" },
   { stream: "https://stream.rockradio.com/punkrock", icon: "skate_punk_icon.png" },
-  { stream: "https://streaming.live365.com/a87225", icon: "reggae_icon.png" },
+  { stream: "https://somafm.com/reggae130.pls", icon: "reggae_icon.png" },
   { stream: "https://hot108.com/hot108.m3u", icon: "hip_hop_icon.png" },
   { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
   { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
@@ -19,7 +19,7 @@ const radioStations = [
   { stream: "https://streaming.live365.com/a87226", icon: "folk_music_icon.png" },
   { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
   { stream: "https://www.gothville.com/stream", icon: "gothic_icon.png" },
-  { stream: "https://somehowjazz.com/stream", icon: "jazz_soul_icon.png" }
+  { stream: "https://jazz24.streamguys1.com/jazz24.mp3", icon: "jazz_soul_icon.png" }
 ];
 
 // ⏳ Splash ausblenden
