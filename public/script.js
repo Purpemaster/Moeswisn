@@ -8,41 +8,18 @@ const goalUSD1 = 20000;
 
 // 🌐 Neue funktionierende Radio-Streams + Icons
 const radioStations = [
-  // House (Working)
-  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
-
-  // Electro (Working)
-  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
-
-  // Heavy Metal (Working)
-  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
-
-  // Pop Music (Working)
-  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
-
-  // Drum & Bass (New)
-  { stream: "https://stream.dnbradio.com:8000/dnbradio_main.mp3", icon: "drum_and_bass_icon.png" },
-
-  // Jazz & Soul (New)
-  { stream: "https://live365.com/station/The-Jazz-Funk-Soul-Movement-a45909", icon: "jazz_soul_icon.png" },
-
-  // Reggae (New)
-  { stream: "https://stream.radiotunes.com/rootsreggae", icon: "reggae_icon.png" },
-
-  // Hip Hop (New)
-  { stream: "https://stream.radio.net/s/hitsradiohiphop", icon: "hip_hop_icon.png" },
-
-  // Gothic (New)
-  { stream: "https://stream.gothville.com:8000/gothville", icon: "gothic_icon.png" },
-
-  // Skate Punk (New)
+  { stream: "https://dnbradio.com/320k", icon: "drum_and_bass_icon.png" },
   { stream: "https://stream.rockradio.com/punkrock", icon: "skate_punk_icon.png" },
-
-  // Country (New)
-  { stream: "https://stream.radio.net/s/1fmclassiccountry", icon: "country_icon.png" },
-
-  // Folk Music (New)
-  { stream: "https://stream.folkalley.com/folkalley", icon: "folk_music_icon.png" }
+  { stream: "https://streaming.live365.com/a87225", icon: "reggae_icon.png" },
+  { stream: "https://hot108.com/hot108.m3u", icon: "hip_hop_icon.png" },
+  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
+  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
+  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
+  { stream: "https://stream.181.fm/181-country", icon: "country_icon.png" },
+  { stream: "https://streaming.live365.com/a87226", icon: "folk_music_icon.png" },
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
+  { stream: "https://www.gothville.com/stream", icon: "gothic_icon.png" },
+  { stream: "https://somehowjazz.com/stream", icon: "jazz_soul_icon.png" }
 ];
 
 // ⏳ Splash ausblenden
