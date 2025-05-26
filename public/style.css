@@ -1,4 +1,4 @@
-/* ======= GLOBAL ======= */
+/* ======= GRUNDDESIGN ======= */
 body {
   margin: 0;
   padding: 0;
@@ -17,32 +17,21 @@ body {
   text-align: center;
 }
 
-/* ======= TITLES + ANIMATION ======= */
+/* ======= PULSIEREN & NEON-TITEL ======= */
 @keyframes neonPulse {
-  0%, 100% {
-    text-shadow: 0 0 10px #8000ff, 0 0 20px #a833ff;
-    transform: scale(1);
-  }
-  50% {
-    text-shadow: 0 0 25px #ff66ff, 0 0 45px #ff33ff;
-    transform: scale(1.05);
-  }
+  0%   { text-shadow: 0 0 8px #8000ff, 0 0 16px #8000ff; }
+  50%  { text-shadow: 0 0 16px #a833ff, 0 0 32px #a833ff; }
+  100% { text-shadow: 0 0 8px #8000ff, 0 0 16px #8000ff; }
 }
 
-.title {
-  font-size: 2.2em;
-  animation: neonPulse 3s infinite;
-  text-shadow: 0 0 10px #8000ff, 0 0 20px #ff66ff;
-}
-
+.title,
 .radio-title {
-  font-size: 1.6em;
-  margin-bottom: 20px;
+  font-size: 2.2em;
   animation: neonPulse 2.5s infinite;
-  text-shadow: 0 0 10px #a833ff, 0 0 20px #ff66ff;
+  color: #ffffff;
 }
 
-/* ======= PROGRESS BAR ======= */
+/* ======= FORTSCHRITT ======= */
 .progress-bar {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 30px;
@@ -59,13 +48,11 @@ body {
   transition: width 0.5s ease-in-out;
 }
 
-/* ======= PROGRESS INFO ======= */
 #progress-info {
   display: flex;
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 20px;
-  flex-wrap: wrap;
 }
 
 .glow-box {
@@ -79,7 +66,7 @@ body {
   flex-shrink: 0;
 }
 
-/* ======= WALLET QR & ADDRESS ======= */
+/* ======= WALLET ======= */
 #wallet-address {
   white-space: nowrap;
   overflow: hidden;
@@ -116,12 +103,11 @@ body {
   background: #8c33ff;
 }
 
-/* ======= QR SECTION ======= */
 .qr-section {
   margin: 20px 0;
 }
 
-/* ======= DONATE BUTTONS ======= */
+/* ======= SPENDEN ======= */
 .donate-buttons {
   margin-top: 20px;
 }
@@ -144,8 +130,8 @@ body {
 
 /* ======= SOCIAL MEDIA ======= */
 @keyframes iconPulse {
-  0% { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
-  50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #a833ff); }
+  0%   { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
+  50%  { transform: scale(1.1); filter: drop-shadow(0 0 15px #a833ff); }
   100% { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
 }
 
@@ -165,18 +151,19 @@ body {
   cursor: pointer;
 }
 
-/* ======= RADIO SECTION ======= */
+/* ======= RADIO (4 NEBENEINANDER & 50% GRÖSSER) ======= */
 .radio-section {
   margin-top: 40px;
   text-align: center;
 }
 
 .radio-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  justify-items: center;
-  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto 30px auto;
 }
 
 .radio-icon {
@@ -190,16 +177,16 @@ body {
 }
 
 .radio-icon.active {
-  animation: rotateIcon 1s linear infinite;
+  animation: rotateIcon 1.5s linear infinite;
   box-shadow: 0 0 15px #a833ff;
 }
 
 @keyframes rotateIcon {
   from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 }
 
-/* ======= MOBILE ======= */
+/* ======= RESPONSIVE ======= */
 @media (max-width: 480px) {
   .container {
     width: 90%;
@@ -210,10 +197,6 @@ body {
     font-size: 1.6em;
   }
 
-  .radio-grid {
-    grid-template-columns: repeat(2, 1fr); /* Mobile: 2 pro Zeile */
-  }
-
   #progress-info {
     flex-direction: column;
     align-items: center;
@@ -222,5 +205,10 @@ body {
 
   #wallet-address {
     font-size: 0.75em;
+  }
+
+  .radio-icon {
+    width: 80px;
+    height: 80px;
   }
 }
