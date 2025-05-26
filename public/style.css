@@ -69,32 +69,26 @@ body {
   margin: 15px 0;
 }
 
-.toggle-box .glow-box {
-  background: #5e00c8;
-  color: white;
-  border: 1px solid white;
-  padding: 10px 16px;
-  border-radius: 25px;
-  font-size: 1em;
-  box-shadow: 0 0 6px #8000ff;
-  cursor: pointer;
-  text-decoration: none;
-}
-
 .wallet-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
   gap: 10px;
   margin-top: 10px;
+  flex-direction: row;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 #copy-button {
   background: #5e00c8;
   color: white;
-  padding: 8px;
+  padding: 8px 12px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .qr-section {
