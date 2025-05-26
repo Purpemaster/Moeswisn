@@ -16,7 +16,7 @@ body {
   text-align: center;
 }
 
-/* Überschrift mit Neon-Glow */
+/* Überschrift mit Neon */
 .title {
   font-size: 2.2em;
   animation: neonPulse 2.5s infinite;
@@ -50,7 +50,7 @@ body {
 #progress-info {
   display: flex;
   justify-content: space-between;
-  gap: 5px;
+  gap: 10px;
   margin: 10px 0;
 }
 
@@ -65,27 +65,27 @@ body {
   white-space: nowrap;
 }
 
-/* Toggle Buttons */
+/* QR & Wallet Buttons */
 .toggle-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 12px;
   margin: 15px 0;
 }
 
 .toggle-buttons button {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid white;
-  padding: 10px 14px;
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.6);
   color: white;
+  border: 1px solid white;
+  padding: 10px 16px;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 0.9em;
   box-shadow: 0 0 6px #8000ff;
 }
 
 .toggle-buttons button:hover {
-  background: #8c33ff;
+  background: #8000ff;
 }
 
 /* Spendenbuttons */
@@ -112,44 +112,7 @@ body {
   background: #a833ff;
 }
 
-/* Radio Titel */
-.radio-title {
-  font-size: 1.6em;
-  animation: neonPulse 3s infinite;
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-/* Radio Grid 4 nebeneinander */
-.radio-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  justify-items: center;
-  margin-bottom: 25px;
-}
-
-.radio-icon {
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 0 0 10px #8000ff;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.radio-icon.active {
-  animation: rotateIcon 1.5s linear infinite;
-  box-shadow: 0 0 15px #a833ff;
-}
-
-@keyframes rotateIcon {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* QR & Wallet */
+/* QR + Wallet Anzeige */
 .qr-section {
   margin: 20px 0;
 }
@@ -190,6 +153,42 @@ body {
   background: #8c33ff;
 }
 
+/* Radio */
+.radio-title {
+  font-size: 1.6em;
+  animation: neonPulse 3s infinite;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.radio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  justify-items: center;
+  margin-bottom: 25px;
+}
+
+.radio-icon {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 10px #8000ff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.radio-icon.active {
+  animation: rotateIcon 1.5s linear infinite;
+  box-shadow: 0 0 15px #a833ff;
+}
+
+@keyframes rotateIcon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Audio Player */
 audio {
   width: 90%;
@@ -220,7 +219,7 @@ audio {
   100% { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
 }
 
-/* Responsive Mobile */
+/* Responsive */
 @media (max-width: 500px) {
   .container {
     width: 95%;
@@ -243,5 +242,9 @@ audio {
   #progress-info {
     flex-direction: column;
     align-items: center;
+  }
+
+  .toggle-buttons {
+    flex-direction: column;
   }
 }
