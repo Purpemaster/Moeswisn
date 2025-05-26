@@ -83,18 +83,35 @@ body {
 
 .wallet-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 10px;
   margin-top: 10px;
 }
 
+#wallet-address {
+  padding: 10px;
+  font-size: 0.8em;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
+  border-radius: 12px;
+  box-shadow: 0 0 8px #8000ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
 #copy-button {
   background: #5e00c8;
   color: white;
-  padding: 8px;
+  padding: 10px 14px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  box-shadow: 0 0 6px #8000ff;
+  font-size: 1em;
 }
 
 .qr-section {
