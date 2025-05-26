@@ -1,76 +1,72 @@
 body {
   margin: 0;
-  padding: 0;
   font-family: 'Arial', sans-serif;
   background: url('pepe_background.png') no-repeat center center fixed;
   background-size: cover;
   color: white;
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
 .container {
-  max-width: 440px;
-  margin: 20px auto;
-  padding: 10px;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
   text-align: center;
+}
+
+.neon {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff; }
+  to { text-shadow: 0 0 20px #a833ff, 0 0 40px #a833ff; }
 }
 
 .title {
   font-size: 2.2em;
   margin-top: 10px;
-  animation: nebulaPulse 3s infinite;
-}
-
-@keyframes nebulaPulse {
-  0% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff; }
-  50% { text-shadow: 0 0 20px #a833ff, 0 0 40px #a833ff; }
-  100% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff; }
 }
 
 .progress-bar {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 30px;
-  overflow: hidden;
-  margin: 10px 0 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   height: 20px;
-  box-shadow: 0 0 10px 2px #8000ff;
+  margin: 10px 0;
+  overflow: hidden;
 }
 
 .progress-fill {
   background: linear-gradient(90deg, #8000ff, #d633ff, #ff66ff);
   height: 100%;
   width: 0%;
-  transition: width 0.5s ease-in-out;
+  transition: width 0.5s;
 }
 
 .info-bar {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 10px;
-  flex-wrap: nowrap;
+  margin: 10px 0;
 }
 
 .glow-box {
-  padding: 6px 12px;
+  padding: 8px 12px;
+  border: 1px solid white;
   border-radius: 12px;
   background: rgba(0, 0, 0, 0.6);
-  border: 1px solid white;
-  font-size: 0.9em;
   box-shadow: 0 0 8px #8000ff;
+  font-size: 0.9em;
+  flex-grow: 1;
   white-space: nowrap;
-  flex: 1;
-  text-align: center;
 }
 
 .toggle-box {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 15px;
-  margin-bottom: 10px;
   flex-wrap: wrap;
+  margin: 15px 0;
 }
 
 .toggle-box .glow-box {
@@ -85,99 +81,65 @@ body {
   text-decoration: none;
 }
 
-.toggle-box .glow-box:hover {
-  background: #8c33ff;
-}
-
-.qr-section {
-  margin: 15px 0;
-}
-
-#wallet-address {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 0.8em;
-  width: 100%;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid white;
-  border-radius: 12px;
-  box-shadow: 0 0 8px #8000ff;
-}
-
 .wallet-container {
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 10px;
   margin-top: 10px;
-  margin-bottom: 20px;
 }
 
 #copy-button {
   background: #5e00c8;
   color: white;
-  border: 1px solid white;
-  padding: 8px 12px;
+  padding: 8px;
+  border: none;
   border-radius: 8px;
-  font-size: 1.2em;
   cursor: pointer;
-  box-shadow: 0 0 6px #8000ff;
 }
 
-#copy-button:hover {
-  background: #8c33ff;
+.qr-section {
+  margin: 10px 0;
 }
 
 .donate-buttons {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .donate-button {
-  display: inline-block;
   background: #5e00c8;
   color: white;
-  padding: 10px 16px;
+  padding: 10px 20px;
+  margin: 5px;
+  border: 1px solid white;
   border-radius: 25px;
   text-decoration: none;
-  margin: 5px;
-  font-size: 1em;
-  border: 1px solid white;
-}
-
-.donate-button:hover {
-  background: #8c33ff;
 }
 
 .radio-title {
-  font-size: 1.4em;
+  font-size: 1.5em;
   margin: 20px 0 10px;
-  animation: nebulaPulse 3s infinite;
 }
 
 .radio-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 15px;
   justify-items: center;
   margin-bottom: 20px;
 }
 
 .radio-icon {
-  width: 72px;
-  height: 72px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   border: 2px solid white;
-  box-shadow: 0 0 6px #8000ff;
-  transition: transform 0.3s ease;
-  cursor: pointer;
+  box-shadow: 0 0 8px #8000ff;
+  transition: transform 0.2s ease-in-out;
 }
 
 .radio-icon.active {
   animation: rotateIcon 1s linear infinite;
-  box-shadow: 0 0 15px #a833ff;
+  box-shadow: 0 0 12px #a833ff;
 }
 
 @keyframes rotateIcon {
@@ -186,44 +148,15 @@ body {
 }
 
 .social-share {
-  margin-top: 15px;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding-bottom: 20px;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .social-share img {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  animation: iconPulse 2s infinite;
-  cursor: pointer;
-}
-
-@keyframes iconPulse {
-  0% { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
-  50% { transform: scale(1.1); filter: drop-shadow(0 0 15px #a833ff); }
-  100% { transform: scale(1); filter: drop-shadow(0 0 5px #8000ff); }
-}
-
-@media (max-width: 480px) {
-  .container {
-    width: 92%;
-    padding: 10px;
-  }
-
-  .title {
-    font-size: 1.6em;
-  }
-
-  .info-bar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .radio-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  filter: drop-shadow(0 0 5px #8000ff);
 }
