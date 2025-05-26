@@ -155,10 +155,10 @@ body {
 }
 
 .radio-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
   gap: 15px;
-  justify-content: center;
+  justify-items: center;
   margin-bottom: 20px;
 }
 
