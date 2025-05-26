@@ -8,26 +8,18 @@ const goalUSD1 = 20000;
 
 // 🌐 Radio-Streams (ohne Proxy, getestet & öffentlich)
 const radioStations = [
-  // Bereits funktionierende Sender
-  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
-  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
-  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
-  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
-
-  // Aktualisierter Hip Hop
-  { stream: "https://laut.fm/maxxi22", icon: "hip_hop_icon.png" },
-
-  // Neue geprüfte Streams
-  { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" }, // Drum & Bass
+  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },                 // House
+  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },      // Heavy Metal
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },               // Pop Music
+  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },          // Electro
+  { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" },    // Drum & Bass
   { stream: "https://live.amperwave.net/direct/ppm-jazz24mp3-ibc1", icon: "jazz_soul_icon.png" }, // Jazz & Soul
-  { stream: "https://stream.laut.fm/jahfari", icon: "reggae_icon.png" }, // Reggae
-  { stream: "https://stream.laut.fm/gothic-radio-saar", icon: "gothic_icon.png" }, // Gothic
-  { stream: "https://stream.laut.fm/aufden-punk-t", icon: "skate_punk_icon.png" }, // Skate Punk
-
-  // Aktualisiertes Country
-  { stream: "https://laut.fm/radio-cristall_country-welt", icon: "country_icon.png" },
-
-  { stream: "https://stream.laut.fm/volksmusikradio", icon: "folk_music_icon.png" } // Volksmusik
+  { stream: "https://stream.laut.fm/jahfari", icon: "reggae_icon.png" },              // Reggae
+  { stream: "https://stream.laut.fm/gothic-radio-saar", icon: "gothic_icon.png" },    // Gothic
+  { stream: "https://stream.laut.fm/aufden-punk-t", icon: "skate_punk_icon.png" },    // Skate Punk
+  { stream: "https://stream.laut.fm/volksmusikradio", icon: "folk_music_icon.png" },  // Folk Music
+  { stream: "https://stream.laut.fm/hip-hop-fm", icon: "hip_hop_icon.png" },          // Hip Hop ✅ hinzugefügt
+  { stream: "https://stream.laut.fm/country-fm24", icon: "country_icon.png" }         // Country ✅ hinzugefügt
 ];
 
 // 🎧 Radio-Buttons
