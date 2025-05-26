@@ -8,17 +8,34 @@ const goalUSD1 = 20000;
 
 // 🌐 Radio-Streams (ohne Proxy, getestet & öffentlich)
 const radioStations = [
-  { stream: "http://bassdrive.com/v2/streams/BassDrive.m3u", icon: "drum_and_bass_icon.png" },
-  { stream: "https://icecast.radio.co/s98b27fa6b/listen", icon: "skate_punk_icon.png" },
-  { stream: "https://stream.srg-ssr.ch/reggae/mp3_128.m3u", icon: "reggae_icon.png" },
-  { stream: "https://stream.laut.fm/oldschool", icon: "hip_hop_icon.png" },
-  { stream: "https://stream.laut.fm/gothicrock", icon: "gothic_icon.png" },
-  { stream: "https://bootliquor.somafm.com/stream/128", icon: "country_icon.png" },
-  { stream: "https://folkforward.somafm.com/stream/128", icon: "folk_music_icon.png" },
-  { stream: "https://sonicuniverse.somafm.com/stream/128", icon: "jazz_soul_icon.png" },
-  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
+  // Drum & Bass
+  { stream: "https://stream.dnbradio.com/dnb.mp3", icon: "drum_and_bass_icon.png" },
+
+  // Jazz & Soul
+  { stream: "https://live.wostreaming.net/direct/knkx-jazz24mp3-ibc1", icon: "jazz_soul_icon.png" },
+
+  // Reggae
+  { stream: "https://reggae141.radioca.st/stream", icon: "reggae_icon.png" },
+
+  // Hip Hop
+  { stream: "https://live.powerhitz.com/hot108?aw_0_req.gdpr=true", icon: "hip_hop_icon.png" },
+
+  // Gothic
+  { stream: "https://ais-sa2.cdnstream1.com/2398_128.mp3", icon: "gothic_icon.png" }, // GothVille Radio
+
+  // Skate Punk
+  { stream: "https://uk1.internet-radio.com/proxy/realpunkradio?mp=/stream", icon: "skate_punk_icon.png" },
+
+  // Country
+  { stream: "https://playerservices.streamtheworld.com/api/livestream-redirect/KEANFM.mp3", icon: "country_icon.png" },
+
+  // Folk Music
+  { stream: "https://stream.srg-ssr.ch/m/rsj/mp3_128", icon: "folk_music_icon.png" },
+
+  // Deine funktionierenden Sender:
   { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
   { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
+  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
   { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" }
 ];
 
