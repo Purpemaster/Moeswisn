@@ -12,7 +12,7 @@ body {
 
 .container {
   max-width: 440px;
-  margin: 50px auto;
+  margin: 20px auto 50px;
   padding: 20px;
   text-align: center;
 }
@@ -29,6 +29,8 @@ body {
   font-size: 2.2em;
   animation: neonPulse 2.5s infinite;
   color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 /* ======= FORTSCHRITT ======= */
@@ -36,7 +38,7 @@ body {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 30px;
   overflow: hidden;
-  margin: 20px 0 10px;
+  margin: 15px 0 10px;
   height: 20px;
   box-shadow: 0 0 10px 2px #8000ff;
 }
@@ -52,7 +54,7 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .glow-box {
@@ -66,7 +68,23 @@ body {
   flex-shrink: 0;
 }
 
-/* ======= WALLET ======= */
+/* ======= WALLET + QR CODE TOGGLER ======= */
+.toggle-button {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 1px solid white;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 6px #8000ff;
+  transition: background 0.3s ease;
+}
+
+.toggle-button:hover {
+  background: rgba(140, 51, 255, 0.6);
+}
+
 #wallet-address {
   white-space: nowrap;
   overflow: hidden;
@@ -151,19 +169,18 @@ body {
   cursor: pointer;
 }
 
-/* ======= RADIO (4 NEBENEINANDER & 50% GRÖSSER) ======= */
+/* ======= RADIO-BEREICH (4 nebeneinander) ======= */
 .radio-section {
   margin-top: 40px;
   text-align: center;
 }
 
 .radio-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  max-width: 400px;
-  margin: 0 auto 30px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  justify-items: center;
+  margin-bottom: 20px;
 }
 
 .radio-icon {
@@ -189,8 +206,8 @@ body {
 /* ======= RESPONSIVE ======= */
 @media (max-width: 480px) {
   .container {
-    width: 90%;
-    padding: 15px;
+    width: 95%;
+    padding: 10px;
   }
 
   .title {
@@ -203,12 +220,16 @@ body {
     text-align: center;
   }
 
-  #wallet-address {
-    font-size: 0.75em;
+  .radio-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .radio-icon {
     width: 80px;
     height: 80px;
+  }
+
+  .toggle-button {
+    width: 80%;
   }
 }
