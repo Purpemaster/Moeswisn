@@ -17,9 +17,9 @@ body {
 }
 
 @keyframes nebulaPulse {
-  0% { text-shadow: 0 0 10px #8000ff; }
-  50% { text-shadow: 0 0 20px #a833ff; }
-  100% { text-shadow: 0 0 10px #8000ff; }
+  0% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff; }
+  50% { text-shadow: 0 0 20px #a833ff, 0 0 40px #a833ff; }
+  100% { text-shadow: 0 0 10px #8000ff, 0 0 20px #8000ff; }
 }
 
 .title {
@@ -48,7 +48,6 @@ body {
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 20px;
-  flex-wrap: nowrap;
 }
 
 .glow-box {
