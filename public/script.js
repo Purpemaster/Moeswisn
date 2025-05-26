@@ -13,15 +13,20 @@ const radioStations = [
   { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
   { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
   { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
-  { stream: "https://stream.laut.fm/oldschool", icon: "hip_hop_icon.png" },
 
-  // ✅ Neu geprüfte funktionierende Streams
+  // Aktualisierter Hip Hop
+  { stream: "https://laut.fm/maxxi22", icon: "hip_hop_icon.png" },
+
+  // Neue geprüfte Streams
   { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" }, // Drum & Bass
   { stream: "https://live.amperwave.net/direct/ppm-jazz24mp3-ibc1", icon: "jazz_soul_icon.png" }, // Jazz & Soul
   { stream: "https://stream.laut.fm/jahfari", icon: "reggae_icon.png" }, // Reggae
   { stream: "https://stream.laut.fm/gothic-radio-saar", icon: "gothic_icon.png" }, // Gothic
   { stream: "https://stream.laut.fm/aufden-punk-t", icon: "skate_punk_icon.png" }, // Skate Punk
-  { stream: "https://stream.laut.fm/country108", icon: "country_icon.png" }, // Country
+
+  // Aktualisiertes Country
+  { stream: "https://laut.fm/radio-cristall_country-welt", icon: "country_icon.png" },
+
   { stream: "https://stream.laut.fm/volksmusikradio", icon: "folk_music_icon.png" } // Volksmusik
 ];
 
