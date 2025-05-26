@@ -6,23 +6,20 @@
   <title>Purple Pepe Donation Tracker + Radio</title>
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Meta -->
+  <!-- Meta für Social Media -->
   <meta property="og:title" content="Purple Pepe Donation Tracker">
   <meta property="og:description" content="Spende an das lila Meme-Projekt auf Solana – Ziel: $20.000 🚀">
   <meta property="og:image" content="https://i.imgur.com/cc4aEnK.png">
   <meta property="og:url" content="https://purple-pepe-bunker.onrender.com">
   <meta property="og:type" content="website">
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Purple Pepe Donation Tracker">
   <meta name="twitter:description" content="Spende an das lila Meme-Projekt auf Solana – Ziel: $20.000 🚀">
   <meta name="twitter:image" content="https://i.imgur.com/cc4aEnK.png">
 
-  <!-- Libs -->
-  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
-  <script src="https://unpkg.com/@solana/spl-token@latest/lib/index.iife.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 </head>
-
 <body>
   <div class="container">
     <h1 class="title">Purple Pepe Donation Tracker</h1>
@@ -33,18 +30,21 @@
 
     <div id="progress-info">
       <div class="glow-box" id="current-amount">$0.00</div>
-      <div class="glow-box" id="last-updated">Letztes Update: --:--:--</div>
+      <div class="glow-box" id="last-updated">--:--:-- UTC</div>
       <div class="glow-box" id="goal-amount">$20,000</div>
     </div>
 
-    <div class="qr-section">
+    <div class="qr-toggle" onclick="toggleVisibility('qr-section')">Show QR Code</div>
+    <div class="qr-section" id="qr-section" style="display: none;">
       <canvas id="wallet-qr"></canvas>
-      <div class="wallet-container">
-        <span id="wallet-address" class="glow-box single-line">
-          9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn
-        </span>
-        <button id="copy-button" title="Adresse kopieren">📋</button>
-      </div>
+    </div>
+
+    <div class="wallet-toggle" onclick="toggleVisibility('wallet-container')">Show Wallet Address</div>
+    <div class="wallet-container" id="wallet-container" style="display: none;">
+      <span id="wallet-address" class="glow-box single-line">
+        9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn
+      </span>
+      <button id="copy-button" title="Adresse kopieren">📋</button>
     </div>
 
     <div class="donate-buttons">
