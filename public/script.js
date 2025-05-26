@@ -8,33 +8,18 @@ const goalUSD1 = 20000;
 
 // 🌐 Radio-Streams (ohne Proxy, getestet & öffentlich)
 const radioStations = [
-  // ✅ Drum & Bass
   { stream: "https://stream.dnbradio.com/dnb.mp3", icon: "drum_and_bass_icon.png" },
-
-  // ✅ Jazz & Soul
-  { stream: "https://live.wostreaming.net/direct/knkx-jazz24mp3-ibc1", icon: "jazz_soul_icon.png" },
-
-  // ✅ Reggae
+  { stream: "https://streaming.exclusive.radio/er-jazz-128", icon: "jazz_soul_icon.png" },
   { stream: "https://reggae141.radioca.st/stream", icon: "reggae_icon.png" },
-
-  // ✅ Gothic
-  { stream: "https://ais-sa2.cdnstream1.com/2398_128.mp3", icon: "gothic_icon.png" }, // GothVille Radio
-
-  // ✅ Skate Punk
+  { stream: "https://stream.laut.fm/oldschool", icon: "hip_hop_icon.png" },
+  { stream: "https://ais-sa2.cdnstream1.com/2398_128.mp3", icon: "gothic_icon.png" },
   { stream: "https://uk1.internet-radio.com/proxy/realpunkradio?mp=/stream", icon: "skate_punk_icon.png" },
-
-  // ✅ Country (NEU: richtiger US-Sender & korrektes Icon)
   { stream: "https://playerservices.streamtheworld.com/api/livestream-redirect/KXBLFM.mp3", icon: "country_icon.png" },
-
-  // ✅ Folk Music
   { stream: "https://stream.laut.fm/folkradio", icon: "folk_music_icon.png" },
-
-  // 🔒 Bereits funktionierende Sender – NICHT ändern
   { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
   { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
   { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
-  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
-  { stream: "https://stream.laut.fm/oldschool", icon: "hip_hop_icon.png" }
+  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" }
 ];
 
 // 🎧 Radio-Buttons
