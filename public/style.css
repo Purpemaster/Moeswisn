@@ -36,11 +36,22 @@ body {
   overflow: hidden;
 }
 
+.progress-bar.second {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .progress-fill {
-  background: linear-gradient(90deg, #8000ff, #d633ff, #ff66ff);
   height: 100%;
   width: 0%;
   transition: width 0.5s;
+}
+
+#progress-fill-1 {
+  background: linear-gradient(90deg, #8000ff, #d633ff, #ff66ff);
+}
+
+#progress-fill-2 {
+  background: linear-gradient(90deg, gold, #ffaa00, #fff700);
 }
 
 .info-bar {
@@ -61,35 +72,17 @@ body {
   white-space: nowrap;
 }
 
-.button-grid {
+.toggle-box {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   margin: 20px 0;
 }
 
-.action-button {
-  background: #5e00c8;
-  color: white;
-  border: 1px solid white;
-  border-radius: 25px;
-  padding: 10px 16px;
-  font-size: 1em;
-  box-shadow: 0 0 6px #8000ff;
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-}
-
-.qr-section {
-  margin: 10px 0;
-}
-
 .wallet-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 10px;
   margin-top: 10px;
 }
@@ -101,9 +94,6 @@ body {
   border: 1px solid white;
   border-radius: 12px;
   box-shadow: 0 0 8px #8000ff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   max-width: 100%;
 }
 
@@ -116,6 +106,21 @@ body {
   cursor: pointer;
   box-shadow: 0 0 6px #8000ff;
   font-size: 1em;
+}
+
+.qr-section {
+  margin: 10px 0;
+}
+
+.donate-button {
+  background: #5e00c8;
+  color: white;
+  padding: 10px 16px;
+  border: 1px solid white;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .radio-title {
@@ -155,7 +160,6 @@ body {
   justify-content: center;
   gap: 15px;
   margin-top: 20px;
-  flex-wrap: wrap;
 }
 
 .social-share img {
