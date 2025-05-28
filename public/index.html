@@ -21,9 +21,11 @@
       <div class="glow-box" id="goal-amount">$20,000</div>
     </div>
 
-    <div class="toggle-box">
-      <button class="glow-box" onclick="toggleQR()">Show QR Code</button>
-      <button class="glow-box" onclick="toggleAddress()">Show Wallet Address</button>
+    <div class="button-grid">
+      <button class="glow-box action-button" onclick="toggleQR()">QR Code</button>
+      <button class="glow-box action-button" onclick="toggleAddress()">Wallet Address</button>
+      <a href="#" id="donate-sol" class="donate-button">Donate SOL</a>
+      <a href="#" id="donate-purpe" class="donate-button">Donate PURPE</a>
     </div>
 
     <div id="qr-container" class="qr-section" style="display: none;">
@@ -37,16 +39,10 @@
       <button id="copy-button" title="Copy">📋</button>
     </div>
 
-    <div class="donate-buttons">
-      <a href="#" id="donate-sol" class="donate-button">Donate SOL</a>
-      <a href="#" id="donate-purpe" class="donate-button">Donate PURPE</a>
-    </div>
-
     <h2 class="radio-title neon">Purple Pepe Radio</h2>
     <div class="radio-grid" id="radio-buttons"></div>
     <audio id="radio-player" controls autoplay></audio>
 
-    <!-- ✅ Reparierte Social Buttons -->
     <div class="social-share">
       <a href="https://x.com/purplepepes0l?s=21" target="_blank"><img src="x_icon.png" alt="X"></a>
       <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
