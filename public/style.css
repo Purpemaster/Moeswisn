@@ -61,21 +61,23 @@ body {
   white-space: nowrap;
 }
 
-.toggle-box {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin: 15px 0;
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
 }
 
-.toggle-box .glow-box {
+.action-button,
+.donate-button {
+  text-align: center;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1em;
   background: #5e00c8;
   color: white;
   border: 1px solid white;
-  padding: 10px 16px;
   border-radius: 25px;
-  font-size: 1em;
   box-shadow: 0 0 6px #8000ff;
   cursor: pointer;
   text-decoration: none;
@@ -116,20 +118,6 @@ body {
 
 .qr-section {
   margin: 10px 0;
-}
-
-.donate-buttons {
-  margin: 20px 0;
-}
-
-.donate-button {
-  background: #5e00c8;
-  color: white;
-  padding: 10px 20px;
-  margin: 5px;
-  border: 1px solid white;
-  border-radius: 25px;
-  text-decoration: none;
 }
 
 .radio-title {
