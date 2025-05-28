@@ -32,7 +32,7 @@ body {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   height: 20px;
-  margin: 10px 0;
+  margin: 10px 0 6px;
   overflow: hidden;
 }
 
@@ -41,6 +41,26 @@ body {
   height: 100%;
   width: 0%;
   transition: width 0.5s;
+}
+
+.secondary-bar {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  height: 16px;
+  margin: 5px 0 15px;
+  overflow: hidden;
+}
+
+.secondary-fill {
+  background: linear-gradient(90deg, #ffd700, #ff9900, #ffcc00);
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s;
+  opacity: 0.2;
+}
+
+.secondary-fill.active {
+  opacity: 1;
 }
 
 .info-bar {
@@ -58,10 +78,9 @@ body {
   color: white;
   box-shadow: 0 0 8px #8000ff;
   font-size: 1em;
-  cursor: pointer;
-  text-decoration: none;
-  flex-grow: 1;
   text-align: center;
+  flex-grow: 1;
+  white-space: nowrap;
 }
 
 .button-grid {
