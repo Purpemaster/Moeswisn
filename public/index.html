@@ -14,7 +14,7 @@
     <div class="progress-bar">
       <div class="progress-fill" id="progress-fill-1"></div>
     </div>
-    <div class="progress-bar second-bar">
+    <div class="progress-bar second">
       <div class="progress-fill" id="progress-fill-2"></div>
     </div>
 
@@ -24,12 +24,12 @@
       <div class="glow-box" id="goal-amount">$20,000</div>
     </div>
 
-    <!-- ✅ NEU: Button-Grid -->
+    <!-- 🎯 4-Button Block -->
     <div class="button-grid">
-      <button class="glow-button" onclick="toggleQR()">QR Code</button>
-      <button class="glow-button" onclick="toggleAddress()">Wallet Address</button>
-      <a href="#" id="donate-sol" class="glow-button">Donate SOL</a>
-      <a href="#" id="donate-purpe" class="glow-button">Donate PURPE</a>
+      <button onclick="toggleQR()">QR Code</button>
+      <button onclick="toggleAddress()">Wallet Address</button>
+      <a href="#" id="donate-sol">Donate SOL</a>
+      <a href="#" id="donate-purpe">Donate PURPE</a>
     </div>
 
     <div id="qr-container" class="qr-section" style="display: none;">
@@ -47,6 +47,7 @@
     <div class="radio-grid" id="radio-buttons"></div>
     <audio id="radio-player" controls autoplay></audio>
 
+    <!-- Social Buttons -->
     <div class="social-share">
       <a href="https://x.com/purplepepes0l?s=21" target="_blank"><img src="x_icon.png" alt="X"></a>
       <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
@@ -55,6 +56,7 @@
       <a href="https://t.me/Purpe_SOL" target="_blank"><img src="telegram_icon.png" alt="Telegram"></a>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
