@@ -1,6 +1,7 @@
 const walletAddress = "9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn";
 const heliusApiKey = "9cf905ed-105d-46a7-b7fa-7440388b6e9f";
 const goalUSD1 = 20000;
+const goalUSD2 = 100000;
 
 const radioStations = [
   { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
@@ -73,8 +74,12 @@ function setupDonationButtons() {
 }
 
 function updateProgress(totalUSD) {
-  const percent = Math.min((totalUSD / goalUSD1) * 100, 100);
-  document.getElementById("progress-fill-1").style.width = `${percent}%`;
+  const percent1 = Math.min((totalUSD / goalUSD1) * 100, 100);
+  const percent2 = totalUSD > goalUSD1 ? Math.min(((totalUSD - goalUSD1) / (goalUSD2 - goalUSD1)) * 100, 100) : 0;
+
+  document.getElementById("progress-fill-1").style.width = `${percent1}%`;
+  document.getElementById("progress-fill-2").style.width = `${percent2}%`;
+
   document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
 }
 
