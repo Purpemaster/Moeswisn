@@ -14,6 +14,9 @@
     <div class="progress-bar">
       <div class="progress-fill" id="progress-fill-1"></div>
     </div>
+    <div class="progress-bar second" id="progress-bar-2">
+      <div class="progress-fill" id="progress-fill-2"></div>
+    </div>
 
     <div class="info-bar">
       <div class="glow-box" id="current-amount">$0.00</div>
@@ -21,12 +24,11 @@
       <div class="glow-box" id="goal-amount">$20,000</div>
     </div>
 
-    <!-- Neue Button-Gruppe -->
-    <div class="button-grid">
-      <button class="action-button" onclick="toggleQR()">QR Code</button>
-      <button class="action-button" onclick="toggleAddress()">Wallet Address</button>
-      <a href="#" id="donate-sol" class="action-button">Donate SOL</a>
-      <a href="#" id="donate-purpe" class="action-button">Donate PURPE</a>
+    <div class="toggle-box">
+      <button class="glow-box" onclick="toggleQR()">QR Code</button>
+      <button class="glow-box" onclick="toggleAddress()">Wallet Address</button>
+      <a href="#" id="donate-sol" class="glow-box donate-button">Donate SOL</a>
+      <a href="#" id="donate-purpe" class="glow-box donate-button">Donate PURPE</a>
     </div>
 
     <div id="qr-container" class="qr-section" style="display: none;">
@@ -45,14 +47,13 @@
     <audio id="radio-player" controls autoplay></audio>
 
     <div class="social-share">
-      <a href="https://x.com/purplepepes0l?s=21" target="_blank"><img src="x_icon.png" alt="X"></a>
-      <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
-      <a href="https://www.instagram.com/purplepepes0l?igsh=a2Q2NDRjc2lrbjEz" target="_blank"><img src="instagram_icon.png" alt="Instagram"></a>
-      <a href="https://www.tiktok.com/@purpe.factory?_t=ZN-8vweUeJUFPC&_r=1" target="_blank"><img src="tiktok_icon.png" alt="TikTok"></a>
-      <a href="https://t.me/Purpe_SOL" target="_blank"><img src="telegram_icon.png" alt="Telegram"></a>
+      <a href="#"><img src="x_icon.png" alt="X"></a>
+      <a href="#"><img src="facebook_icon.png" alt="Facebook"></a>
+      <a href="#"><img src="instagram_icon.png" alt="Instagram"></a>
+      <a href="#"><img src="tiktok_icon.png" alt="TikTok"></a>
+      <a href="#"><img src="telegram_icon.png" alt="Telegram"></a>
     </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
