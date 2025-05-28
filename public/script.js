@@ -1,145 +1,60 @@
-const walletAddress = "9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn";
-const heliusApiKey = "9cf905ed-105d-46a7-b7fa-7440388b6e9f";
-const goalUSD1 = 20000;
-const goalUSD2 = 100000;
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purple Pepe Donation Tracker + Radio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title neon">Purple Pepe Donation Tracker</h1>
 
-const radioStations = [
-  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
-  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
-  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
-  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
-  { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" },
-  { stream: "https://live.amperwave.net/direct/ppm-jazz24mp3-ibc1", icon: "jazz_soul_icon.png" },
-  { stream: "https://stream.laut.fm/jahfari", icon: "reggae_icon.png" },
-  { stream: "https://stream.laut.fm/gothic-radio-saar", icon: "gothic_icon.png" },
-  { stream: "https://stream.laut.fm/aufden-punk-t", icon: "skate_punk_icon.png" },
-  { stream: "https://stream.laut.fm/volksmusikradio", icon: "folk_music_icon.png" },
-  { stream: "https://stream.laut.fm/hip-hop-fm", icon: "hip_hop_icon.png" },
-  { stream: "https://stream.laut.fm/country-fm24", icon: "country_icon.png" }
-];
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill-1"></div>
+    </div>
+    <div class="progress-bar second-bar">
+      <div class="progress-fill" id="progress-fill-2"></div>
+    </div>
 
-function toggleQR() {
-  const el = document.getElementById("qr-container");
-  el.style.display = el.style.display === "none" ? "block" : "none";
-}
+    <div class="info-bar">
+      <div class="glow-box" id="current-amount">$0.00</div>
+      <div class="glow-box" id="last-updated">--:--:--</div>
+      <div class="glow-box" id="goal-amount">$20,000</div>
+    </div>
 
-function toggleAddress() {
-  const el = document.getElementById("address-container");
-  el.style.display = el.style.display === "none" ? "flex" : "none";
-}
+    <!-- ✅ NEU: Button-Grid -->
+    <div class="button-grid">
+      <button class="glow-button" onclick="toggleQR()">QR Code</button>
+      <button class="glow-button" onclick="toggleAddress()">Wallet Address</button>
+      <a href="#" id="donate-sol" class="glow-button">Donate SOL</a>
+      <a href="#" id="donate-purpe" class="glow-button">Donate PURPE</a>
+    </div>
 
-function setupRadioButtons() {
-  const container = document.getElementById("radio-buttons");
-  const player = document.getElementById("radio-player");
+    <div id="qr-container" class="qr-section" style="display: none;">
+      <canvas id="wallet-qr"></canvas>
+    </div>
 
-  radioStations.forEach((station, index) => {
-    const img = document.createElement("img");
-    img.src = station.icon;
-    img.className = "radio-icon";
-    img.alt = `Station ${index + 1}`;
+    <div id="address-container" class="wallet-container" style="display: none;">
+      <span id="wallet-address" class="glow-box single-line">
+        9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn
+      </span>
+      <button id="copy-button" title="Copy">📋</button>
+    </div>
 
-    img.addEventListener("click", () => {
-      if (img.classList.contains("active")) {
-        img.classList.remove("active");
-        player.pause();
-      } else {
-        document.querySelectorAll(".radio-icon").forEach(el => el.classList.remove("active"));
-        img.classList.add("active");
-        player.src = station.stream;
-        player.play();
-      }
-    });
+    <h2 class="radio-title neon">Purple Pepe Radio</h2>
+    <div class="radio-grid" id="radio-buttons"></div>
+    <audio id="radio-player" controls autoplay></audio>
 
-    container.appendChild(img);
-  });
-}
-
-function setupCopyButton() {
-  document.getElementById("copy-button").addEventListener("click", () => {
-    const address = document.getElementById("wallet-address").textContent.trim();
-    navigator.clipboard.writeText(address)
-      .then(() => alert("Wallet address copied!"))
-      .catch(() => alert("Copy failed."));
-  });
-}
-
-function setupDonationButtons() {
-  document.getElementById("donate-sol").addEventListener("click", () => {
-    window.location.href = `solana:${walletAddress}?amount=1&label=Purple%20Pepe%20Donation`;
-  });
-
-  document.getElementById("donate-purpe").addEventListener("click", () => {
-    window.location.href = `solana:${walletAddress}?amount=3000000&spl-token=HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL&label=Purple%20Pepe%20Donation`;
-  });
-}
-
-function updateProgress(totalUSD) {
-  const percent1 = Math.min((totalUSD / goalUSD1) * 100, 100);
-  const percent2 = totalUSD > goalUSD1 ? Math.min(((totalUSD - goalUSD1) / (goalUSD2 - goalUSD1)) * 100, 100) : 0;
-
-  document.getElementById("progress-fill-1").style.width = `${percent1}%`;
-  document.getElementById("progress-fill-2").style.width = `${percent2}%`;
-
-  document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
-}
-
-async function fetchSolPrice() {
-  try {
-    const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
-    const data = await res.json();
-    return data.solana?.usd || 0;
-  } catch {
-    return 0;
-  }
-}
-
-async function fetchPurpePriceUSD() {
-  try {
-    const res = await fetch("https://api.geckoterminal.com/api/v2/networks/solana/pools/CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj");
-    const data = await res.json();
-    return parseFloat(data.data?.attributes?.base_token_price_usd) || 0;
-  } catch {
-    return 0;
-  }
-}
-
-async function fetchWalletBalances() {
-  try {
-    const res = await fetch(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
-    const data = await res.json();
-    const solBalance = (data.nativeBalance || 0) / 1e9;
-    const purpe = data.tokens?.find(t => t.mint === "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL");
-    const purpeBalance = purpe ? purpe.amount / 10 ** (purpe.decimals || 6) : 0;
-    return { solBalance, purpeBalance };
-  } catch {
-    return { solBalance: 0, purpeBalance: 0 };
-  }
-}
-
-async function updateTracker() {
-  const [wallet, solPrice, purpePriceUSD] = await Promise.all([
-    fetchWalletBalances(),
-    fetchSolPrice(),
-    fetchPurpePriceUSD()
-  ]);
-  const totalUSD = (wallet.solBalance * solPrice) + (wallet.purpeBalance * purpePriceUSD);
-  updateProgress(totalUSD);
-
-  const now = new Date();
-  const time = now.toLocaleTimeString(undefined, { hour12: false });
-  document.getElementById("last-updated").textContent = time;
-}
-
-new QRious({
-  element: document.getElementById('wallet-qr'),
-  value: `solana:${walletAddress}`,
-  size: 200,
-  background: 'white',
-  foreground: '#8000ff'
-});
-
-setupRadioButtons();
-setupCopyButton();
-setupDonationButtons();
-updateTracker();
-setInterval(updateTracker, 30000);
+    <div class="social-share">
+      <a href="https://x.com/purplepepes0l?s=21" target="_blank"><img src="x_icon.png" alt="X"></a>
+      <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/purplepepes0l?igsh=a2Q2NDRjc2lrbjEz" target="_blank"><img src="instagram_icon.png" alt="Instagram"></a>
+      <a href="https://www.tiktok.com/@purpe.factory?_t=ZN-8vweUeJUFPC&_r=1" target="_blank"><img src="tiktok_icon.png" alt="TikTok"></a>
+      <a href="https://t.me/Purpe_SOL" target="_blank"><img src="telegram_icon.png" alt="Telegram"></a>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
