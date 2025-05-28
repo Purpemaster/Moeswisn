@@ -1,11 +1,7 @@
 const walletAddress = "9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn";
 const heliusApiKey = "9cf905ed-105d-46a7-b7fa-7440388b6e9f";
-
-const PURPE_MINT = "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL";
-const RAYDIUM_POOL = "CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj";
-
-const goal1 = 20000;
-const goal2 = 100000;
+const goalUSD1 = 20000;
+const goalUSD2 = 100000;
 
 const radioStations = [
   { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
@@ -35,6 +31,8 @@ function toggleAddress() {
 function setupRadioButtons() {
   const container = document.getElementById("radio-buttons");
   const player = document.getElementById("radio-player");
+
+  player.style.display = "none"; // Unsichtbar
 
   radioStations.forEach((station, index) => {
     const img = document.createElement("img");
@@ -73,23 +71,16 @@ function setupDonationButtons() {
   });
 
   document.getElementById("donate-purpe").addEventListener("click", () => {
-    window.location.href = `solana:${walletAddress}?amount=3000000&spl-token=${PURPE_MINT}&label=Purple%20Pepe%20Donation`;
+    window.location.href = `solana:${walletAddress}?amount=3000000&spl-token=HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL&label=Purple%20Pepe%20Donation`;
   });
 }
 
 function updateProgress(totalUSD) {
-  const percent1 = Math.min((totalUSD / goal1) * 100, 100);
-  const percent2 = totalUSD > goal1 ? Math.min(((totalUSD - goal1) / (goal2 - goal1)) * 100, 100) : 0;
+  const percent1 = Math.min((totalUSD / goalUSD1) * 100, 100);
+  const percent2 = totalUSD > goalUSD1 ? Math.min(((totalUSD - goalUSD1) / (goalUSD2 - goalUSD1)) * 100, 100) : 0;
 
   document.getElementById("progress-fill-1").style.width = `${percent1}%`;
-
-  const fill2 = document.getElementById("progress-fill-2");
-  fill2.style.width = `${percent2}%`;
-  if (totalUSD > goal1) {
-    fill2.classList.add("full");
-  } else {
-    fill2.classList.remove("full");
-  }
+  document.getElementById("progress-fill-2").style.width = `${percent2}%`;
 
   document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
 }
@@ -106,7 +97,7 @@ async function fetchSolPrice() {
 
 async function fetchPurpePriceUSD() {
   try {
-    const res = await fetch(`https://api.geckoterminal.com/api/v2/networks/solana/pools/${RAYDIUM_POOL}`);
+    const res = await fetch("https://api.geckoterminal.com/api/v2/networks/solana/pools/CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj");
     const data = await res.json();
     return parseFloat(data.data?.attributes?.base_token_price_usd) || 0;
   } catch {
@@ -119,7 +110,7 @@ async function fetchWalletBalances() {
     const res = await fetch(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
     const data = await res.json();
     const solBalance = (data.nativeBalance || 0) / 1e9;
-    const purpe = data.tokens?.find(t => t.mint === PURPE_MINT);
+    const purpe = data.tokens?.find(t => t.mint === "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL");
     const purpeBalance = purpe ? purpe.amount / 10 ** (purpe.decimals || 6) : 0;
     return { solBalance, purpeBalance };
   } catch {
