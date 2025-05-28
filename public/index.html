@@ -14,9 +14,6 @@
     <div class="progress-bar">
       <div class="progress-fill" id="progress-fill-1"></div>
     </div>
-    <div class="progress-bar second-bar">
-      <div class="progress-fill" id="progress-fill-2"></div>
-    </div>
 
     <div class="info-bar">
       <div class="glow-box" id="current-amount">$0.00</div>
@@ -24,11 +21,11 @@
       <div class="glow-box" id="goal-amount">$20,000</div>
     </div>
 
-    <div class="action-button-grid">
+    <div class="button-grid">
       <button class="glow-box" onclick="toggleQR()">QR Code</button>
       <button class="glow-box" onclick="toggleAddress()">Wallet Address</button>
-      <a href="#" id="donate-sol" class="glow-box donate-action">Donate SOL</a>
-      <a href="#" id="donate-purpe" class="glow-box donate-action">Donate PURPE</a>
+      <a href="#" id="donate-sol" class="glow-box donate-button">Donate SOL</a>
+      <a href="#" id="donate-purpe" class="glow-box donate-button">Donate PURPE</a>
     </div>
 
     <div id="qr-container" class="qr-section" style="display: none;">
@@ -45,16 +42,18 @@
     <h2 class="radio-title neon">Purple Pepe Radio</h2>
     <div class="radio-grid" id="radio-buttons"></div>
 
-    <!-- 🔮 Neue Follow-Section -->
-    <h3 class="follow-title">Follow Us</h3>
+    <!-- 🎧 Unsichtbarer Audio-Player -->
+    <audio id="radio-player" autoplay></audio>
+
     <div class="social-share">
       <a href="https://x.com/purplepepes0l?s=21" target="_blank"><img src="x_icon.png" alt="X"></a>
-      <a href="https://www.facebook.com/share/g/15oN9pyr4w" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
-      <a href="https://www.instagram.com/purplepepes0l" target="_blank"><img src="instagram_icon.png" alt="Instagram"></a>
-      <a href="https://www.tiktok.com/@purpe.factory" target="_blank"><img src="tiktok_icon.png" alt="TikTok"></a>
+      <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/purplepepes0l?igsh=a2Q2NDRjc2lrbjEz" target="_blank"><img src="instagram_icon.png" alt="Instagram"></a>
+      <a href="https://www.tiktok.com/@purpe.factory?_t=ZN-8vweUeJUFPC&_r=1" target="_blank"><img src="tiktok_icon.png" alt="TikTok"></a>
       <a href="https://t.me/Purpe_SOL" target="_blank"><img src="telegram_icon.png" alt="Telegram"></a>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
