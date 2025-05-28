@@ -63,24 +63,26 @@ body {
 
 .button-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
   margin: 20px 0;
 }
 
-.action-button,
-.donate-button {
-  text-align: center;
-  width: 100%;
-  padding: 10px 20px;
-  font-size: 1em;
+.action-button {
   background: #5e00c8;
   color: white;
   border: 1px solid white;
   border-radius: 25px;
+  padding: 10px 16px;
+  font-size: 1em;
   box-shadow: 0 0 6px #8000ff;
-  cursor: pointer;
   text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.qr-section {
+  margin: 10px 0;
 }
 
 .wallet-container {
@@ -114,10 +116,6 @@ body {
   cursor: pointer;
   box-shadow: 0 0 6px #8000ff;
   font-size: 1em;
-}
-
-.qr-section {
-  margin: 10px 0;
 }
 
 .radio-title {
@@ -157,6 +155,7 @@ body {
   justify-content: center;
   gap: 15px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .social-share img {
