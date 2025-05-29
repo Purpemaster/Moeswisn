@@ -11,22 +11,20 @@
   <div class="container">
     <h1 class="title neon">Purple Pepe Donation Tracker</h1>
 
-    <!-- Fortschrittsbalken -->
     <div class="progress-bar">
       <div class="progress-fill" id="progress-fill-1"></div>
     </div>
+
     <div class="secondary-bar">
       <div class="secondary-fill" id="progress-fill-2"></div>
     </div>
 
-    <!-- Info-Zeile -->
     <div class="info-bar">
-      <div class="glow-box" id="current-amount">$0.00</div>
+      <div class="glow-box gold" id="current-amount">$0.00</div>
       <div class="glow-box" id="last-updated">--:--:--</div>
-      <div class="glow-box" id="goal-amount">$20,000</div>
+      <div class="glow-box gold" id="goal-amount">$20,000</div>
     </div>
 
-    <!-- Buttons -->
     <div class="button-grid">
       <button class="glow-box" onclick="toggleQR()">QR Code</button>
       <button class="glow-box" onclick="toggleAddress()">Wallet Address</button>
@@ -34,32 +32,27 @@
       <a href="#" id="donate-purpe" class="glow-box">Donate PURPE</a>
     </div>
 
-    <!-- QR Code & Wallet -->
     <div id="qr-container" class="qr-section" style="display: none;">
       <canvas id="wallet-qr"></canvas>
     </div>
+
     <div id="address-container" class="wallet-container" style="display: none;">
-      <span id="wallet-address" class="glow-box single-line">
-        9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn
-      </span>
+      <span id="wallet-address" class="glow-box single-line">9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn</span>
       <button id="copy-button" title="Copy">📋</button>
     </div>
 
-    <!-- Radio Titel -->
     <h2 class="radio-title neon">Purpe Radio 🟣 LIVE ON AIR</h2>
     <div class="radio-grid" id="radio-buttons"></div>
-    <audio id="radio-player" autoplay></audio>
+    <audio id="radio-player" controls autoplay></audio>
 
-    <!-- Social Media Buttons -->
-    <div class="social-share elevated">
-      <a href="https://x.com/purplepepes0l?s=21" target="_blank"><img src="x_icon.png" alt="X"></a>
+    <div class="social-share">
       <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
+      <a href="https://x.com/purplepepes0l?s=21" target="_blank"><img src="x_icon.png" alt="X"></a>
       <a href="https://www.instagram.com/purplepepes0l?igsh=a2Q2NDRjc2lrbjEz" target="_blank"><img src="instagram_icon.png" alt="Instagram"></a>
-      <a href="https://www.tiktok.com/@purpe.factory?_t=ZN-8vweUeJUFPC&_r=1" target="_blank"><img src="tiktok_icon.png" alt="TikTok"></a>
       <a href="https://t.me/Purpe_SOL" target="_blank"><img src="telegram_icon.png" alt="Telegram"></a>
+      <a href="https://www.tiktok.com/@purpe.factory?_t=ZN-8vweUeJUFPC&_r=1" target="_blank"><img src="tiktok_icon.png" alt="TikTok"></a>
     </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
