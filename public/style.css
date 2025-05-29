@@ -28,8 +28,7 @@ body {
   margin-top: 10px;
 }
 
-.progress-bar,
-.secondary-bar {
+.progress-bar {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   height: 20px;
@@ -37,17 +36,19 @@ body {
   overflow: hidden;
 }
 
-.secondary-bar {
-  height: 16px;
-  background: rgba(255, 255, 255, 0.15);
-  margin-bottom: 15px;
-}
-
 .progress-fill {
   background: linear-gradient(90deg, #8000ff, #d633ff, #ff66ff);
   height: 100%;
   width: 0%;
   transition: width 0.5s;
+}
+
+.secondary-bar {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  height: 16px;
+  margin: 5px 0 15px;
+  overflow: hidden;
 }
 
 .secondary-fill {
@@ -82,10 +83,9 @@ body {
   white-space: nowrap;
 }
 
-.gold {
-  background: #FFD700;
-  color: black;
-  box-shadow: 0 0 10px #FFD700;
+.gold-text {
+  color: #ffd700;
+  font-weight: bold;
 }
 
 .button-grid {
@@ -134,13 +134,16 @@ body {
 .radio-title {
   font-size: 1.5em;
   margin: 20px 0 10px;
+}
+
+.pulse {
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.9; }
-  100% { transform: scale(1); opacity: 1; }
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .radio-grid {
@@ -175,7 +178,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .social-share img {
@@ -189,9 +192,26 @@ body {
 
 .social-share img:hover {
   transform: scale(1.1);
-  filter: drop-shadow(0 0 12px #ff33ff);
+  filter: drop-shadow(0 0 14px #ff33ff);
 }
 
+/* Unsichtbarer Audio-Player */
 #radio-player {
   display: none;
+}
+
+/* Sanfter Seiten-Fade-In */
+.fade-in {
+  animation: fadeInBody 1.2s ease-in;
+}
+
+@keyframes fadeInBody {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
