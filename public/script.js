@@ -6,7 +6,7 @@ const goalUSD2 = 100000;
 const radioStations = [
   { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
   { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
-  { stream: "https://stream.revma.ihrhls.com/zc6406", icon: "pop_music_icon.png" }, // Hits Radio – Today's Hits
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" }, // Original Pop Sender zurück
   { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
   { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" },
   { stream: "https://live.amperwave.net/direct/ppm-jazz24mp3-ibc1", icon: "jazz_soul_icon.png" },
