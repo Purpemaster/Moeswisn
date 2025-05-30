@@ -11,7 +11,7 @@ const radioStations = [
   { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" },
   { stream: "https://live.amperwave.net/direct/ppm-jazz24mp3-ibc1", icon: "jazz_soul_icon.png" },
   { stream: "https://stream.laut.fm/jahfari", icon: "reggae_icon.png" },
-  { stream: "http://cathedral13.com:8000/stream", icon: "gothic_icon.png" },
+  { stream: "https://stream.laut.fm/gothic-radio-saar", icon: "gothic_icon.png" },
   { stream: "https://stream.laut.fm/aufden-punk-t", icon: "skate_punk_icon.png" },
   { stream: "https://stream.laut.fm/volksmusikradio", icon: "folk_music_icon.png" },
   { stream: "http://live.powerhitz.com/hot108?aw_0_req.gdpr=true", icon: "hip_hop_icon.png" },
