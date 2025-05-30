@@ -14,7 +14,7 @@ const radioStations = [
   { stream: "https://stream.laut.fm/gothic-radio-saar", icon: "gothic_icon.png" },
   { stream: "https://stream.laut.fm/aufden-punk-t", icon: "skate_punk_icon.png" },
   { stream: "https://stream.laut.fm/volksmusikradio", icon: "folk_music_icon.png" },
-  { stream: "https://stream.laut.fm/hip-hop-fm", icon: "hip_hop_icon.png" },
+  { stream: "http://live.powerhitz.com/hot108?aw_0_req.gdpr=true", icon: "hip_hop_icon.png" },
   { stream: "https://stream.laut.fm/country-fm24", icon: "country_icon.png" }
 ];
 
