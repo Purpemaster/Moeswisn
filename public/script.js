@@ -9,7 +9,7 @@ const radioStations = [
   { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" }, // Original Pop Sender zurück
   { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
   { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" },
-  { stream: "https://stream.laut.fm/jazzessenz", icon: "jazz_soul_icon.png" },
+  { stream: "https://streaming.radio.co/s774887f7b/listen", icon: "jazz_soul_icon.png" },
   { stream: "https://stream.laut.fm/jahfari", icon: "reggae_icon.png" },
   { stream: "https://stream.laut.fm/gothic-radio-saar", icon: "gothic_icon.png" },
   { stream: "https://stream.laut.fm/aufden-punk-t", icon: "skate_punk_icon.png" },
