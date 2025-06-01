@@ -15,7 +15,7 @@ const radioStations = [
   { stream: "https://stream.laut.fm/aufden-punk-t", icon: "skate_punk_icon.png" },
   { stream: "https://stream.laut.fm/volksmusikradio", icon: "folk_music_icon.png" },
   { stream: "http://live.powerhitz.com/hot108?aw_0_req.gdpr=true", icon: "hip_hop_icon.png" },
-  { stream: "http://live.powerhitz.com/hillbilly?aw_0_req.gdpr=true", icon: "country_icon.png" }
+  { stream: "https://strm112.1.fm/ccountry_mobile_mp3", icon: "country_icon.png" }
 ];
 
 function toggleQR() {
