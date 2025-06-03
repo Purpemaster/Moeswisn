@@ -215,3 +215,34 @@ body {
     transform: translateY(0);
   }
 }
+
+/* 🌌 Neon-Gas Effekt für Live on Air */
+.neon-gas {
+  color: #bb00ff;
+  text-shadow:
+    0 0 5px #bb00ff,
+    0 0 10px #bb00ff,
+    0 0 20px #bb00ff,
+    0 0 40px #a800e6,
+    0 0 80px #8000ff;
+  animation: pulse-neon-purple 2s infinite;
+}
+
+@keyframes pulse-neon-purple {
+  0%, 100% {
+    text-shadow:
+      0 0 5px #bb00ff,
+      0 0 10px #bb00ff,
+      0 0 20px #bb00ff,
+      0 0 40px #a800e6,
+      0 0 80px #8000ff;
+  }
+  50% {
+    text-shadow:
+      0 0 3px #8a00cc,
+      0 0 6px #a000dd,
+      0 0 12px #bb00ff,
+      0 0 24px #bb00ff,
+      0 0 40px #8000ff;
+  }
+}
