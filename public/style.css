@@ -248,3 +248,14 @@ body {
       0 0 15px #5e00c8;
   }
 }
+
+/* 🎰 Purpe Machine – Generator Style */
+.purpe-machine-section {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  margin: 40px auto;
+  border-radius: 20px;
+  box-shadow: 0 0 16px #8000ff;
+  max-width: 500px;
+  text-align: center;
+}
