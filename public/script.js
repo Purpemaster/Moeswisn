@@ -157,14 +157,19 @@ generateButton.addEventListener('click', async () => {
   generateButton.textContent = "🎨 Generiere...";
 
   try {
-    const res = await fetch('/generate-image');
+    const res = await fetch('/generate-image', {
+      method: 'POST'
+    });
     const data = await res.json();
 
     if (data.image) {
       generatedImage.src = data.image;
       imageResult.style.display = 'block';
+    } else {
+      alert("Kein Bild erhalten.");
     }
   } catch (err) {
+    console.error(err);
     alert('Fehler beim Generieren.');
   }
 
