@@ -1,9 +1,7 @@
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    if (url.pathname !== "/generate-image") {
-      return new Response("Not found", { status: 404 });
-    }
+    
 
     const prompt = `A digitally illustrated Purple Pepe frog in various wild styles and accessories, trending meme aesthetics, vivid colors, high detail, no text`;
 
