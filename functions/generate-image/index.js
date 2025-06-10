@@ -1,9 +1,12 @@
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    
 
-    const prompt = `A digitally illustrated Purple Pepe frog in various wild styles and accessories, trending meme aesthetics, vivid colors, high detail, no text`;
+    if (request.method !== "POST" || url.pathname !== "/generate-image") {
+      return new Response("Not found", { status: 404 });
+    }
+
+    const prompt = `A digitally illustrated Purple Pepe frog...`;
 
     const response = await fetch("https://api.openai.com/v1/images/generations", {
       method: "POST",
