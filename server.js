@@ -35,8 +35,8 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);
 });
 
-// 🌈 Bildgenerierung für Purpe Machine
-app.get('/generate-image', async (req, res) => {
+// 🌈 Bildgenerierung für Purpe Machine (POST!)
+app.post('/generate-image', async (req, res) => {
   try {
     const prompt = `A digitally illustrated Purple Pepe frog in various wild styles and accessories, trending meme aesthetics, vivid colors, high detail, no text`;
 
