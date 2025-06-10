@@ -6,7 +6,7 @@ const goalUSD2 = 100000;
 const radioStations = [
   { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
   { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
-  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" }, // Original Pop Sender zurück
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
   { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
   { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" },
   { stream: "https://streaming.radio.co/s774887f7b/listen", icon: "jazz_soul_icon.png" },
@@ -32,7 +32,7 @@ function setupRadioButtons() {
   const container = document.getElementById("radio-buttons");
   const player = document.getElementById("radio-player");
 
-  player.style.display = "none"; // Unsichtbar
+  player.style.display = "none";
 
   radioStations.forEach((station, index) => {
     const img = document.createElement("img");
@@ -145,3 +145,46 @@ setupCopyButton();
 setupDonationButtons();
 updateTracker();
 setInterval(updateTracker, 30000);
+
+// ------------------- PURPE MACHINE -------------------
+
+const generateButton = document.getElementById('generate-button');
+const imageResult = document.getElementById('image-result');
+const generatedImage = document.getElementById('generated-image');
+
+generateButton.addEventListener('click', async () => {
+  generateButton.disabled = true;
+  generateButton.textContent = "🎨 Generiere...";
+
+  try {
+    const res = await fetch('/generate-image');
+    const data = await res.json();
+
+    if (data.image) {
+      generatedImage.src = data.image;
+      imageResult.style.display = 'block';
+    }
+  } catch (err) {
+    alert('Fehler beim Generieren.');
+  }
+
+  generateButton.disabled = false;
+  generateButton.textContent = "🧠 Neues Purple Pepe Bild generieren";
+});
+
+function downloadImage() {
+  const link = document.createElement('a');
+  link.href = generatedImage.src;
+  link.download = 'purple-pepe.png';
+  link.click();
+}
+
+function copyImage() {
+  fetch(generatedImage.src)
+    .then(res => res.blob())
+    .then(blob => navigator.clipboard.write([
+      new ClipboardItem({ 'image/png': blob })
+    ]))
+    .then(() => alert("Bild kopiert!"))
+    .catch(() => alert("Kopieren fehlgeschlagen."));
+}
