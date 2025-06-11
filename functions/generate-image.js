@@ -1,8 +1,10 @@
 export async function onRequestPost(context) {
   try {
-    const prompt = "A happy green frog sitting on a park bench, cartoon style, sunny weather.";
+    const prompt = "A friendly green creature in a futuristic outfit, standing in a colorful sci-fi city, digital painting";
 
-    const response = await fetch("https://api.openai.com/v1/images/generations", {
+    console.log("🔑 OpenAI API-Key (gekürzt):", context.env.OPENAI_API_KEY?.slice(0, 6) + "...");
+
+    const openaiResponse = await fetch("https://api.openai.com/v1/images/generations", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${context.env.OPENAI_API_KEY}`,
@@ -16,8 +18,8 @@ export async function onRequestPost(context) {
       })
     });
 
-    const data = await response.json();
-    console.log("🎨 Antwort:", data);
+    const data = await openaiResponse.json();
+    console.log("🎨 OpenAI Antwort:", JSON.stringify(data, null, 2));
 
     const imageUrl = data?.data?.[0]?.url;
     if (!imageUrl) {
@@ -29,7 +31,7 @@ export async function onRequestPost(context) {
     });
 
   } catch (err) {
-    console.error("Fehler:", err);
+    console.error("❌ Fehler bei der Bildgenerierung:", err);
     return new Response(JSON.stringify({ error: "Image generation failed" }), {
       headers: { "Content-Type": "application/json" },
       status: 500,
