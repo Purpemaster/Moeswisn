@@ -1,11 +1,11 @@
 export async function onRequestPost(context) {
   try {
     const prompt = "A cute green frog in a yellow raincoat, digital art, no text.";
-    const model = "dall-e-2";
+    const model = "dall-e-2"; // <- Wichtig: Verwende erstmal DALL-E 2 zum Testen
 
     console.log("🔑 OpenAI API-Key (gekürzt):", context.env.OPENAI_API_KEY?.slice(0, 6) + "...");
 
-    const openaiResponse = await fetch("https://api.openai.com/v1/images/generations", {
+    const response = await fetch("https://api.openai.com/v1/images/generations", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${context.env.OPENAI_API_KEY}`,
@@ -19,7 +19,7 @@ export async function onRequestPost(context) {
       })
     });
 
-    const data = await openaiResponse.json();
+    const data = await response.json();
     console.log("🎨 OpenAI Antwort:", JSON.stringify(data, null, 2));
 
     const imageUrl = data?.data?.[0]?.url;
