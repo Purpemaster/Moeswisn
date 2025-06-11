@@ -1,6 +1,6 @@
 export async function onRequestPost(context) {
   try {
-    const prompt = "A friendly green creature in a futuristic outfit, standing in a colorful sci-fi city, digital painting";
+    const prompt = "A fantasy creature in a colorful forest, digital painting, vivid details";
 
     console.log("🔑 OpenAI API-Key (gekürzt):", context.env.OPENAI_API_KEY?.slice(0, 6) + "...");
 
@@ -11,7 +11,7 @@ export async function onRequestPost(context) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "dall-e-2",
+        model: "dall-e-2", // <== wichtiger Punkt!
         prompt,
         n: 1,
         size: "1024x1024"
