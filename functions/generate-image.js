@@ -1,6 +1,8 @@
 export async function onRequestPost(context) {
   try {
-    const prompt = "A cartoon frog with sunglasses in a colorful outfit, digital illustration, no text.";
+    const prompt = "A cartoon frog with sunglasses in a colorful outfit, digital illustration, plain background, no text.";
+
+    const model = "dall-e-2"; // Für sichere Tests, später ggf. wieder auf "dall-e-3" umstellen
 
     console.log("🔑 OpenAI API-Key (gekürzt):", context.env.OPENAI_API_KEY?.slice(0, 6) + "...");
 
@@ -11,7 +13,7 @@ export async function onRequestPost(context) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "dall-e-3", // oder "dall-e-2" zum Testen
+        model,
         prompt,
         n: 1,
         size: "1024x1024"
@@ -23,6 +25,7 @@ export async function onRequestPost(context) {
 
     const imageUrl = data?.data?.[0]?.url;
     if (!imageUrl) {
+      console.error("⚠️ Kein Bild-URL in Antwort gefunden");
       return new Response(JSON.stringify({ error: "No image returned" }), { status: 500 });
     }
 
