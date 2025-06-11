@@ -2,6 +2,9 @@ export async function onRequestPost(context) {
   try {
     const prompt = `A digitally illustrated Purple Pepe frog in various wild styles and accessories, trending meme aesthetics, vivid colors, high detail, no text`;
 
+    // 👉 Debug-Log zum Überprüfen, ob der API-Key gesetzt ist
+    console.log("🔑 OpenAI API-Key (gekürzt):", context.env.OPENAI_API_KEY?.slice(0, 5) + '...');
+
     const openaiResponse = await fetch("https://api.openai.com/v1/images/generations", {
       method: "POST",
       headers: {
@@ -17,23 +20,25 @@ export async function onRequestPost(context) {
     });
 
     const data = await openaiResponse.json();
+
+    // 👉 Log zur Kontrolle, ob ein Bild zurückgegeben wurde
+    console.log("🎨 OpenAI Antwort:", JSON.stringify(data, null, 2));
+
     const imageUrl = data?.data?.[0]?.url;
 
     if (!imageUrl) {
-      console.error("❌ Kein Bild zurückgegeben von OpenAI:", JSON.stringify(data));
       return new Response(JSON.stringify({ error: "No image returned" }), { status: 500 });
     }
 
     return new Response(JSON.stringify({ image: imageUrl }), {
       headers: { "Content-Type": "application/json" },
-      status: 200
     });
 
   } catch (err) {
-    console.error("❌ Fehler bei der Bildgenerierung:", err);
+    console.error("❌ Fehler beim Generieren:", err);
     return new Response(JSON.stringify({ error: "Image generation failed" }), {
       headers: { "Content-Type": "application/json" },
-      status: 500
+      status: 500,
     });
   }
 }
