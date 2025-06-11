@@ -20,17 +20,20 @@ export async function onRequestPost(context) {
     const imageUrl = data?.data?.[0]?.url;
 
     if (!imageUrl) {
+      console.error("❌ Kein Bild zurückgegeben von OpenAI:", JSON.stringify(data));
       return new Response(JSON.stringify({ error: "No image returned" }), { status: 500 });
     }
 
     return new Response(JSON.stringify({ image: imageUrl }), {
       headers: { "Content-Type": "application/json" },
+      status: 200
     });
 
   } catch (err) {
+    console.error("❌ Fehler bei der Bildgenerierung:", err);
     return new Response(JSON.stringify({ error: "Image generation failed" }), {
       headers: { "Content-Type": "application/json" },
-      status: 500,
+      status: 500
     });
   }
 }
