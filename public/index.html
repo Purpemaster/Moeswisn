@@ -6,6 +6,7 @@
   <title>Purple Pepe Donation Tracker + Radio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <style>
     .purpespace-container {
@@ -19,20 +20,11 @@
       text-align: center;
       border: 2px solid #8000ff;
     }
-    .purpespace-button {
-      margin-top: 20px;
-      padding: 10px 25px;
-      background-color: #8000ff;
-      color: white;
-      font-weight: bold;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .purpespace-button:hover {
-      background-color: #a64dff;
+    model-viewer {
+      width: 100%;
+      height: 500px;
+      border-radius: 8px;
+      background-color: #000;
     }
   </style>
 </head>
@@ -83,11 +75,23 @@
     <div class="radio-grid" id="radio-buttons"></div>
     <audio id="radio-player" controls autoplay></audio>
 
-    <!-- PURPESPACE Widget -->
+    <!-- PURPESPACE AR Embed -->
     <div id="purpespace" class="purpespace-container">
       <h3>🌌 Willkommen in PURPESPACE</h3>
-      <p>Das Augmented Reality-Erlebnis für $PURPE-Gläubige.</p>
-      <button class="purpespace-button" onclick="launchPurpespace()">START PURPESPACE</button>
+      <p>Scanne mit deinem Gerät, dreh ihn, zoom ran – der lila Prophet ist da.</p>
+      <model-viewer 
+        src="purpe.glb"
+        ios-src="purpe.usdz"
+        alt="Purple Pepe Collectible in AR"
+        ar 
+        ar-modes="scene-viewer quick-look webxr"
+        camera-controls 
+        auto-rotate 
+        shadow-intensity="1"
+        environment-image="neutral"
+        tone-mapping="neutral"
+      >
+      </model-viewer>
     </div>
 
     <!-- Social Media Icons -->
@@ -104,11 +108,6 @@
     <a href="privacy.html" style="color: #ccc; font-size: 0.9em;">Privacy Policy</a>
   </footer>
 
-  <script>
-    function launchPurpespace() {
-      window.open("https://purpe.io/schlachtfeld", "_blank");
-    }
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
