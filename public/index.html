@@ -6,6 +6,35 @@
   <title>Purple Pepe Donation Tracker + Radio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+
+  <style>
+    .purpespace-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 8px;
+      color: #eee;
+      text-align: center;
+      border: 2px solid #8000ff;
+    }
+    .purpespace-button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background-color: #8000ff;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .purpespace-button:hover {
+      background-color: #a64dff;
+    }
+  </style>
 </head>
 <body class="fade-in">
   <div class="container">
@@ -54,6 +83,13 @@
     <div class="radio-grid" id="radio-buttons"></div>
     <audio id="radio-player" controls autoplay></audio>
 
+    <!-- PURPESPACE Widget -->
+    <div id="purpespace" class="purpespace-container">
+      <h3>🌌 Willkommen in PURPESPACE</h3>
+      <p>Das Augmented Reality-Erlebnis für $PURPE-Gläubige.</p>
+      <button class="purpespace-button" onclick="launchPurpespace()">START PURPESPACE</button>
+    </div>
+
     <!-- Social Media Icons -->
     <div class="social-share">
       <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
@@ -65,9 +101,14 @@
   </div>
 
   <footer style="text-align: center; margin-top: 40px;">
-  <a href="privacy.html" style="color: #ccc; font-size: 0.9em;">Privacy Policy</a>
-</footer>
+    <a href="privacy.html" style="color: #ccc; font-size: 0.9em;">Privacy Policy</a>
+  </footer>
 
+  <script>
+    function launchPurpespace() {
+      window.open("https://purpe.io/schlachtfeld", "_blank");
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
