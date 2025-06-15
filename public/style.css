@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 800px; /* erhöht von 500px */
   margin: auto;
   padding: 20px;
   text-align: center;
@@ -195,12 +195,10 @@ body {
   filter: drop-shadow(0 0 14px #ff33ff);
 }
 
-/* Unsichtbarer Audio-Player */
 #radio-player {
   display: none;
 }
 
-/* Sanfter Seiten-Fade-In */
 .fade-in {
   animation: fadeInBody 1.2s ease-in;
 }
@@ -216,7 +214,6 @@ body {
   }
 }
 
-/* 🌌 Neon-Gas Effekt für Live on Air */
 .neon-gas {
   color: #ffffff;
   text-shadow:
@@ -247,4 +244,29 @@ body {
       0 0 10px #5e00c8,
       0 0 15px #5e00c8;
   }
+}
+
+/* === PURPESPACE Model Viewer Support === */
+model-viewer {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 500px;
+  margin: 20px auto;
+  background: #000;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #8000ff;
+}
+
+/* Container für das AR-Modul */
+.purpespace-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  color: #eee;
+  text-align: center;
+  border: 2px solid #8000ff;
 }
