@@ -64,31 +64,31 @@
     <audio id="radio-player" controls autoplay></audio>
 
     <!-- PURPESPACE AR-Sektion -->
-    <div id="purpespace" class="purpespace-container">
-      <h3>🪐 WELCOME TO PURPESPACE</h3>
-      <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
+<div id="purpespace" class="purpespace-container">
+  <h3>🪐 WELCOME TO PURPESPACE</h3>
+  <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
 
-      <!-- AR-Auslöser für iOS -->
-      <a href="purpe-suit.usdz" rel="ar" id="ar-trigger">
-        <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
-             style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: 0 0 20px #8000ff; cursor: pointer;" />
-      </a>
+  <!-- AR-Auslöser für iOS und Android -->
+  <a href="purpe-suit.usdz" rel="ar" id="purpe-ar-trigger">
+    <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
+         style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: 0 0 20px #8000ff; cursor: pointer;" />
+  </a>
 
-      <!-- Unsichtbarer Viewer für Android/WebXR -->
-      <model-viewer 
-        id="modelViewer"
-        src="purpe-suit.glb"
-        ios-src="purpe-suit.usdz"
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        alt="Purple Pepe AR"
-        camera-controls
-        shadow-intensity="1"
-        environment-image="neutral"
-        tone-mapping="neutral"
-      >
-      </model-viewer>
-    </div>
+  <!-- Unsichtbarer model-viewer für Android/WebXR -->
+  <model-viewer 
+    id="hidden-ar-model"
+    src="purpe-suit.glb"
+    ios-src="purpe-suit.usdz"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
+    alt="Purple Pepe AR"
+    camera-controls
+    shadow-intensity="1"
+    environment-image="neutral"
+    tone-mapping="neutral"
+    style="display: none;"
+  ></model-viewer>
+</div>
 
     <!-- Footer -->
     <footer style="text-align: center; margin-top: 40px;">
