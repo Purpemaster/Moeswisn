@@ -6,78 +6,55 @@
   <title>Purple Pepe Donation Tracker + Radio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <style>
-    .purpespace-container {
-      width: 100%;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #1a1a1a;
-      border-radius: 8px;
-      color: #eee;
-      text-align: center;
-      border: 2px solid #8000ff;
-    }
-    /* Der model-viewer bleibt vollständig unsichtbar */
-    #hidden-ar-model {
-      display: none !important;
-    }
-  </style>
 </head>
 <body class="fade-in">
   <div class="container">
     <h1 class="title neon">Purple Pepe Donation Tracker</h1>
 
-    <!-- Deine Fortschrittsleisten, QR, Radio, etc. bleiben unverändert… -->
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill-1"></div></div>
+    <div class="secondary-bar"><div class="secondary-fill" id="progress-fill-2"></div></div>
 
-    <!-- PURPESPACE AR-Sektion -->
+    <div class="info-bar">
+      <div class="glow-box gold-text" id="current-amount">$0.00</div>
+      <div class="glow-box" id="last-updated">--:--:--</div>
+      <div class="glow-box gold-text" id="goal-amount">$20,000</div>
+    </div>
+
+    <div class="button-grid">
+      <button class="glow-box" onclick="toggleQR()">QR Code</button>
+      <button class="glow-box" onclick="toggleAddress()">Wallet Address</button>
+      <a href="#" id="donate-sol" class="glow-box">Donate SOL</a>
+      <a href="#" id="donate-purpe" class="glow-box">Donate PURPE</a>
+    </div>
+
+    <div id="qr-container" class="qr-section" style="display:none;">
+      <canvas id="wallet-qr"></canvas>
+    </div>
+
+    <div id="address-container" class="wallet-container" style="display:none;">
+      <span id="wallet-address" class="glow-box single-line">9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn</span>
+      <button id="copy-button" title="Copy">📋</button>
+    </div>
+
+    <h2 class="radio-title neon pulse neon-gas">Purpe Radio 🟣 LIVE ON AIR</h2>
+    <div class="radio-grid" id="radio-buttons"></div>
+    <audio id="radio-player" style="display:none;"></audio>
+
     <div id="purpespace" class="purpespace-container">
       <h3>🪐 WELCOME TO PURPESPACE</h3>
       <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
 
-      <!-- Klickbare Verpackung (DEIN Bild) -->
       <a href="purpe-suit.usdz" rel="ar" id="purpe-ar-trigger">
         <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
-             style="width:100%; max-width:400px; border-radius:16px; box-shadow:0 0 20px #8000ff; cursor:pointer;" />
+             style="width:100%;max-width:400px;border-radius:16px;box-shadow:0 0 20px #8000ff;cursor:pointer;" />
       </a>
-
-      <!-- Unsichtbarer model-viewer für WebXR -->
-      <model-viewer 
-        id="hidden-ar-model"
-        src="purpe-suit.glb"
-        ios-src="purpe-suit.usdz"
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        alt="Purple Pepe AR"
-        camera-controls
-        shadow-intensity="1"
-        environment-image="neutral"
-        tone-mapping="neutral">
-      </model-viewer>
     </div>
 
-    <!-- Footer bleibt so wie gehabt -->
-    <footer style="text-align:center; margin-top:40px;">
-      <a href="privacy.html" style="color:#ccc;font-size:0.9em;">Privacy Policy</a>
+    <footer style="text-align:center;margin-top:40px;">
+      <a href="privacy.html" style="color:#ccc;font-size:0.9em;">Privacy Policy</a>
     </footer>
   </div>
 
-  <!-- Dein Hauptscript -->
   <script src="script.js"></script>
-
-  <!-- AR-Trigger für WebXR & iOS -->
-  <script>
-    document.getElementById('purpe-ar-trigger').addEventListener('click', async e => {
-      e.preventDefault();
-      const viewer = document.getElementById('hidden-ar-model');
-      try {
-        await viewer.activateAR();
-      } catch {
-        // Fallback für iOS Quick Look:
-        window.location.href = e.currentTarget.href;
-      }
-    });
-  </script>
 </body>
 </html>
