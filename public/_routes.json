@@ -17,6 +17,11 @@
       "dest": "/purpe-suit.usdz"
     },
     {
+      "path": "/purpe.suits.png",
+      "method": "GET",
+      "dest": "/purpe.suits.png"
+    },
+    {
       "path": "/*",
       "method": "GET",
       "dest": "/index.html"
