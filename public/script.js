@@ -6,7 +6,7 @@ const goalUSD2 = 100000;
 const radioStations = [
   { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
   { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
-  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" }, // Original Pop Sender zurück
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
   { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
   { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" },
   { stream: "https://streaming.radio.co/s774887f7b/listen", icon: "jazz_soul_icon.png" },
@@ -31,8 +31,7 @@ function toggleAddress() {
 function setupRadioButtons() {
   const container = document.getElementById("radio-buttons");
   const player = document.getElementById("radio-player");
-
-  player.style.display = "none"; // Unsichtbar
+  player.style.display = "none";
 
   radioStations.forEach((station, index) => {
     const img = document.createElement("img");
@@ -140,8 +139,22 @@ new QRious({
   foreground: '#8000ff'
 });
 
+function setupARTrigger() {
+  const arTrigger = document.getElementById("purpe-ar-trigger");
+  const modelViewer = document.getElementById("hidden-ar-model");
+
+  if (!arTrigger || !modelViewer) return;
+
+  arTrigger.addEventListener("click", () => {
+    if (modelViewer.activateAR) {
+      modelViewer.activateAR();
+    }
+  });
+}
+
 setupRadioButtons();
 setupCopyButton();
 setupDonationButtons();
 updateTracker();
 setInterval(updateTracker, 30000);
+setupARTrigger();
