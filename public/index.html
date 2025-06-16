@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
   <style>
     .purpespace-container {
       width: 100%;
@@ -21,10 +20,7 @@
       border: 2px solid #8000ff;
     }
     model-viewer {
-      width: 100%;
-      height: 500px;
-      border-radius: 8px;
-      background-color: #000;
+      display: none;
     }
   </style>
 </head>
@@ -32,24 +28,18 @@
   <div class="container">
     <h1 class="title neon">Purple Pepe Donation Tracker</h1>
 
-    <!-- 1. Fortschrittsbalken -->
-    <div class="progress-bar">
-      <div class="progress-fill" id="progress-fill-1"></div>
-    </div>
+    <!-- Fortschrittsbalken -->
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill-1"></div></div>
+    <div class="secondary-bar"><div class="secondary-fill" id="progress-fill-2"></div></div>
 
-    <!-- 2. Fortschrittsbalken -->
-    <div class="secondary-bar">
-      <div class="secondary-fill" id="progress-fill-2"></div>
-    </div>
-
-    <!-- Info-Zeile -->
+    <!-- Info -->
     <div class="info-bar">
       <div class="glow-box gold-text" id="current-amount">$0.00</div>
       <div class="glow-box" id="last-updated">--:--:--</div>
       <div class="glow-box gold-text" id="goal-amount">$20,000</div>
     </div>
 
-    <!-- 4er Button Grid -->
+    <!-- Button Grid -->
     <div class="button-grid">
       <button class="glow-box" onclick="toggleQR()">QR Code</button>
       <button class="glow-box" onclick="toggleAddress()">Wallet Address</button>
@@ -62,11 +52,9 @@
       <canvas id="wallet-qr"></canvas>
     </div>
 
-    <!-- Wallet Adresse + Kopieren -->
+    <!-- Wallet Adresse -->
     <div id="address-container" class="wallet-container" style="display: none;">
-      <span id="wallet-address" class="glow-box single-line">
-        9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn
-      </span>
+      <span id="wallet-address" class="glow-box single-line">9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn</span>
       <button id="copy-button" title="Copy">📋</button>
     </div>
 
@@ -75,49 +63,54 @@
     <div class="radio-grid" id="radio-buttons"></div>
     <audio id="radio-player" controls autoplay></audio>
 
-    <!-- PURPESPACE Verpackungs-AR -->
-<div id="purpespace" class="purpespace-container">
-  <h3>🪐 WELCOME TO PURPESPACE</h3>
-  <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
+    <!-- PURPESPACE AR-Sektion -->
+    <div id="purpespace" class="purpespace-container">
+      <h3>🪐 WELCOME TO PURPESPACE</h3>
+      <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
 
-  <!-- Klickbare Verpackung als AR-Auslöser (für iOS) -->
-  <a href="purpe-suit.usdz" rel="ar">
-    <img src="purpe.suits.png" alt="Purple Pepe in Verpackung"
-         style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: 0 0 20px #8000ff; cursor: pointer;" />
-  </a>
+      <!-- AR-Auslöser für iOS -->
+      <a href="purpe-suit.usdz" rel="ar" id="ar-trigger">
+        <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
+             style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: 0 0 20px #8000ff; cursor: pointer;" />
+      </a>
 
-  <!-- Unsichtbares model-viewer (für Android/WebXR) -->
-  <model-viewer 
-    src="purpe-suit.glb"
-    ios-src="purpe-suit.usdz"
-    alt="Purple Pepe 3D"
-    ar 
-    ar-modes="webxr scene-viewer quick-look"
-    style="display: none;"
-  >
-  </model-viewer>
-</div>
+      <!-- Unsichtbarer Viewer für Android/WebXR -->
+      <model-viewer 
+        id="modelViewer"
+        src="purpe-suit.glb"
+        ios-src="purpe-suit.usdz"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        alt="Purple Pepe AR"
+        camera-controls
+        shadow-intensity="1"
+        environment-image="neutral"
+        tone-mapping="neutral"
+      >
+      </model-viewer>
+    </div>
 
-  <!-- Unsichtbarer model-viewer für Android/WebXR -->
-  <model-viewer 
-    src="purpe-suit.glb"
-    ios-src="purpe-suit.usdz"
-    alt="Purple Pepe in AR"
-    ar 
-    ar-modes="scene-viewer quick-look webxr"
-    camera-controls 
-    auto-rotate 
-    shadow-intensity="1"
-    environment-image="neutral"
-    tone-mapping="neutral"
-    style="display: none;">
-  </model-viewer>
-</div>
+    <!-- Footer -->
+    <footer style="text-align: center; margin-top: 40px;">
+      <a href="privacy.html" style="color: #ccc; font-size: 0.9em;">Privacy Policy</a>
+    </footer>
+  </div>
 
-  <footer style="text-align: center; margin-top: 40px;">
-    <a href="privacy.html" style="color: #ccc; font-size: 0.9em;">Privacy Policy</a>
-  </footer>
-
+  <!-- Dein bestehendes Script -->
   <script src="script.js"></script>
+
+  <!-- Android/WebXR Trigger -->
+  <script>
+    document.getElementById('ar-trigger').addEventListener('click', async (e) => {
+      e.preventDefault();
+      const modelViewer = document.getElementById('modelViewer');
+      try {
+        await modelViewer.activateAR();
+      } catch (err) {
+        // Fallback für iOS oder wenn WebXR nicht funktioniert
+        window.location.href = e.currentTarget.href;
+      }
+    });
+  </script>
 </body>
 </html>
