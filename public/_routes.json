@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "expires": 0,
+  "cache": {
+    "browserTTL": 0,
+    "edgeTTL": 0
+  },
+  "routes": [
+    {
+      "path": "/purpe-suit.glb",
+      "method": "GET",
+      "dest": "/purpe-suit.glb"
+    },
+    {
+      "path": "/purpe-suit.usdz",
+      "method": "GET",
+      "dest": "/purpe-suit.usdz"
+    },
+    {
+      "path": "/*",
+      "method": "GET",
+      "dest": "/index.html"
+    }
+  ]
+}
