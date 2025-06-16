@@ -64,50 +64,48 @@
     <audio id="radio-player" controls autoplay></audio>
 
     <!-- PURPESPACE AR-Sektion -->
-<div id="purpespace" class="purpespace-container">
-  <h3>🪐 WELCOME TO PURPESPACE</h3>
-  <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
+    <div id="purpespace" class="purpespace-container">
+      <h3>🪐 WELCOME TO PURPESPACE</h3>
+      <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
 
-  <!-- AR-Auslöser für iOS und Android -->
-  <a href="purpe-suit.usdz" rel="ar" id="purpe-ar-trigger">
-    <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
-         style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: 0 0 20px #8000ff; cursor: pointer;" />
-  </a>
+      <!-- AR-Auslöser -->
+      <a href="purpe-suit.usdz" rel="ar" id="purpe-ar-trigger">
+        <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
+             style="width:100%;max-width:400px;border-radius:16px;box-shadow:0 0 20px #8000ff;cursor:pointer;" />
+      </a>
 
-  <!-- Unsichtbarer model-viewer für Android/WebXR -->
-  <model-viewer 
-    id="hidden-ar-model"
-    src="purpe-suit.glb"
-    ios-src="purpe-suit.usdz"
-    ar
-    ar-modes="webxr scene-viewer quick-look"
-    alt="Purple Pepe AR"
-    camera-controls
-    shadow-intensity="1"
-    environment-image="neutral"
-    tone-mapping="neutral"
-    style="display: none;"
-  ></model-viewer>
-</div>
+      <!-- Verstecktes model-viewer für Android/WebXR -->
+      <model-viewer 
+        id="hidden-ar-model"
+        src="purpe-suit.glb"
+        ios-src="purpe-suit.usdz"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        alt="Purple Pepe AR"
+        camera-controls
+        shadow-intensity="1"
+        environment-image="neutral"
+        tone-mapping="neutral"
+      ></model-viewer>
+    </div>
 
     <!-- Footer -->
-    <footer style="text-align: center; margin-top: 40px;">
-      <a href="privacy.html" style="color: #ccc; font-size: 0.9em;">Privacy Policy</a>
+    <footer style="text-align:center;margin-top:40px;">
+      <a href="privacy.html" style="color:#ccc;font-size:0.9em;">Privacy Policy</a>
     </footer>
   </div>
 
-  <!-- Dein bestehendes Script -->
+  <!-- Script-Dateien -->
   <script src="script.js"></script>
 
-  <!-- Android/WebXR Trigger -->
+  <!-- Android/WebXR AR Trigger -->
   <script>
-    document.getElementById('ar-trigger').addEventListener('click', async (e) => {
+    document.getElementById('purpe-ar-trigger').addEventListener('click', async (e) => {
       e.preventDefault();
-      const modelViewer = document.getElementById('modelViewer');
+      const modelViewer = document.getElementById('hidden-ar-model');
       try {
         await modelViewer.activateAR();
-      } catch (err) {
-        // Fallback für iOS oder wenn WebXR nicht funktioniert
+      } catch {
         window.location.href = e.currentTarget.href;
       }
     });
