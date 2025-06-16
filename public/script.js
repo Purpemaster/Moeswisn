@@ -33,21 +33,21 @@ function setupRadioButtons() {
   const player = document.getElementById("radio-player");
   player.style.display = "none";
 
-  radioStations.forEach((station, index) => {
+  radioStations.forEach(station => {
     const img = document.createElement("img");
     img.src = station.icon;
     img.className = "radio-icon";
-    img.alt = `Station ${index + 1}`;
+    img.alt = "";
 
     img.addEventListener("click", () => {
-      if (img.classList.contains("active")) {
-        img.classList.remove("active");
-        player.pause();
-      } else {
-        document.querySelectorAll(".radio-icon").forEach(el => el.classList.remove("active"));
+      const active = img.classList.contains("active");
+      document.querySelectorAll(".radio-icon").forEach(el => el.classList.remove("active"));
+      if (!active) {
         img.classList.add("active");
         player.src = station.stream;
         player.play();
+      } else {
+        player.pause();
       }
     });
 
@@ -57,9 +57,8 @@ function setupRadioButtons() {
 
 function setupCopyButton() {
   document.getElementById("copy-button").addEventListener("click", () => {
-    const address = document.getElementById("wallet-address").textContent.trim();
-    navigator.clipboard.writeText(address)
-      .then(() => alert("Wallet address copied!"))
+    navigator.clipboard.writeText(walletAddress)
+      .then(() => alert("Wallet-Adresse kopiert!"))
       .catch(() => alert("Copy failed."));
   });
 }
@@ -68,7 +67,6 @@ function setupDonationButtons() {
   document.getElementById("donate-sol").addEventListener("click", () => {
     window.location.href = `solana:${walletAddress}?amount=1&label=Purple%20Pepe%20Donation`;
   });
-
   document.getElementById("donate-purpe").addEventListener("click", () => {
     window.location.href = `solana:${walletAddress}?amount=3000000&spl-token=HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL&label=Purple%20Pepe%20Donation`;
   });
@@ -76,11 +74,12 @@ function setupDonationButtons() {
 
 function updateProgress(totalUSD) {
   const percent1 = Math.min((totalUSD / goalUSD1) * 100, 100);
-  const percent2 = totalUSD > goalUSD1 ? Math.min(((totalUSD - goalUSD1) / (goalUSD2 - goalUSD1)) * 100, 100) : 0;
+  const percent2 = totalUSD > goalUSD1
+    ? Math.min(((totalUSD - goalUSD1) / (goalUSD2 - goalUSD1)) * 100, 100)
+    : 0;
 
   document.getElementById("progress-fill-1").style.width = `${percent1}%`;
   document.getElementById("progress-fill-2").style.width = `${percent2}%`;
-
   document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
 }
 
@@ -109,8 +108,12 @@ async function fetchWalletBalances() {
     const res = await fetch(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
     const data = await res.json();
     const solBalance = (data.nativeBalance || 0) / 1e9;
-    const purpe = data.tokens?.find(t => t.mint === "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL");
-    const purpeBalance = purpe ? purpe.amount / 10 ** (purpe.decimals || 6) : 0;
+    const purpeToken = data.tokens?.find(t => 
+      t.mint === "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL"
+    );
+    const purpeBalance = purpeToken
+      ? purpeToken.amount / 10 ** (purpeToken.decimals || 6)
+      : 0;
     return { solBalance, purpeBalance };
   } catch {
     return { solBalance: 0, purpeBalance: 0 };
@@ -125,10 +128,8 @@ async function updateTracker() {
   ]);
   const totalUSD = (wallet.solBalance * solPrice) + (wallet.purpeBalance * purpePriceUSD);
   updateProgress(totalUSD);
-
-  const now = new Date();
-  const time = now.toLocaleTimeString(undefined, { hour12: false });
-  document.getElementById("last-updated").textContent = time;
+  document.getElementById("last-updated").textContent =
+    new Date().toLocaleTimeString(undefined, { hour12: false });
 }
 
 new QRious({
@@ -140,14 +141,16 @@ new QRious({
 });
 
 function setupARTrigger() {
-  const arTrigger = document.getElementById("purpe-ar-trigger");
-  const modelViewer = document.getElementById("hidden-ar-model");
+  const trigger = document.getElementById("purpe-ar-trigger");
+  const viewer = document.getElementById("hidden-ar-model");
+  if (!trigger || !viewer) return;
 
-  if (!arTrigger || !modelViewer) return;
-
-  arTrigger.addEventListener("click", () => {
-    if (modelViewer.activateAR) {
-      modelViewer.activateAR();
+  trigger.addEventListener("click", async e => {
+    e.preventDefault();
+    try {
+      await viewer.activateAR();
+    } catch {
+      window.location.href = trigger.href;
     }
   });
 }
