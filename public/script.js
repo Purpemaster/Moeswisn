@@ -1,7 +1,6 @@
+// Konfiguration
 const walletAddress = "9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn";
 const heliusApiKey = "9cf905ed-105d-46a7-b7fa-7440388b6e9f";
-const purpeTokenMint = "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL";
-const geckoPoolID = "CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj";
 const goalUSD1 = 20000;
 const goalUSD2 = 100000;
 
@@ -20,125 +19,113 @@ const radioStations = [
   { stream: "https://strm112.1.fm/ccountry_mobile_mp3", icon: "country_icon.png" }
 ];
 
+// Hilfsfunktionen
 function toggleQR() {
   const el = document.getElementById("qr-container");
   el.style.display = el.style.display === "none" ? "block" : "none";
 }
-
 function toggleAddress() {
   const el = document.getElementById("address-container");
   el.style.display = el.style.display === "none" ? "flex" : "none";
 }
-
 function setupRadioButtons() {
   const container = document.getElementById("radio-buttons");
   const player = document.getElementById("radio-player");
   player.style.display = "none";
 
-  radioStations.forEach(station => {
+  radioStations.forEach(st => {
     const img = document.createElement("img");
-    img.src = station.icon;
+    img.src = st.icon;
     img.className = "radio-icon";
     img.alt = "";
-
     img.addEventListener("click", () => {
-      const active = img.classList.contains("active");
-      document.querySelectorAll(".radio-icon").forEach(el => el.classList.remove("active"));
-      if (!active) {
-        img.classList.add("active");
-        player.src = station.stream;
+      const active = img.classList.toggle("active");
+      if (active) {
+        player.src = st.stream;
         player.play();
       } else {
         player.pause();
       }
+      document.querySelectorAll(".radio-icon").forEach(el => {
+        if (el !== img) el.classList.remove("active");
+      });
     });
-
     container.appendChild(img);
   });
 }
-
 function setupCopyButton() {
-  const button = document.getElementById("copy-button");
-  button.addEventListener("click", () => {
+  document.getElementById("copy-button").addEventListener("click", () => {
     navigator.clipboard.writeText(walletAddress)
       .then(() => alert("Wallet-Adresse kopiert!"))
-      .catch(() => alert("Kopieren fehlgeschlagen!"));
+      .catch(() => alert("Copy fehlgeschlagen."));
   });
 }
-
 function setupDonationButtons() {
-  document.getElementById("donate-sol").addEventListener("click", () => {
+  document.getElementById("donate-sol").addEventListener("click", e => {
+    e.preventDefault();
     window.location.href = `solana:${walletAddress}?amount=1&label=Purple%20Pepe%20Donation`;
   });
-
-  document.getElementById("donate-purpe").addEventListener("click", () => {
-    window.location.href = `solana:${walletAddress}?amount=3000000&spl-token=${purpeTokenMint}&label=Purple%20Pepe%20Donation`;
+  document.getElementById("donate-purpe").addEventListener("click", e => {
+    e.preventDefault();
+    window.location.href = `solana:${walletAddress}?amount=3000000&spl-token=HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL&label=Purple%20Pepe%20Donation`;
   });
 }
-
-function updateProgress(totalUSD) {
-  const percent1 = Math.min((totalUSD / goalUSD1) * 100, 100);
-  const percent2 = totalUSD > goalUSD1
-    ? Math.min(((totalUSD - goalUSD1) / (goalUSD2 - goalUSD1)) * 100, 100)
-    : 0;
-
-  document.getElementById("progress-fill-1").style.width = `${percent1}%`;
-  document.getElementById("progress-fill-2").style.width = `${percent2}%`;
-  document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
-}
-
 async function fetchSolPrice() {
   try {
     const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
-    const data = await res.json();
-    return data.solana?.usd || 0;
-  } catch {
-    return 0;
-  }
+    const j = await res.json();
+    return j.solana?.usd || 0;
+  } catch { return 0; }
 }
-
 async function fetchPurpePriceUSD() {
   try {
-    const res = await fetch(`https://api.geckoterminal.com/api/v2/networks/solana/pools/${geckoPoolID}`);
-    const data = await res.json();
-    return parseFloat(data.data?.attributes?.base_token_price_usd) || 0;
-  } catch {
-    return 0;
-  }
+    const res = await fetch("https://api.geckoterminal.com/api/v2/networks/solana/pools/CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj");
+    const j = await res.json();
+    return parseFloat(j.data?.attributes?.base_token_price_usd) || 0;
+  } catch { return 0; }
 }
-
 async function fetchWalletBalances() {
   try {
     const res = await fetch(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
-    const data = await res.json();
-    const sol = (data.nativeBalance || 0) / 1e9;
-    const purpeToken = data.tokens?.find(t => t.mint === purpeTokenMint);
-    const purpe = purpeToken ? purpeToken.amount / 10 ** (purpeToken.decimals || 6) : 0;
-    return { solBalance: sol, purpeBalance: purpe };
-  } catch {
-    return { solBalance: 0, purpeBalance: 0 };
-  }
+    const j = await res.json();
+    const sol = (j.nativeBalance || 0) / 1e9;
+    const pur = j.tokens?.find(t => t.mint === "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL");
+    const pbal = pur ? pur.amount / 10**(pur.decimals || 6) : 0;
+    return { solBalance: sol, purpeBalance: pbal };
+  } catch { return { solBalance:0, purpeBalance:0 }; }
 }
-
+function updateProgress(totalUSD) {
+  const p1 = Math.min((totalUSD / goalUSD1) * 100, 100);
+  const p2 = totalUSD > goalUSD1
+    ? Math.min(((totalUSD - goalUSD1) / (goalUSD2 - goalUSD1)) * 100, 100)
+    : 0;
+  document.getElementById("progress-fill-1").style.width = `${p1}%`;
+  document.getElementById("progress-fill-2").style.width = `${p2}%`;
+  document.getElementById("current-amount").textContent = `$${totalUSD.toFixed(2)}`;
+}
 async function updateTracker() {
-  const [wallet, solPrice, purpePrice] = await Promise.all([
-    fetchWalletBalances(),
-    fetchSolPrice(),
-    fetchPurpePriceUSD()
-  ]);
-  const totalUSD = (wallet.solBalance * solPrice) + (wallet.purpeBalance * purpePrice);
-  updateProgress(totalUSD);
+  const [w, solP, purP] = await Promise.all([fetchWalletBalances(), fetchSolPrice(), fetchPurpePriceUSD()]);
+  const total = w.solBalance * solP + w.purpeBalance * purP;
+  updateProgress(total);
   document.getElementById("last-updated").textContent =
-    new Date().toLocaleTimeString(undefined, { hour12: false });
+    new Date().toLocaleTimeString(undefined, {hour12:false});
 }
 
-// AR-Button für alle Geräte
+// QR-Code initialisieren
+new QRious({
+  element: document.getElementById('wallet-qr'),
+  value: `solana:${walletAddress}`,
+  size: 200,
+  background: 'white',
+  foreground: '#8000ff'
+});
+
+// AR Trigger einrichten
 function setupARTrigger() {
   const trigger = document.getElementById("purpe-ar-trigger");
   const viewer = document.getElementById("hidden-ar-model");
   if (!trigger || !viewer) return;
-
-  trigger.addEventListener("click", async (e) => {
+  trigger.addEventListener("click", async e => {
     e.preventDefault();
     try {
       await viewer.activateAR();
@@ -148,19 +135,10 @@ function setupARTrigger() {
   });
 }
 
-// QR generieren
-new QRious({
-  element: document.getElementById('wallet-qr'),
-  value: `solana:${walletAddress}`,
-  size: 200,
-  background: 'white',
-  foreground: '#8000ff'
-});
-
-// INIT
+// Alles starten
 setupRadioButtons();
 setupCopyButton();
 setupDonationButtons();
-setupARTrigger();
 updateTracker();
 setInterval(updateTracker, 30000);
+setupARTrigger();
