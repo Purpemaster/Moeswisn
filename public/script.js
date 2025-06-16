@@ -1,5 +1,7 @@
 const walletAddress = "9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn";
 const heliusApiKey = "9cf905ed-105d-46a7-b7fa-7440388b6e9f";
+const purpeTokenMint = "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL";
+const geckoPoolID = "CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj";
 const goalUSD1 = 20000;
 const goalUSD2 = 100000;
 
@@ -56,10 +58,11 @@ function setupRadioButtons() {
 }
 
 function setupCopyButton() {
-  document.getElementById("copy-button").addEventListener("click", () => {
+  const button = document.getElementById("copy-button");
+  button.addEventListener("click", () => {
     navigator.clipboard.writeText(walletAddress)
       .then(() => alert("Wallet-Adresse kopiert!"))
-      .catch(() => alert("Copy failed."));
+      .catch(() => alert("Kopieren fehlgeschlagen!"));
   });
 }
 
@@ -67,8 +70,9 @@ function setupDonationButtons() {
   document.getElementById("donate-sol").addEventListener("click", () => {
     window.location.href = `solana:${walletAddress}?amount=1&label=Purple%20Pepe%20Donation`;
   });
+
   document.getElementById("donate-purpe").addEventListener("click", () => {
-    window.location.href = `solana:${walletAddress}?amount=3000000&spl-token=HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL&label=Purple%20Pepe%20Donation`;
+    window.location.href = `solana:${walletAddress}?amount=3000000&spl-token=${purpeTokenMint}&label=Purple%20Pepe%20Donation`;
   });
 }
 
@@ -95,7 +99,7 @@ async function fetchSolPrice() {
 
 async function fetchPurpePriceUSD() {
   try {
-    const res = await fetch("https://api.geckoterminal.com/api/v2/networks/solana/pools/CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj");
+    const res = await fetch(`https://api.geckoterminal.com/api/v2/networks/solana/pools/${geckoPoolID}`);
     const data = await res.json();
     return parseFloat(data.data?.attributes?.base_token_price_usd) || 0;
   } catch {
@@ -107,45 +111,34 @@ async function fetchWalletBalances() {
   try {
     const res = await fetch(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
     const data = await res.json();
-    const solBalance = (data.nativeBalance || 0) / 1e9;
-    const purpeToken = data.tokens?.find(t => 
-      t.mint === "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL"
-    );
-    const purpeBalance = purpeToken
-      ? purpeToken.amount / 10 ** (purpeToken.decimals || 6)
-      : 0;
-    return { solBalance, purpeBalance };
+    const sol = (data.nativeBalance || 0) / 1e9;
+    const purpeToken = data.tokens?.find(t => t.mint === purpeTokenMint);
+    const purpe = purpeToken ? purpeToken.amount / 10 ** (purpeToken.decimals || 6) : 0;
+    return { solBalance: sol, purpeBalance: purpe };
   } catch {
     return { solBalance: 0, purpeBalance: 0 };
   }
 }
 
 async function updateTracker() {
-  const [wallet, solPrice, purpePriceUSD] = await Promise.all([
+  const [wallet, solPrice, purpePrice] = await Promise.all([
     fetchWalletBalances(),
     fetchSolPrice(),
     fetchPurpePriceUSD()
   ]);
-  const totalUSD = (wallet.solBalance * solPrice) + (wallet.purpeBalance * purpePriceUSD);
+  const totalUSD = (wallet.solBalance * solPrice) + (wallet.purpeBalance * purpePrice);
   updateProgress(totalUSD);
   document.getElementById("last-updated").textContent =
     new Date().toLocaleTimeString(undefined, { hour12: false });
 }
 
-new QRious({
-  element: document.getElementById('wallet-qr'),
-  value: `solana:${walletAddress}`,
-  size: 200,
-  background: 'white',
-  foreground: '#8000ff'
-});
-
+// AR-Button für alle Geräte
 function setupARTrigger() {
   const trigger = document.getElementById("purpe-ar-trigger");
   const viewer = document.getElementById("hidden-ar-model");
   if (!trigger || !viewer) return;
 
-  trigger.addEventListener("click", async e => {
+  trigger.addEventListener("click", async (e) => {
     e.preventDefault();
     try {
       await viewer.activateAR();
@@ -155,9 +148,19 @@ function setupARTrigger() {
   });
 }
 
+// QR generieren
+new QRious({
+  element: document.getElementById('wallet-qr'),
+  value: `solana:${walletAddress}`,
+  size: 200,
+  background: 'white',
+  foreground: '#8000ff'
+});
+
+// INIT
 setupRadioButtons();
 setupCopyButton();
 setupDonationButtons();
+setupARTrigger();
 updateTracker();
 setInterval(updateTracker, 30000);
-setupARTrigger();
