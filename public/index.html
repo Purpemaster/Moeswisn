@@ -6,13 +6,18 @@
   <title>Purple Pepe Donation Tracker + Radio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body class="fade-in">
   <div class="container">
     <h1 class="title neon">Purple Pepe Donation Tracker</h1>
 
-    <div class="progress-bar"><div class="progress-fill" id="progress-fill-1"></div></div>
-    <div class="secondary-bar"><div class="secondary-fill" id="progress-fill-2"></div></div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill-1"></div>
+    </div>
+    <div class="secondary-bar">
+      <div class="secondary-fill" id="progress-fill-2"></div>
+    </div>
 
     <div class="info-bar">
       <div class="glow-box gold-text" id="current-amount">$0.00</div>
@@ -38,15 +43,16 @@
 
     <h2 class="radio-title neon pulse neon-gas">Purpe Radio 🟣 LIVE ON AIR</h2>
     <div class="radio-grid" id="radio-buttons"></div>
-    <audio id="radio-player" style="display:none;"></audio>
+    <audio id="radio-player" controls autoplay></audio>
 
-    <div id="purpespace" class="purpespace-container">
+    <div class="purpespace-container">
       <h3>🪐 WELCOME TO PURPESPACE</h3>
       <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
 
       <a href="purpe-suit.usdz" rel="ar" id="purpe-ar-trigger">
         <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
-             style="width:100%;max-width:400px;border-radius:16px;box-shadow:0 0 20px #8000ff;cursor:pointer;" />
+             style="width:100%;max-width:400px;border-radius:16px;
+                    box-shadow:0 0 20px #8000ff;cursor:pointer;" />
       </a>
     </div>
 
