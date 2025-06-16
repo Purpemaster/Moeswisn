@@ -3,26 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Purple Pepe Donation Tracker + Radio</title>
+  <title>Purple Pepe Donation Tracker + AR</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body class="fade-in">
   <div class="container">
     <h1 class="title neon">Purple Pepe Donation Tracker</h1>
-
-    <div class="progress-bar">
-      <div class="progress-fill" id="progress-fill-1"></div>
-    </div>
-    <div class="secondary-bar">
-      <div class="secondary-fill" id="progress-fill-2"></div>
-    </div>
+    <div class="progress-bar"><div id="progress-fill-1" class="progress-fill"></div></div>
+    <div class="secondary-bar"><div id="progress-fill-2" class="secondary-fill"></div></div>
 
     <div class="info-bar">
-      <div class="glow-box gold-text" id="current-amount">$0.00</div>
-      <div class="glow-box" id="last-updated">--:--:--</div>
-      <div class="glow-box gold-text" id="goal-amount">$20,000</div>
+      <div id="current-amount" class="glow-box gold-text">$0.00</div>
+      <div id="last-updated" class="glow-box">--:--:--</div>
+      <div class="glow-box gold-text">$20,000</div>
     </div>
 
     <div class="button-grid">
@@ -37,27 +31,25 @@
     </div>
 
     <div id="address-container" class="wallet-container" style="display:none;">
-      <span id="wallet-address" class="glow-box single-line">9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn</span>
-      <button id="copy-button" title="Copy">📋</button>
+      <span id="wallet-address">9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn</span>
+      <button id="copy-button">📋</button>
     </div>
 
-    <h2 class="radio-title neon pulse neon-gas">Purpe Radio 🟣 LIVE ON AIR</h2>
-    <div class="radio-grid" id="radio-buttons"></div>
-    <audio id="radio-player" controls autoplay></audio>
+    <h2 class="radio-title neon neon-gas pulse">Purpe Radio 🟣 LIVE ON AIR</h2>
+    <div id="radio-buttons" class="radio-grid"></div>
+    <audio id="radio-player" style="display:none;"></audio>
 
-    <div class="purpespace-container">
+    <div id="purpespace" class="purpespace-container">
       <h3>🪐 WELCOME TO PURPESPACE</h3>
       <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
 
       <a href="purpe-suit.usdz" rel="ar" id="purpe-ar-trigger">
-        <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
-             style="width:100%;max-width:400px;border-radius:16px;
-                    box-shadow:0 0 20px #8000ff;cursor:pointer;" />
+        <img src="purpe.suits.png" alt="Purple Pepe Verpackung" />
       </a>
     </div>
 
-    <footer style="text-align:center;margin-top:40px;">
-      <a href="privacy.html" style="color:#ccc;font-size:0.9em;">Privacy Policy</a>
+    <footer class="footer">
+      <a href="privacy.html">Privacy Policy</a>
     </footer>
   </div>
 
