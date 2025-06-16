@@ -1,112 +1,71 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Purple Pepe Donation Tracker + Radio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purple Pepe Donation Tracker + AR</title>
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <style>
-    .purpespace-container {
-      width: 100%;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #1a1a1a;
-      border-radius: 8px;
-      color: #eee;
-      text-align: center;
-      border: 2px solid #8000ff;
-    }
-    model-viewer {
-      display: none;
-    }
-  </style>
 </head>
 <body class="fade-in">
   <div class="container">
     <h1 class="title neon">Purple Pepe Donation Tracker</h1>
-
-    <!-- Fortschrittsbalken -->
-    <div class="progress-bar"><div class="progress-fill" id="progress-fill-1"></div></div>
-    <div class="secondary-bar"><div class="secondary-fill" id="progress-fill-2"></div></div>
-
-    <!-- Info -->
+    <div class="progress-bar"><div id="progress-fill-1" class="progress-fill"></div></div>
+    <div class="secondary-bar"><div id="progress-fill-2" class="secondary-fill"></div></div>
     <div class="info-bar">
-      <div class="glow-box gold-text" id="current-amount">$0.00</div>
-      <div class="glow-box" id="last-updated">--:--:--</div>
-      <div class="glow-box gold-text" id="goal-amount">$20,000</div>
+      <div id="current-amount" class="glow-box gold-text">$0.00</div>
+      <div id="last-updated" class="glow-box">--:--:--</div>
+      <div id="goal-amount" class="glow-box gold-text">$20,000</div>
     </div>
-
-    <!-- Button Grid -->
     <div class="button-grid">
       <button class="glow-box" onclick="toggleQR()">QR Code</button>
-      <button class="glow-box" onclick="toggleAddress()">Wallet Address</button>
-      <a href="#" id="donate-sol" class="glow-box">Donate SOL</a>
-      <a href="#" id="donate-purpe" class="glow-box">Donate PURPE</a>
+      <button class="glow-box" onclick="toggleAddress()">Wallet Adresse</button>
+      <a id="donate-sol" class="glow-box" href="#">Donate SOL</a>
+      <a id="donate-purpe" class="glow-box" href="#">Donate PURPE</a>
     </div>
-
-    <!-- QR Code -->
-    <div id="qr-container" class="qr-section" style="display: none;">
+    <div id="qr-container" class="qr-section" style="display:none;">
       <canvas id="wallet-qr"></canvas>
     </div>
-
-    <!-- Wallet Adresse -->
-    <div id="address-container" class="wallet-container" style="display: none;">
+    <div id="address-container" class="wallet-container" style="display:none;">
       <span id="wallet-address" class="glow-box single-line">9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn</span>
       <button id="copy-button" title="Copy">📋</button>
     </div>
-
-    <!-- Radio -->
     <h2 class="radio-title neon pulse neon-gas">Purpe Radio 🟣 LIVE ON AIR</h2>
-    <div class="radio-grid" id="radio-buttons"></div>
+    <div id="radio-buttons" class="radio-grid"></div>
     <audio id="radio-player" controls autoplay></audio>
 
-    <!-- PURPESPACE AR-Sektion -->
     <div id="purpespace" class="purpespace-container">
       <h3>🪐 WELCOME TO PURPESPACE</h3>
       <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
-
-      <!-- AR-Auslöser -->
-      <a href="purpe-suit.usdz" rel="ar" id="purpe-ar-trigger">
+      <a id="purpe-ar-trigger" href="purpe-suit.usdz" rel="ar">
         <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
-             style="width:100%;max-width:400px;border-radius:16px;box-shadow:0 0 20px #8000ff;cursor:pointer;" />
+             class="ar-trigger-image">
       </a>
-
-      <!-- Verstecktes model-viewer für Android/WebXR -->
-      <model-viewer 
+      <model-viewer
         id="hidden-ar-model"
         src="purpe-suit.glb"
         ios-src="purpe-suit.usdz"
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        alt="Purple Pepe AR"
-        camera-controls
-        shadow-intensity="1"
+        ar ar-modes="webxr scene-viewer quick-look"
+        camera-controls shadow-intensity="1"
         environment-image="neutral"
         tone-mapping="neutral"
-      ></model-viewer>
+        style="display:none;">
+      </model-viewer>
     </div>
 
-    <!-- Footer -->
-    <footer style="text-align:center;margin-top:40px;">
-      <a href="privacy.html" style="color:#ccc;font-size:0.9em;">Privacy Policy</a>
-    </footer>
+    <footer><a href="privacy.html">Privacy Policy</a></footer>
   </div>
 
-  <!-- Script-Dateien -->
   <script src="script.js"></script>
-
-  <!-- Android/WebXR AR Trigger -->
   <script>
-    document.getElementById('purpe-ar-trigger').addEventListener('click', async (e) => {
+    document.getElementById('purpe-ar-trigger').addEventListener('click', async function(e) {
       e.preventDefault();
       const modelViewer = document.getElementById('hidden-ar-model');
       try {
         await modelViewer.activateAR();
-      } catch {
-        window.location.href = e.currentTarget.href;
+      } catch (_) {
+        window.location.href = this.href;
       }
     });
   </script>
