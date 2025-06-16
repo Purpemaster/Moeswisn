@@ -1,8 +1,7 @@
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: url('pepe_background.png') no-repeat center center fixed;
-  background-size: cover;
+  font-family: Arial, sans-serif;
+  background: url('pepe_background.png') center/cover fixed no-repeat;
   color: white;
   overflow-x: hidden;
 }
@@ -14,7 +13,9 @@ body {
   text-align: center;
 }
 
-.neon {
+.title {
+  font-size: 2.2em;
+  margin-top: 10px;
   animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -23,42 +24,28 @@ body {
   to { text-shadow: 0 0 20px #a833ff, 0 0 40px #a833ff; }
 }
 
-.title {
-  font-size: 2.2em;
-  margin-top: 10px;
+.progress-bar, .secondary-bar {
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px 0;
 }
 
-.progress-bar {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  height: 20px;
-  margin: 10px 0 6px;
-  overflow: hidden;
+.progress-bar { background: rgba(255,255,255,0.2); height: 20px; }
+.secondary-bar { background: rgba(255,255,255,0.15); height: 16px; }
+
+.progress-fill, .secondary-fill {
+  height: 100%;
+  width: 0;
+  transition: width 0.5s;
 }
 
 .progress-fill {
   background: linear-gradient(90deg, #8000ff, #d633ff, #ff66ff);
-  height: 100%;
-  width: 0%;
-  transition: width 0.5s;
 }
-
-.secondary-bar {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  height: 16px;
-  margin: 5px 0 15px;
-  overflow: hidden;
-}
-
 .secondary-fill {
   background: linear-gradient(90deg, #ffd700, #ff9900, #ffcc00);
-  height: 100%;
-  width: 0%;
-  transition: width 0.5s;
   opacity: 0.2;
 }
-
 .secondary-fill.active {
   opacity: 1;
 }
@@ -71,22 +58,16 @@ body {
 }
 
 .glow-box {
+  flex: 1;
   padding: 10px 14px;
+  background: #5e00c8;
   border: 1px solid white;
   border-radius: 25px;
-  background: #5e00c8;
-  color: white;
   box-shadow: 0 0 8px #8000ff;
-  font-size: 1em;
-  text-align: center;
-  flex-grow: 1;
   white-space: nowrap;
 }
 
-.gold-text {
-  color: #ffd700;
-  font-weight: bold;
-}
+.gold-text { color: #ffd700; font-weight: bold; }
 
 .button-grid {
   display: grid;
@@ -95,60 +76,49 @@ body {
   margin: 20px 0;
 }
 
-.qr-section {
+.qr-section, .wallet-container {
   margin: 10px 0;
 }
 
-.wallet-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-}
+#address-container { flex-direction: column; align-items: center; }
 
 #wallet-address {
+  background: rgba(0,0,0,0.5);
   padding: 10px;
-  font-size: 0.8em;
-  background: rgba(0, 0, 0, 0.5);
   border: 1px solid white;
   border-radius: 12px;
   box-shadow: 0 0 8px #8000ff;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
 }
 
 #copy-button {
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 1em;
   background: #5e00c8;
-  color: white;
-  padding: 10px 14px;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   box-shadow: 0 0 6px #8000ff;
-  font-size: 1em;
+  cursor: pointer;
 }
 
 .radio-title {
   font-size: 1.5em;
   margin: 20px 0 10px;
+  animation: neonSoftPulse 2.5s ease-in-out infinite;
+  text-shadow: 0 0 2px #fff, 0 0 4px #bb00ff, 0 0 6px #bb00ff, 0 0 12px #8000ff, 0 0 20px #8000ff;
 }
 
-.pulse {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.05); }
-  100% { transform: scale(1); }
+@keyframes neonSoftPulse {
+  0%,100% { text-shadow: 0 0 2px #fff,0 0 4px #bb00ff,0 0 6px #bb00ff,0 0 12px #8000ff,0 0 20px #8000ff;}
+  50% { text-shadow: 0 0 1px #fff,0 0 3px #a000ff,0 0 5px #8000ff,0 0 10px #5e00c8,0 0 15px #5e00c8;}
 }
 
 .radio-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(60px,1fr));
   gap: 15px;
   justify-items: center;
   margin-bottom: 20px;
@@ -157,10 +127,10 @@ body {
 .radio-icon {
   width: 70px;
   height: 70px;
-  border-radius: 50%;
   border: 2px solid white;
+  border-radius: 50%;
   box-shadow: 0 0 8px #8000ff;
-  transition: transform 0.2s ease-in-out;
+  transition: transform .2s ease;
 }
 
 .radio-icon.active {
@@ -169,35 +139,33 @@ body {
 }
 
 @keyframes rotateIcon {
-  from { transform: rotate(0deg); }
+  from { transform: rotate(0); }
   to { transform: rotate(360deg); }
 }
 
-.social-share {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
+.footer {
+  margin: 40px 0 20px;
+}
+
+.footer a {
+  color: #ccc;
+  font-size: 0.9em;
+}
+
+.purpespace-container {
   margin-top: 30px;
+  border: 2px solid #8000ff;
+  border-radius: 8px;
+  background: #1a1a1a;
+  padding: 20px;
 }
 
-.social-share img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 2px solid white;
-  filter: drop-shadow(0 0 6px #a833ff);
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.social-share img:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 14px #ff33ff);
-}
-
-/* Unsichtbarer Audio-Player */
-#radio-player {
-  display: none;
+#purpespace img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #8000ff;
+  cursor: pointer;
 }
 
 .fade-in {
@@ -205,67 +173,6 @@ body {
 }
 
 @keyframes fadeInBody {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.neon-gas {
-  color: #ffffff;
-  text-shadow:
-    0 0 2px #fff,
-    0 0 4px #bb00ff,
-    0 0 6px #bb00ff,
-    0 0 12px #8000ff,
-    0 0 20px #8000ff;
-  font-weight: bold;
-  letter-spacing: 1px;
-  animation: neonSoftPulse 2.5s ease-in-out infinite;
-}
-
-@keyframes neonSoftPulse {
-  0%, 100% {
-    text-shadow:
-      0 0 2px #fff,
-      0 0 4px #bb00ff,
-      0 0 6px #bb00ff,
-      0 0 12px #8000ff,
-      0 0 20px #8000ff;
-  }
-  50% {
-    text-shadow:
-      0 0 1px #fff,
-      0 0 3px #a000ff,
-      0 0 5px #8000ff,
-      0 0 10px #5e00c8,
-      0 0 15px #5e00c8;
-  }
-}
-
-/* Verpackung-AR Bild sichtbar */
-#purpespace a img {
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  cursor: pointer;
-  border-radius: 16px;
-  box-shadow: 0 0 20px #8000ff;
-}
-
-/* <model-viewer> vollständig deaktivieren */
-model-viewer {
-  display: none !important;
-  visibility: hidden !important;
-  width: 0 !important;
-  height: 0 !important;
-  position: absolute !important;
-  top: 0;
-  left: 0;
-  opacity: 0 !important;
-  pointer-events: none !important;
+  from { opacity:0; transform: translateY(10px); }
+  to { opacity:1; transform: translateY(0); }
 }
