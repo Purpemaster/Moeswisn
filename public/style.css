@@ -257,3 +257,13 @@ body {
 .purpespace-container {
   background: transparent;
 }
+
+#purpe-ar-trigger {
+  background: transparent;
+  display: inline-block;
+}
+
+#purpe-ar-trigger img {
+  background: transparent;
+  display: block;
+}
