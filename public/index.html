@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Purple Pepe Donation Tracker + AR</title>
+  <title>Purple Pepe Donation Tracker + Radio</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 </head>
 <body class="fade-in">
   <div class="container">
     <h1 class="title neon">Purple Pepe Donation Tracker</h1>
-    <div class="progress-bar"><div id="progress-fill-1" class="progress-fill"></div></div>
-    <div class="secondary-bar"><div id="progress-fill-2" class="secondary-fill"></div></div>
+
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill-1"></div></div>
+    <div class="secondary-bar"><div class="secondary-fill" id="progress-fill-2"></div></div>
 
     <div class="info-bar">
-      <div id="current-amount" class="glow-box gold-text">$0.00</div>
-      <div id="last-updated" class="glow-box">--:--:--</div>
-      <div class="glow-box gold-text">$20,000</div>
+      <div class="glow-box gold-text" id="current-amount">$0.00</div>
+      <div class="glow-box" id="last-updated">--:--:--</div>
+      <div class="glow-box gold-text" id="goal-amount">$20,000</div>
     </div>
 
     <div class="button-grid">
@@ -26,30 +27,40 @@
       <a href="#" id="donate-purpe" class="glow-box">Donate PURPE</a>
     </div>
 
-    <div id="qr-container" class="qr-section" style="display:none;">
+    <div id="qr-container" class="qr-section" style="display: none;">
       <canvas id="wallet-qr"></canvas>
     </div>
 
-    <div id="address-container" class="wallet-container" style="display:none;">
-      <span id="wallet-address">9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn</span>
-      <button id="copy-button">📋</button>
+    <div id="address-container" class="wallet-container" style="display: none;">
+      <span id="wallet-address" class="glow-box single-line">
+        9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn
+      </span>
+      <button id="copy-button" title="Copy">📋</button>
     </div>
 
-    <h2 class="radio-title neon neon-gas pulse">Purpe Radio 🟣 LIVE ON AIR</h2>
-    <div id="radio-buttons" class="radio-grid"></div>
-    <audio id="radio-player" style="display:none;"></audio>
+    <h2 class="radio-title neon pulse neon-gas">Purpe Radio 🟣 LIVE ON AIR</h2>
+    <div class="radio-grid" id="radio-buttons"></div>
+    <audio id="radio-player" controls autoplay></audio>
 
     <div id="purpespace" class="purpespace-container">
       <h3>🪐 WELCOME TO PURPESPACE</h3>
       <p>Tippe auf die Verpackung, um PURPE in AR zu erleben.</p>
-
       <a href="purpe-suit.usdz" rel="ar" id="purpe-ar-trigger">
-        <img src="purpe.suits.png" alt="Purple Pepe Verpackung" />
+        <img src="purpe.suits.png" alt="Purple Pepe Verpackung"
+             style="width: 100%; max-width: 400px; border-radius: 16px; box-shadow: 0 0 20px #8000ff; cursor: pointer;" />
       </a>
     </div>
 
-    <footer class="footer">
-      <a href="privacy.html">Privacy Policy</a>
+    <div class="social-share">
+      <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
+      <a href="https://x.com/purplepepes0l?s=21" target="_blank"><img src="x_icon.png" alt="X"></a>
+      <a href="https://www.instagram.com/purplepepes0l?igsh=a2Q2NDRjc2lrbjEz" target="_blank"><img src="instagram_icon.png" alt="Instagram"></a>
+      <a href="https://t.me/Purpe_SOL" target="_blank"><img src="telegram_icon.png" alt="Telegram"></a>
+      <a href="https://www.tiktok.com/@purpe.factory?_t=ZN-8vweUeJUFPC&_r=1" target="_blank"><img src="tiktok_icon.png" alt="TikTok"></a>
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px;">
+      <a href="privacy.html" style="color: #ccc; font-size: 0.9em;">Privacy Policy</a>
     </footer>
   </div>
 
