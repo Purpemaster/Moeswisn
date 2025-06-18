@@ -267,28 +267,23 @@ body {
   display: block;
   max-width: 200px;
   width: 100%;
-  height: auto;
+  margin: 0 auto;
   background: transparent;
   border: none;
-  margin: 0 auto 10px;
 }
 
 .ar-button {
   display: inline-block;
-  padding: 12px 20px;
-  margin-top: 10px;
-  font-size: 1em;
-  color: white;
   background: #8000ff;
-  border: none;
-  border-radius: 30px;
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 0 10px #a833ff;
-  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #8000ff;
   transition: background 0.3s;
 }
 
 .ar-button:hover {
   background: #a833ff;
-  box-shadow: 0 0 14px #ff66ff;
 }
