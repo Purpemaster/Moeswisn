@@ -255,29 +255,32 @@ body {
   }
 }
 .purpespace-container {
-  background: rgba(0, 0, 0, 0.4); /* statt transparent */
-  border-radius: 20px;
-  padding: 16px;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  border: none !important;
+  max-width: 100%;
+  box-shadow: none !important;
 }
 
 #purpe-ar-trigger {
   display: inline-block;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  border: none;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  border: none !important;
   line-height: 0;
 }
 
 #purpe-ar-trigger img {
   display: block;
-  background: transparent;
-  border: none;
-  margin: 0;
-  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
   width: 100%;
   max-width: 400px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px #8000ff;
   cursor: pointer;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
