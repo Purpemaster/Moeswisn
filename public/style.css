@@ -284,3 +284,27 @@ body {
   box-shadow: none !important;
   border-radius: 0 !important;
 }
+a[rel="ar"] {
+  display: inline-block;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  border: none !important;
+  box-shadow: none !important;
+  line-height: 0 !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#purpe-ar-trigger img {
+  display: block;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  max-width: 200px !important;
+  width: 100% !important;
+  height: auto !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
