@@ -279,7 +279,7 @@ body {
   margin: 0 auto !important;
   padding: 0 !important;
   width: 100%;
-  max-width: 400px;
+  max-width: 200px; /* <- HIER ÄNDERN */
   cursor: pointer;
   box-shadow: none !important;
   border-radius: 0 !important;
