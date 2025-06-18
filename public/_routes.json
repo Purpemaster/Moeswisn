@@ -22,6 +22,11 @@
       "dest": "/purpe-transparent.png"
     },
     {
+      "path": "/style-v2.css",
+      "method": "GET",
+      "dest": "/style-v2.css"
+    },
+    {
       "path": "/*",
       "method": "GET",
       "dest": "/index.html"
