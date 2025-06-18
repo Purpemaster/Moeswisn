@@ -257,54 +257,38 @@ body {
 .purpespace-container {
   background: transparent !important;
   padding: 0 !important;
-  margin: 0 auto !important;
+  margin: 20px auto !important;
   border: none !important;
   max-width: 100%;
-  box-shadow: none !important;
+  text-align: center;
 }
 
-#purpe-ar-trigger {
-  display: inline-block;
-  background: transparent !important;
-  padding: 0 !important;
-  margin: 0 auto !important;
-  border: none !important;
-  line-height: 0;
-}
-
-#purpe-ar-trigger img {
+.purpe-image {
   display: block;
-  background: transparent !important;
-  border: none !important;
-  margin: 0 auto !important;
-  padding: 0 !important;
+  max-width: 200px;
   width: 100%;
-  max-width: 200px; /* <- HIER ÄNDERN */
-  cursor: pointer;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-}
-a[rel="ar"] {
-  display: inline-block;
-  background: transparent !important;
-  padding: 0 !important;
-  margin: 0 auto !important;
-  border: none !important;
-  box-shadow: none !important;
-  line-height: 0 !important;
-  -webkit-appearance: none;
-  appearance: none;
+  height: auto;
+  background: transparent;
+  border: none;
+  margin: 0 auto 10px;
 }
 
-#purpe-ar-trigger img {
-  display: block;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 0 auto !important;
-  max-width: 200px !important;
-  width: 100% !important;
-  height: auto !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
+.ar-button {
+  display: inline-block;
+  padding: 12px 20px;
+  margin-top: 10px;
+  font-size: 1em;
+  color: white;
+  background: #8000ff;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #a833ff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.ar-button:hover {
+  background: #a833ff;
+  box-shadow: 0 0 14px #ff66ff;
 }
