@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Purple Pepe Donation Tracker + Radio</title>
-  <link rel="stylesheet" href="style.css?v=124">
+  <link rel="stylesheet" href="style.css?v=125">
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 </head>
 <body class="fade-in">
@@ -20,11 +20,14 @@
       <div class="glow-box gold-text" id="goal-amount">$20,000</div>
     </div>
 
+    <!-- Neue Button-Zeile -->
     <div class="button-grid">
       <button class="glow-box" onclick="toggleQR()">QR Code</button>
-      <button class="glow-box" onclick="toggleAddress()">Wallet Address</button>
+      <button class="glow-box" onclick="toggleAddress()">Wallet Adresse</button>
       <a href="#" id="donate-sol" class="glow-box">Donate SOL</a>
       <a href="#" id="donate-purpe" class="glow-box">Donate PURPE</a>
+      <button class="glow-box" onclick="toggleRadio()">🎵 Purpe Radio</button>
+      <button class="glow-box" onclick="toggleAR()">🪐 PURPESPACE</button>
     </div>
 
     <div id="qr-container" class="qr-section" style="display: none;">
@@ -38,20 +41,23 @@
       <button id="copy-button" title="Copy">📋</button>
     </div>
 
-    <h2 class="radio-title neon pulse neon-gas">Purpe Radio 🟣 LIVE ON AIR</h2>
-    <div class="radio-grid" id="radio-buttons"></div>
-    <audio id="radio-player" controls autoplay></audio>
+    <!-- Versteckter Radio-Container -->
+    <div id="radio-container" style="display: none;">
+      <h2 class="radio-title neon pulse neon-gas">Purpe Radio 🟣 LIVE ON AIR</h2>
+      <div class="radio-grid" id="radio-buttons"></div>
+      <audio id="radio-player" controls autoplay></audio>
+    </div>
 
-    <div id="purpespace" class="purpespace-container">
-  <h3>🪐 WELCOME TO PURPESPACE</h3>
-  <p>Erlebe PURPE in AR – tippe auf den Button!</p>
-
-  <img src="purpe-transparent.png" alt="Purple Pepe Verpackung" class="purpe-image" />
-
-  <div style="margin-top: 15px;">
-    <a href="purpe-suit.usdz" rel="ar" class="ar-button">📱 In AR öffnen</a>
-  </div>
-</div>
+    <!-- Versteckter AR-Container -->
+    <div id="purpespace" class="purpespace-container" style="display: none;">
+      <h3>🪐 WELCOME TO PURPESPACE</h3>
+      <p>Erlebe PURPE in AR – tippe auf den Button!</p>
+      <img src="purpe-transparent.png" alt="Purple Pepe Verpackung" class="purpe-image" />
+      <div style="margin-top: 15px;">
+        <a href="purpe-suit.usdz" rel="ar" class="ar-button">📱 In AR öffnen (iOS)</a>
+        <a href="purpe-suit.glb" target="_blank" class="ar-button">🤖 Für Android</a>
+      </div>
+    </div>
 
     <div class="social-share">
       <a href="https://www.facebook.com/share/g/15oN9pyr4w/?mibextid=wwXIfr" target="_blank"><img src="facebook_icon.png" alt="Facebook"></a>
@@ -65,6 +71,29 @@
       <a href="privacy.html" style="color: #ccc; font-size: 0.9em;">Privacy Policy</a>
     </footer>
   </div>
+
+  <!-- Zusätzliche Toggle-Funktionen -->
+  <script>
+    function toggleQR() {
+      const qr = document.getElementById('qr-container');
+      qr.style.display = qr.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleAddress() {
+      const addr = document.getElementById('address-container');
+      addr.style.display = addr.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleRadio() {
+      const radio = document.getElementById('radio-container');
+      radio.style.display = radio.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleAR() {
+      const ar = document.getElementById('purpespace');
+      ar.style.display = ar.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
 
   <script src="script.js"></script>
 </body>
