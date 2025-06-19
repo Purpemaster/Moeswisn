@@ -126,7 +126,6 @@ body {
   font-size: 1em;
 }
 
-/* Radio */
 .radio-title {
   font-size: 1.5em;
   margin: 20px 0 10px;
@@ -175,7 +174,6 @@ body {
   display: none;
 }
 
-/* Social Media Buttons */
 .social-share {
   display: flex;
   justify-content: center;
@@ -198,7 +196,6 @@ body {
   filter: drop-shadow(0 0 14px #ff33ff);
 }
 
-/* Animierter Seitenaufbau */
 .fade-in {
   animation: fadeInBody 1.2s ease-in;
 }
@@ -254,6 +251,7 @@ body {
       0 0 15px #5e00c8;
   }
 }
+
 .purpespace-container {
   background: transparent !important;
   padding: 0 !important;
@@ -286,4 +284,31 @@ body {
 
 .ar-button:hover {
   background: #a833ff;
+}
+
+/* Erweiterung: Zusätzliche Button-Gruppen für Radio und AR */
+.extra-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 30px 0;
+}
+
+.extra-buttons button {
+  padding: 14px;
+  border: 2px solid white;
+  border-radius: 30px;
+  background: #5e00c8;
+  color: white;
+  box-shadow: 0 0 8px #8000ff;
+  font-size: 1em;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+}
+
+.extra-section {
+  display: none;
+  margin-top: 15px;
 }
