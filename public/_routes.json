@@ -22,9 +22,44 @@
       "dest": "/purpe-transparent.png"
     },
     {
-      "path": "/style-v2.css",
+      "path": "/style.css",
       "method": "GET",
-      "dest": "/style-v2.css"
+      "dest": "/style.css"
+    },
+    {
+      "path": "/script.js",
+      "method": "GET",
+      "dest": "/script.js"
+    },
+    {
+      "path": "/privacy.html",
+      "method": "GET",
+      "dest": "/privacy.html"
+    },
+    {
+      "path": "/facebook_icon.png",
+      "method": "GET",
+      "dest": "/facebook_icon.png"
+    },
+    {
+      "path": "/x_icon.png",
+      "method": "GET",
+      "dest": "/x_icon.png"
+    },
+    {
+      "path": "/instagram_icon.png",
+      "method": "GET",
+      "dest": "/instagram_icon.png"
+    },
+    {
+      "path": "/telegram_icon.png",
+      "method": "GET",
+      "dest": "/telegram_icon.png"
+    },
+    {
+      "path": "/tiktok_icon.png",
+      "method": "GET",
+      "dest": "/tiktok_icon.png"
     },
     {
       "path": "/*",
