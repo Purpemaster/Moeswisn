@@ -36,16 +36,33 @@ function toggleSection(sectionId){
 function setupRadioButtons() {
   const container = document.getElementById("radio-buttons");
   const player = document.getElementById("radio-player");
+  let currentStream = "";
+
   radioStations.forEach(s => {
     const img = document.createElement("img");
     img.src = s.icon;
     img.className = "radio-icon";
+
     img.addEventListener("click", () => {
+      const isActive = img.classList.contains("active");
+
+      // Alle Icons deaktivieren
       document.querySelectorAll(".radio-icon").forEach(i => i.classList.remove("active"));
-      img.classList.add("active");
-      player.src = s.stream;
-      player.play();
+
+      if (isActive) {
+        // Wenn aktiv, stoppen
+        player.pause();
+        player.src = "";
+        currentStream = "";
+      } else {
+        // Aktivieren und neuen Stream abspielen
+        img.classList.add("active");
+        player.src = s.stream;
+        player.play();
+        currentStream = s.stream;
+      }
     });
+
     container.appendChild(img);
   });
 }
