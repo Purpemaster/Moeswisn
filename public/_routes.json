@@ -7,19 +7,19 @@
   },
   "routes": [
     {
-      "path": "/purpe-suit.glb",
+      "path": "/purpe.glb",
       "method": "GET",
-      "dest": "/purpe-suit.glb"
+      "dest": "/purpe.glb"
     },
     {
-      "path": "/purpe-suit.usdz",
+      "path": "/purpe.usdz",
       "method": "GET",
-      "dest": "/purpe-suit.usdz"
+      "dest": "/purpe.usdz"
     },
     {
-      "path": "/purpe-transparent.png",
+      "path": "/purpe.suits.ar.png",
       "method": "GET",
-      "dest": "/purpe-transparent.png"
+      "dest": "/purpe.suits.ar.png"
     },
     {
       "path": "/style.css",
