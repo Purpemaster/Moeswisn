@@ -21,6 +21,70 @@
       "method": "GET",
       "dest": "/purpe.suits.ar.png"
     },
+
+    // Neue AR-Dateien
+    {
+      "path": "/purpe.boxer.png",
+      "method": "GET",
+      "dest": "/purpe.boxer.png"
+    },
+    {
+      "path": "/purpe.boxer.glb",
+      "method": "GET",
+      "dest": "/purpe.boxer.glb"
+    },
+    {
+      "path": "/purpe.boxer.usdz",
+      "method": "GET",
+      "dest": "/purpe.boxer.usdz"
+    },
+    {
+      "path": "/purpe.baywatch.png",
+      "method": "GET",
+      "dest": "/purpe.baywatch.png"
+    },
+    {
+      "path": "/purpe.baywatch.glb",
+      "method": "GET",
+      "dest": "/purpe.baywatch.glb"
+    },
+    {
+      "path": "/purpe.baywatch.usdz",
+      "method": "GET",
+      "dest": "/purpe.baywatch.usdz"
+    },
+    {
+      "path": "/purpe.cowboy.png",
+      "method": "GET",
+      "dest": "/purpe.cowboy.png"
+    },
+    {
+      "path": "/purpe.cowboy.glb",
+      "method": "GET",
+      "dest": "/purpe.cowboy.glb"
+    },
+    {
+      "path": "/purpe.cowboy.usdz",
+      "method": "GET",
+      "dest": "/purpe.cowboy.usdz"
+    },
+    {
+      "path": "/purpe.space.png",
+      "method": "GET",
+      "dest": "/purpe.space.png"
+    },
+    {
+      "path": "/purpe.space.glb",
+      "method": "GET",
+      "dest": "/purpe.space.glb"
+    },
+    {
+      "path": "/purpe.space.usdz",
+      "method": "GET",
+      "dest": "/purpe.space.usdz"
+    },
+
+    // Standard-Webdateien
     {
       "path": "/style.css",
       "method": "GET",
@@ -36,6 +100,8 @@
       "method": "GET",
       "dest": "/privacy.html"
     },
+
+    // Icons
     {
       "path": "/facebook_icon.png",
       "method": "GET",
@@ -61,6 +127,8 @@
       "method": "GET",
       "dest": "/tiktok_icon.png"
     },
+
+    // Fallback: index.html für alle anderen Pfade
     {
       "path": "/*",
       "method": "GET",
