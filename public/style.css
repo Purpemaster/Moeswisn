@@ -300,3 +300,13 @@ body {
 .ar-button:hover {
   background: #a833ff;
 }
+
+/* Neue Hervorhebung für AR-Text */
+.ar-highlight {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 6px #ff00ff, 0 0 12px #a833ff;
+  display: inline-block;
+  margin-top: 6px;
+}
