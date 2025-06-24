@@ -90,52 +90,42 @@ body {
   margin: 20px 0;
 }
 
-/* AR-Karussell */
-.carousel {
-  overflow-x: auto;
+.qr-section {
+  margin: 10px 0;
+}
+
+.wallet-container {
   display: flex;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  gap: 20px;
-  padding: 20px 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.carousel-track {
-  display: flex;
-  gap: 20px;
-}
-
-.carousel-item {
-  flex: 0 0 auto;
-  width: 220px;
-  scroll-snap-align: start;
-  text-align: center;
-}
-
-.carousel-item img {
-  width: 100%;
-  border-radius: 16px;
-  box-shadow: 0 0 12px #8000ff;
-}
-
-.ar-button {
-  display: inline-block;
-  background: #8000ff;
-  color: white;
-  padding: 10px 20px;
-  font-weight: bold;
-  text-decoration: none;
+#wallet-address {
+  padding: 10px;
+  font-size: 0.8em;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
   border-radius: 12px;
-  box-shadow: 0 0 10px #8000ff;
-  transition: background 0.3s;
-  margin: 5px 0;
+  box-shadow: 0 0 8px #8000ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
-.ar-button:hover {
-  background: #a833ff;
+#copy-button {
+  background: #5e00c8;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 6px #8000ff;
+  font-size: 1em;
 }
 
-/* Radio-Design */
 .radio-title {
   font-size: 1.5em;
   margin: 20px 0 10px;
@@ -177,14 +167,13 @@ body {
 
 @keyframes rotateIcon {
   from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
 #radio-player {
   display: none;
 }
 
-/* Social Media */
 .social-share {
   display: flex;
   justify-content: center;
@@ -207,7 +196,6 @@ body {
   filter: drop-shadow(0 0 14px #ff33ff);
 }
 
-/* Neon Animation */
 .fade-in {
   animation: fadeInBody 1.2s ease-in;
 }
@@ -262,4 +250,53 @@ body {
       0 0 10px #5e00c8,
       0 0 15px #5e00c8;
   }
+}
+
+.purpespace-container {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 20px auto !important;
+  border: none !important;
+  max-width: 100%;
+  text-align: center;
+}
+
+.carousel {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  padding: 20px 10px;
+}
+
+.carousel-item {
+  min-width: 200px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 0 6px #8000ff;
+}
+
+.carousel-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.ar-button {
+  display: inline-block;
+  margin: 6px 4px;
+  background: #8000ff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 6px #a833ff;
+}
+
+.ar-button:hover {
+  background: #a833ff;
 }
