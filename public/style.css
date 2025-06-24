@@ -310,3 +310,28 @@ body {
   display: inline-block;
   margin-top: 6px;
 }
+.ar-heading-box {
+  background: rgba(0, 0, 0, 0.65);
+  padding: 20px 16px;
+  border-radius: 16px;
+  box-shadow: 0 0 14px #a833ff;
+  display: inline-block;
+  margin: 20px auto;
+  max-width: 90%;
+  text-align: center;
+  animation: fadeInBody 1s ease-in;
+}
+
+.ar-heading-box h3 {
+  font-size: 1.5em;
+  margin: 0 0 10px;
+  color: white;
+  text-shadow: 0 0 10px #ffffff;
+}
+
+.ar-heading-box p {
+  margin: 0;
+  font-size: 1.1em;
+  line-height: 1.4;
+  color: white;
+}
