@@ -17,19 +17,8 @@ const radioStations = [
   {stream:"https://strm112.1.fm/ccountry_mobile_mp3",icon:"country_icon.png"},
 ];
 
-function toggleQR(){
-  const c = document.getElementById("qr-container");
-  c.style.display = (c.style.display==="block") ? "none" : "block";
-}
-
-function toggleAddress(){
-  const a = document.getElementById("address-container");
-  a.style.display = (a.style.display==="flex") ? "none" : "flex";
-}
-
-function toggleSection(sectionId){
-  const el = document.getElementById(sectionId);
-  if (!el) return;
+function toggleSection(id) {
+  const el = document.getElementById(id);
   el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
 }
 
@@ -45,17 +34,13 @@ function setupRadioButtons() {
 
     img.addEventListener("click", () => {
       const isActive = img.classList.contains("active");
-
-      // Alle Icons deaktivieren
       document.querySelectorAll(".radio-icon").forEach(i => i.classList.remove("active"));
 
       if (isActive) {
-        // Wenn aktiv, stoppen
         player.pause();
         player.src = "";
         currentStream = "";
       } else {
-        // Aktivieren und neuen Stream abspielen
         img.classList.add("active");
         player.src = s.stream;
         player.play();
@@ -130,16 +115,6 @@ async function updateTracker(){
   document.getElementById("last-updated").textContent = new Date().toLocaleTimeString();
 }
 
-function setupARTrigger(){
-  const trigger = document.getElementById("purpe-ar-trigger");
-  if (trigger) {
-    trigger.addEventListener("click", () => {
-      // iOS handled via rel="ar", Android via browser defaults
-    });
-  }
-}
-
-// QR Setup
 new QRious({
   element: document.getElementById("wallet-qr"),
   value: `solana:${walletAddress}`,
@@ -148,10 +123,8 @@ new QRious({
   foreground: "#8000ff"
 });
 
-// Init
 setupRadioButtons();
 setupCopyButton();
 setupDonationButtons();
-setupARTrigger();
 updateTracker();
 setInterval(updateTracker, 30000);
