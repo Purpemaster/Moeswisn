@@ -273,16 +273,24 @@ body {
 }
 
 .carousel-item {
-  min-width: 200px;
+  width: 220px;
+  height: 370px;
+  flex-shrink: 0;
   background: rgba(0,0,0,0.3);
   border-radius: 12px;
   text-align: center;
   padding: 10px;
   box-shadow: 0 0 6px #8000ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .carousel-item img {
   width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
   border-radius: 10px;
 }
 
