@@ -1,0 +1,23 @@
+name: Clean Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - Schlachtfeld
+
+jobs:
+  clean_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: moeswisn
+          directory: public
+          branch: Schlachtfeld
