@@ -78,7 +78,25 @@
   </div>
 
   <!-- Scripts -->
-  <script src="models.js"></script>
   <script src="script.js?v=131"></script>
+
+  <!-- JSON-basierter Model-Loader -->
+  <script>
+    fetch('ar_models.json')
+      .then(response => response.json())
+      .then(models => {
+        const track = document.getElementById('carousel-track');
+        models.forEach(model => {
+          const div = document.createElement('div');
+          div.className = 'carousel-item';
+          div.innerHTML = `
+            <img src="${model.img}" alt="${model.alt}" />
+            <a href="${model.usdz}" rel="ar" class="ar-button">📱 iOS</a>
+            <a href="${model.glb}" target="_blank" class="ar-button">🤖 Android</a>
+          `;
+          track.appendChild(div);
+        });
+      });
+  </script>
 </body>
 </html>
