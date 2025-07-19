@@ -37,8 +37,8 @@
   },
   {
     "img": "purpe.griller.png",
-    "usdz": "purpe.griller.usdz",
-    "glb": "purpe.griller.glb",
+    "usdz": "purpe.grill.usdz",
+    "glb": "purpe.grill.glb",
     "alt": "Griller"
   },
   {
@@ -49,8 +49,8 @@
   },
   {
     "img": "purpe.erkunder.png",
-    "usdz": "purpe.erkunder.usdz",
-    "glb": "purpe.erkunder.glb",
+    "usdz": "purpe_explorer_ready.usdz",
+    "glb": "purpe_explorer_ready.glb",
     "alt": "Erkunder"
   },
   {
@@ -79,8 +79,8 @@
   },
   {
     "img": "purpe.angler.png",
-    "usdz": "purpe.angler.usdz",
-    "glb": "purpe.angler.glb",
+    "usdz": "purpe.fischer.usdz",
+    "glb": "purpe.fischer.glb",
     "alt": "Angler"
   },
   {
@@ -121,8 +121,8 @@
   },
   {
     "img": "purpe.holz.png",
-    "usdz": "purpe.holz.usdz",
-    "glb": "purpe.holz.glb",
+    "usdz": "purp_holz_ready.usdz",
+    "glb": "purpe_holz_ready.glb",
     "alt": "Holz"
   },
   {
@@ -139,8 +139,8 @@
   },
   {
     "img": "purpe.feuerwehr.png",
-    "usdz": "purpe.feuerwehr.usdz",
-    "glb": "purpe.feuerwehr.glb",
+    "usdz": "purpe.fire.usdz",
+    "glb": "purpe.fire.glb",
     "alt": "Feuerwehr"
   },
   {
@@ -205,14 +205,14 @@
   },
   {
     "img": "bicycle.png",
-    "usdz": "bicycle.usdz",
-    "glb": "bicycle.glb",
+    "usdz": "bicykle.usdz",
+    "glb": "bicykle.glb",
     "alt": "Bicycle"
   },
   {
-    "img": "wikinger.png",
-    "usdz": "wikinger.usdz",
-    "glb": "wikinger.glb",
+    "img": "vikinger.png",
+    "usdz": "vikinger.usdz",
+    "glb": "vikinger.glb",
     "alt": "Wikinger"
   },
   {
@@ -541,8 +541,8 @@
   },
   {
     "img": "musiker.png",
-    "usdz": "musiker.usdz",
-    "glb": "musiker.glb",
+    "usdz": "gitarre.usdz",
+    "glb": "gitarre.glb",
     "alt": "Musiker"
   },
   {
@@ -595,8 +595,8 @@
   },
   {
     "img": "purpe.suits.ar.png",
-    "usdz": "purpe.suits.usdz",
-    "glb": "purpe.suits.glb",
+    "usdz": "purpe.usdz",
+    "glb": "purpe.glb",
     "alt": "Suits"
   }
 ]
