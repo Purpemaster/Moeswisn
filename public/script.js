@@ -1,5 +1,5 @@
 const walletAddress = "9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn";
-const heliusApiKey = "9cf905ed-105d-46a7-b7fa-7440388b6e9f";
+const heliusApiKey = "f271292f-42c7-4f32-925c-96e205eeb90d";
 const goalUSD1 = 20000, goalUSD2 = 100000;
 
 const radioStations = [
