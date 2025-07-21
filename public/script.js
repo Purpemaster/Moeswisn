@@ -1,5 +1,5 @@
 const walletAddress = "9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn";
-const heliusApiKey = "bf688561-527e-43f9-a24e-add82f281a29"; // Dein Test-Key
+const heliusApiKey = "bf688561-527e-43f9-a24e-add82f281a29";
 const goalUSD1 = 20000;
 const goalUSD2 = 100000;
 
