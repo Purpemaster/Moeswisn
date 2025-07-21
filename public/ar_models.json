@@ -1,0 +1,602 @@
+[
+  {
+    "img": "purpe.cowboy.png",
+    "usdz": "purpe.cowboy.usdz",
+    "glb": "purpe.cowboy.glb",
+    "alt": "Cowboy"
+  },
+  {
+    "img": "purpe.boxer.png",
+    "usdz": "purpe.boxer.usdz",
+    "glb": "purpe.boxer.glb",
+    "alt": "Boxer"
+  },
+  {
+    "img": "purpe.baywatch.png",
+    "usdz": "purpe.baywatch.usdz",
+    "glb": "purpe.baywatch.glb",
+    "alt": "Baywatch"
+  },
+  {
+    "img": "purpe.space.png",
+    "usdz": "purpe.space.usdz",
+    "glb": "purpe.space.glb",
+    "alt": "Space"
+  },
+  {
+    "img": "purpe.baseball.png",
+    "usdz": "purpe.baseball.usdz",
+    "glb": "purpe.baseball.glb",
+    "alt": "Baseball"
+  },
+  {
+    "img": "purpe.catcher.png",
+    "usdz": "purpe.catcher.usdz",
+    "glb": "purpe.catcher.glb",
+    "alt": "Catcher"
+  },
+  {
+    "img": "purpe.griller.png",
+    "usdz": "purpe.grill.usdz",
+    "glb": "purpe.grill.glb",
+    "alt": "Griller"
+  },
+  {
+    "img": "purpe.football.png",
+    "usdz": "purpe.football.usdz",
+    "glb": "purpe.football.glb",
+    "alt": "Football"
+  },
+  {
+    "img": "purpe.erkunder.png",
+    "usdz": "purpe_explorer_ready.usdz",
+    "glb": "purpe_explorer_ready.glb",
+    "alt": "Erkunder"
+  },
+  {
+    "img": "purpe.koch.png",
+    "usdz": "purpe.koch.usdz",
+    "glb": "purpe.koch.glb",
+    "alt": "Koch"
+  },
+  {
+    "img": "purpe.gaertner.png",
+    "usdz": "purpe.gaertner.usdz",
+    "glb": "purpe.gaertner.glb",
+    "alt": "Gaertner"
+  },
+  {
+    "img": "purpe.golf.png",
+    "usdz": "purpe.golf.usdz",
+    "glb": "purpe.golf.glb",
+    "alt": "Golf"
+  },
+  {
+    "img": "purpe.rock.png",
+    "usdz": "purpe.rock.usdz",
+    "glb": "purpe.rock.glb",
+    "alt": "Rock"
+  },
+  {
+    "img": "purpe.angler.png",
+    "usdz": "purpe.fischer.usdz",
+    "glb": "purpe.fischer.glb",
+    "alt": "Angler"
+  },
+  {
+    "img": "purpe.bmx.png",
+    "usdz": "purpe.bmx.usdz",
+    "glb": "purpe.bmx.glb",
+    "alt": "Bmx"
+  },
+  {
+    "img": "purpe.dog.png",
+    "usdz": "purpe.dog.usdz",
+    "glb": "purpe.dog.glb",
+    "alt": "Dog"
+  },
+  {
+    "img": "purpe.orakle.png",
+    "usdz": "purpe.orakle.usdz",
+    "glb": "purpe.orakle.glb",
+    "alt": "Orakle"
+  },
+  {
+    "img": "purpe.tennis.png",
+    "usdz": "purpe.tennis.usdz",
+    "glb": "purpe.tennis.glb",
+    "alt": "Tennis"
+  },
+  {
+    "img": "purpe.surfer.png",
+    "usdz": "purpe.surfer.usdz",
+    "glb": "purpe.surfer.glb",
+    "alt": "Surfer"
+  },
+  {
+    "img": "purpe.klempner.png",
+    "usdz": "purpe.klempner.usdz",
+    "glb": "purpe.klempner.glb",
+    "alt": "Klempner"
+  },
+  {
+    "img": "purpe.holz.png",
+    "usdz": "purpe_holz_ready.usdz",
+    "glb": "purpe_holz_ready.glb",
+    "alt": "Holz"
+  },
+  {
+    "img": "purpe.fußball.png",
+    "usdz": "purpe.fußball.usdz",
+    "glb": "purpe.fußball.glb",
+    "alt": "Fußball"
+  },
+  {
+    "img": "purpe.ninja.png",
+    "usdz": "purpe.ninja.usdz",
+    "glb": "purpe.ninja.glb",
+    "alt": "Ninja"
+  },
+  {
+    "img": "purpe.feuerwehr.png",
+    "usdz": "purpe.fire.usdz",
+    "glb": "purpe.fire.glb",
+    "alt": "Feuerwehr"
+  },
+  {
+    "img": "pizza.png",
+    "usdz": "pizza.usdz",
+    "glb": "pizza.glb",
+    "alt": "Pizza"
+  },
+  {
+    "img": "waiter.png",
+    "usdz": "waiter.usdz",
+    "glb": "waiter.glb",
+    "alt": "Waiter"
+  },
+  {
+    "img": "bauarbeiter.png",
+    "usdz": "bauarbeiter.usdz",
+    "glb": "bauarbeiter.glb",
+    "alt": "Bauarbeiter"
+  },
+  {
+    "img": "tischler.png",
+    "usdz": "tischler.usdz",
+    "glb": "tischler.glb",
+    "alt": "Tischler"
+  },
+  {
+    "img": "friseur.png",
+    "usdz": "friseur.usdz",
+    "glb": "friseur.glb",
+    "alt": "Friseur"
+  },
+  {
+    "img": "imker.png",
+    "usdz": "imker.usdz",
+    "glb": "imker.glb",
+    "alt": "Imker"
+  },
+  {
+    "img": "mechaniker.png",
+    "usdz": "mechaniker.usdz",
+    "glb": "mechaniker.glb",
+    "alt": "Mechaniker"
+  },
+  {
+    "img": "skateboarder.png",
+    "usdz": "skateboarder.usdz",
+    "glb": "skateboarder.glb",
+    "alt": "Skateboarder"
+  },
+  {
+    "img": "bodybuilder.png",
+    "usdz": "bodybuilder.usdz",
+    "glb": "bodybuilder.glb",
+    "alt": "Bodybuilder"
+  },
+  {
+    "img": "marvel.png",
+    "usdz": "marvel.usdz",
+    "glb": "marvel.glb",
+    "alt": "Marvel"
+  },
+  {
+    "img": "bicycle.png",
+    "usdz": "bicycle.usdz",
+    "glb": "bicycle.glb",
+    "alt": "Bicycle"
+  },
+  {
+    "img": "vikinger.png",
+    "usdz": "vikinger.usdz",
+    "glb": "vikinger.glb",
+    "alt": "Wikinger"
+  },
+  {
+    "img": "muel.png",
+    "usdz": "muel.usdz",
+    "glb": "muel.glb",
+    "alt": "Muel"
+  },
+  {
+    "img": "verrueckter.png",
+    "usdz": "verrueckter.usdz",
+    "glb": "verrueckter.glb",
+    "alt": "Verrueckter"
+  },
+  {
+    "img": "beer.png",
+    "usdz": "beer.usdz",
+    "glb": "beer.glb",
+    "alt": "Beer"
+  },
+  {
+    "img": "ritter.png",
+    "usdz": "ritter.usdz",
+    "glb": "ritter.glb",
+    "alt": "Ritter"
+  },
+  {
+    "img": "bomb.png",
+    "usdz": "bomb.usdz",
+    "glb": "bomb.glb",
+    "alt": "Bomb"
+  },
+  {
+    "img": "doctor.png",
+    "usdz": "doctor.usdz",
+    "glb": "doctor.glb",
+    "alt": "Doctor"
+  },
+  {
+    "img": "prister.png",
+    "usdz": "prist.usdz",
+    "glb": "prist.glb",
+    "alt": "Prister"
+  },
+  {
+    "img": "cyber.png",
+    "usdz": "cyber.usdz",
+    "glb": "cyber.glb",
+    "alt": "Cyber"
+  },
+  {
+    "img": "samuraizopf.png",
+    "usdz": "samuraizopf.usdz",
+    "glb": "samuraizopf.glb",
+    "alt": "Samuraizopf"
+  },
+  {
+    "img": "samurai.png",
+    "usdz": "samurai.usdz",
+    "glb": "samurai.glb",
+    "alt": "Samurai"
+  },
+  {
+    "img": "funker.png",
+    "usdz": "funker.usdz",
+    "glb": "funker.glb",
+    "alt": "Funker"
+  },
+  {
+    "img": "hulahoop.png",
+    "usdz": "hulahoop.usdz",
+    "glb": "hulahoop.glb",
+    "alt": "Hulahoop"
+  },
+  {
+    "img": "ingenieur.png",
+    "usdz": "ingenieur.usdz",
+    "glb": "ingenieur.glb",
+    "alt": "Ingenieur"
+  },
+  {
+    "img": "peace.png",
+    "usdz": "peace.usdz",
+    "glb": "peace.glb",
+    "alt": "Peace"
+  },
+  {
+    "img": "papst.png",
+    "usdz": "papst.usdz",
+    "glb": "papst.glb",
+    "alt": "Papst"
+  },
+  {
+    "img": "navyseal.png",
+    "usdz": "navyseal.usdz",
+    "glb": "navyseal.glb",
+    "alt": "Navyseal"
+  },
+  {
+    "img": "soldier.png",
+    "usdz": "soldier.usdz",
+    "glb": "soldier.glb",
+    "alt": "Soldier"
+  },
+  {
+    "img": "rollerskates.png",
+    "usdz": "rollerskates.usdz",
+    "glb": "rollerskates.glb",
+    "alt": "Rollerskates"
+  },
+  {
+    "img": "summer.png",
+    "usdz": "summer.usdz",
+    "glb": "summer.glb",
+    "alt": "Summer"
+  },
+  {
+    "img": "partyman.png",
+    "usdz": "partyman.usdz",
+    "glb": "partyman.glb",
+    "alt": "Partyman"
+  },
+  {
+    "img": "society.png",
+    "usdz": "society.usdz",
+    "glb": "society.glb",
+    "alt": "Society"
+  },
+  {
+    "img": "partyboy.png",
+    "usdz": "partyboy.usdz",
+    "glb": "partyboy.glb",
+    "alt": "Partyboy"
+  },
+  {
+    "img": "demeter.png",
+    "usdz": "demeter.usdz",
+    "glb": "demeter.glb",
+    "alt": "Demeter"
+  },
+  {
+    "img": "poseidon.png",
+    "usdz": "poseidon.usdz",
+    "glb": "poseidon.glb",
+    "alt": "Poseidon"
+  },
+  {
+    "img": "ares.png",
+    "usdz": "ares.usdz",
+    "glb": "ares.glb",
+    "alt": "Ares"
+  },
+  {
+    "img": "hermes.png",
+    "usdz": "hermes.usdz",
+    "glb": "hermes.glb",
+    "alt": "Hermes"
+  },
+  {
+    "img": "legion.png",
+    "usdz": "legion.usdz",
+    "glb": "legion.glb",
+    "alt": "Legion"
+  },
+  {
+    "img": "koenigmitschild.png",
+    "usdz": "koenigmitschild.usdz",
+    "glb": "koenigmitschild.glb",
+    "alt": "Koenigmitschild"
+  },
+  {
+    "img": "basketball.png",
+    "usdz": "basketball.usdz",
+    "glb": "basketball.glb",
+    "alt": "Basketball"
+  },
+  {
+    "img": "lord.png",
+    "usdz": "lord.usdz",
+    "glb": "lord.glb",
+    "alt": "Lord"
+  },
+  {
+    "img": "piratfernrohr.png",
+    "usdz": "piratfernrohr.usdz",
+    "glb": "piratfernrohr.glb",
+    "alt": "Piratfernrohr"
+  },
+  {
+    "img": "piratpapagei.png",
+    "usdz": "piratpapagei.usdz",
+    "glb": "piratpapagei.glb",
+    "alt": "Piratpapagei"
+  },
+  {
+    "img": "spaceman.png",
+    "usdz": "spaceman.usdz",
+    "glb": "spaceman.glb",
+    "alt": "Spaceman"
+  },
+  {
+    "img": "jediblack.png",
+    "usdz": "jediblack.usdz",
+    "glb": "jediblack.glb",
+    "alt": "Jediblack"
+  },
+  {
+    "img": "vikingerboss.png",
+    "usdz": "vikingerboss.usdz",
+    "glb": "vikingerboss.glb",
+    "alt": "Vikingerboss"
+  },
+  {
+    "img": "poolparty.png",
+    "usdz": "poolparty.usdz",
+    "glb": "poolparty.glb",
+    "alt": "Poolparty"
+  },
+  {
+    "img": "cesar.png",
+    "usdz": "cesar.usdz",
+    "glb": "cesar.glb",
+    "alt": "Cesar"
+  },
+  {
+    "img": "hammer.png",
+    "usdz": "hammer.usdz",
+    "glb": "hammer.glb",
+    "alt": "Hammer"
+  },
+  {
+    "img": "jedi.png",
+    "usdz": "jedi.usdz",
+    "glb": "jedi.glb",
+    "alt": "Jedi"
+  },
+  {
+    "img": "dunklerjedi.png",
+    "usdz": "dunklerjedi.usdz",
+    "glb": "dunklerjedi.glb",
+    "alt": "Dunklerjedi"
+  },
+  {
+    "img": "jediritter.png",
+    "usdz": "jediritter.usdz",
+    "glb": "jediritter.glb",
+    "alt": "Jediritter"
+  },
+  {
+    "img": "banane.png",
+    "usdz": "banane.usdz",
+    "glb": "banane.glb",
+    "alt": "Banane"
+  },
+  {
+    "img": "obi.png",
+    "usdz": "obi.usdz",
+    "glb": "obi.glb",
+    "alt": "Obi"
+  },
+  {
+    "img": "gangster.png",
+    "usdz": "gangster.usdz",
+    "glb": "gangster.glb",
+    "alt": "Gangster"
+  },
+  {
+    "img": "sushi.png",
+    "usdz": "sushi.usdz",
+    "glb": "sushi.glb",
+    "alt": "Sushi"
+  },
+  {
+    "img": "pharao.png",
+    "usdz": "pharao.usdz",
+    "glb": "pharao.glb",
+    "alt": "Pharao"
+  },
+  {
+    "img": "moench.png",
+    "usdz": "moench.usdz",
+    "glb": "moench.glb",
+    "alt": "Moench"
+  },
+  {
+    "img": "bauer.png",
+    "usdz": "bauer.usdz",
+    "glb": "bauer.glb",
+    "alt": "Bauer"
+  },
+  {
+    "img": "saenger.png",
+    "usdz": "saenger.usdz",
+    "glb": "saenger.glb",
+    "alt": "Saenger"
+  },
+  {
+    "img": "zeus.png",
+    "usdz": "zeus.usdz",
+    "glb": "zeus.glb",
+    "alt": "Zeus"
+  },
+  {
+    "img": "bergsteiger.png",
+    "usdz": "bergsteiger.usdz",
+    "glb": "bergsteiger.glb",
+    "alt": "Bergsteiger"
+  },
+  {
+    "img": "piratsebel.png",
+    "usdz": "piratsebel.usdz",
+    "glb": "piratsebel.glb",
+    "alt": "Piratsebel"
+  },
+  {
+    "img": "apotheke.png",
+    "usdz": "apotheke.usdz",
+    "glb": "apotheke.glb",
+    "alt": "Apotheke"
+  },
+  {
+    "img": "coolerskater.png",
+    "usdz": "coolerskater.usdz",
+    "glb": "coolerskater.glb",
+    "alt": "Coolerskater"
+  },
+  {
+    "img": "musiker.png",
+    "usdz": "gitarre.usdz",
+    "glb": "gitarre.glb",
+    "alt": "Musiker"
+  },
+  {
+    "img": "wanderer.png",
+    "usdz": "wanderer.usdz",
+    "glb": "wanderer.glb",
+    "alt": "Wanderer"
+  },
+  {
+    "img": "narco.png",
+    "usdz": "narco.usdz",
+    "glb": "narco.glb",
+    "alt": "Narco"
+  },
+  {
+    "img": "rocket.png",
+    "usdz": "rocket.usdz",
+    "glb": "rocket.glb",
+    "alt": "Rocket"
+  },
+  {
+    "img": "madmax.png",
+    "usdz": "madmax.usdz",
+    "glb": "madmax.glb",
+    "alt": "Madmax"
+  },
+  {
+    "img": "graffiti.png",
+    "usdz": "graffiti.usdz",
+    "glb": "graffiti.glb",
+    "alt": "Graffiti"
+  },
+  {
+    "img": "sprayer.png",
+    "usdz": "sprayer.usdz",
+    "glb": "sprayer.glb",
+    "alt": "Sprayer"
+  },
+  {
+    "img": "maler.png",
+    "usdz": "maler.usdz",
+    "glb": "maler.glb",
+    "alt": "Maler"
+  },
+  {
+    "img": "hotdog.png",
+    "usdz": "hotdog.usdz",
+    "glb": "hotdog.glb",
+    "alt": "Hotdog"
+  },
+  {
+    "img": "purpe.suits.ar.png",
+    "usdz": "purpe.usdz",
+    "glb": "purpe.glb",
+    "alt": "Suits"
+  }
+]

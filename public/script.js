@@ -1,6 +1,7 @@
 const walletAddress = "9uo3TB4a8synap9VMNpby6nzmnMs9xJWmgo2YKJHZWVn";
-const heliusApiKey = "8d214723-04b4-4e39-8029-68de48c84e48";
-const goalUSD1 = 20000, goalUSD2 = 100000;
+const heliusApiKey = "bf688561-527e-43f9-a24e-add82f281a29";
+const goalUSD1 = 20000;
+const goalUSD2 = 100000;
 
 const radioStations = [
   {stream:"https://stream.laut.fm/house",icon:"house_icon.png"},
@@ -17,27 +18,15 @@ const radioStations = [
   {stream:"https://strm112.1.fm/ccountry_mobile_mp3",icon:"country_icon.png"},
 ];
 
-function toggleSection(sectionId) {
-  const el = document.getElementById(sectionId);
-  if (!el) return;
-  el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
+function toggleSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
 }
 
-function toggleQR() {
-  toggleSection("qr-container");
-}
-
-function toggleAddress() {
-  toggleSection("address-container");
-}
-
-function toggleRadio() {
-  toggleSection("radio-container");
-}
-
-function toggleAR() {
-  toggleSection("purpespace");
-}
+function toggleQR() { toggleSection("qr-container"); }
+function toggleAddress() { toggleSection("address-container"); }
+function toggleRadio() { toggleSection("radio-container"); }
+function toggleAR() { toggleSection("purpespace"); }
 
 function setupRadioButtons() {
   const container = document.getElementById("radio-buttons");
@@ -47,12 +36,9 @@ function setupRadioButtons() {
     const img = document.createElement("img");
     img.src = s.icon;
     img.className = "radio-icon";
-
     img.addEventListener("click", () => {
       const isActive = img.classList.contains("active");
-
       document.querySelectorAll(".radio-icon").forEach(i => i.classList.remove("active"));
-
       if (isActive) {
         player.pause();
         player.src = "";
@@ -62,7 +48,6 @@ function setupRadioButtons() {
         player.play();
       }
     });
-
     container.appendChild(img);
   });
 }
@@ -87,7 +72,6 @@ function setupDonationButtons() {
 function updateProgress(total) {
   const p1 = Math.min((total / goalUSD1) * 100, 100);
   const p2 = total > goalUSD1 ? Math.min(((total - goalUSD1) / (goalUSD2 - goalUSD1)) * 100, 100) : 0;
-
   document.getElementById("progress-fill-1").style.width = p1 + "%";
   document.getElementById("progress-fill-2").style.width = p2 + "%";
   document.getElementById("current-amount").textContent = `$${total.toFixed(2)}`;
@@ -96,42 +80,45 @@ function updateProgress(total) {
 async function fetchJson(url) {
   try {
     const res = await fetch(url);
-    return res.json();
-  } catch {
+    return await res.json();
+  } catch (e) {
+    console.error("fetchJson error:", e);
     return null;
   }
 }
 
 async function fetchSolPrice() {
-  const d = await fetchJson("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
-  return d?.solana?.usd || 0;
+  const data = await fetchJson("https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd");
+  return data?.solana?.usd || 0;
 }
 
 async function fetchPurpePrice() {
-  const d = await fetchJson("https://api.geckoterminal.com/api/v2/networks/solana/pools/CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj");
-  return parseFloat(d?.data?.attributes?.base_token_price_usd) || 0;
+  const data = await fetchJson("https://api.geckoterminal.com/api/v2/networks/solana/pools/CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj");
+  return parseFloat(data?.data?.attributes?.base_token_price_usd) || 0;
 }
 
 async function fetchBalance() {
-  const d = await fetchJson(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
-  const sol = (d?.nativeBalance || 0) / 1e9;
-  const tok = d?.tokens?.find(t => t.mint === "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL");
-  const purpe = tok ? tok.amount / (10 ** (tok.decimals || 6)) : 0;
+  const data = await fetchJson(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
+  const sol = (data?.nativeBalance || 0) / 1e9;
+
+  const token = data?.tokens?.find(t => t.mint === "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL");
+  const purpe = token ? token.amount / Math.pow(10, token.decimals || 1) : 0;
+
   return { sol, purpe };
 }
 
 async function updateTracker() {
-  const [bal, solP, purpeP] = await Promise.all([
+  const [bal, solPrice, purpePrice] = await Promise.all([
     fetchBalance(),
     fetchSolPrice(),
     fetchPurpePrice()
   ]);
-  const total = bal.sol * solP + bal.purpe * purpeP;
+  const total = (bal.sol * solPrice) + (bal.purpe * purpePrice);
   updateProgress(total);
   document.getElementById("last-updated").textContent = new Date().toLocaleTimeString();
 }
 
-// QR Setup
+// Init
 new QRious({
   element: document.getElementById("wallet-qr"),
   value: `solana:${walletAddress}`,
@@ -140,7 +127,6 @@ new QRious({
   foreground: "#8000ff"
 });
 
-// Init
 setupRadioButtons();
 setupCopyButton();
 setupDonationButtons();
