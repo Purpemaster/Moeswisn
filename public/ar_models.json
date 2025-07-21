@@ -205,8 +205,8 @@
   },
   {
     "img": "bicycle.png",
-    "usdz": "bycikle.usdz",
-    "glb": "bycikle.glb",
+    "usdz": "bicycle.usdz",
+    "glb": "bicycle.glb",
     "alt": "Bicycle"
   },
   {
@@ -253,8 +253,8 @@
   },
   {
     "img": "prister.png",
-    "usdz": "priest.usdz",
-    "glb": "priest.glb",
+    "usdz": "prist.usdz",
+    "glb": "prist.glb",
     "alt": "Prister"
   },
   {
