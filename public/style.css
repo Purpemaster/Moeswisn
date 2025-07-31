@@ -369,10 +369,10 @@ body {
   padding-top: 100%;
   border-radius: 50%;
   margin: 30px auto;
-  background: radial-gradient(circle, rgba(128, 0, 255, 0.15), rgba(0, 0, 0, 0.4));
+  background: radial-gradient(circle, rgba(128, 0, 255, 0.1), rgba(0, 0, 0, 0.5));
   border: 2px solid #a833ff;
   overflow: hidden;
-  box-shadow: 0 0 12px #a833ff;
+  box-shadow: 0 0 18px #a833ff;
 }
 
 .radar::before {
@@ -384,10 +384,10 @@ body {
   height: 100%;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.04),
-    rgba(255, 255, 255, 0.04) 1px,
-    transparent 1px,
-    transparent 3px
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05) 2px,
+    transparent 2px,
+    transparent 4px
   );
   pointer-events: none;
   z-index: 2;
@@ -395,12 +395,8 @@ body {
 }
 
 @keyframes scanlines {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 3px;
-  }
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
 }
 
 .radar-grid {
@@ -410,12 +406,11 @@ body {
   z-index: 0;
 }
 
-/* Sweep light */
 .sweep {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: conic-gradient(from 0deg, rgba(255, 255, 255, 0.2), rgba(128, 0, 255, 0.05), transparent);
+  background: conic-gradient(from 0deg, rgba(255, 255, 255, 0.3), rgba(128, 0, 255, 0.05), transparent);
   animation: spin 6s linear infinite;
   border-radius: 50%;
   z-index: 1;
@@ -428,26 +423,25 @@ body {
 
 .ping {
   position: absolute;
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   object-fit: cover;
   border-radius: 50%;
   z-index: 3;
+  transition: opacity 0.2s ease-in-out;
+  filter: drop-shadow(0 0 4px #fff);
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  filter: drop-shadow(0 0 6px #fff);
-  cursor: pointer;
 }
 
-/* Adjusted icon positions */
-.ping1 { top: 10%; left: 15%; }
-.ping2 { top: 18%; left: 75%; }
-.ping3 { top: 32%; left: 18%; }
-.ping4 { top: 38%; left: 50%; }
-.ping5 { top: 50%; left: 65%; }
-.ping6 { top: 56%; left: 30%; }
-.ping7 { top: 62%; left: 58%; }
-.ping8 { top: 74%; left: 42%; }
-.ping9 { top: 82%; left: 52%; }
-.ping10 { top: 28%; left: 40%; }
-.ping11 { top: 18%; left: 50%; }
+/* Ping positions (optimized to prevent overlap) */
+.ping1 { top: 12%; left: 20%; }
+.ping2 { top: 24%; left: 68%; }
+.ping3 { top: 36%; left: 16%; }
+.ping4 { top: 45%; left: 52%; }
+.ping5 { top: 58%; left: 62%; }
+.ping6 { top: 64%; left: 24%; }
+.ping7 { top: 68%; left: 56%; }
+.ping8 { top: 76%; left: 38%; }
+.ping9 { top: 82%; left: 48%; }
+.ping10 { top: 32%; left: 32%; }
+.ping11 { top: 20%; left: 48%; }
