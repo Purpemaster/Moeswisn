@@ -363,21 +363,37 @@ body {
 
 /* ===== RADAR ===== */
 
+/* ===== RADAR ===== */
+
 .radar {
-  position: relative; width: 100%; padding-top: 100%; border-radius: 50%;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 50%;
   margin: 30px auto;
   background: radial-gradient(circle, rgba(128, 0, 255, 0.1), rgba(0, 0, 0, 0.5));
-  border: 2px solid #a833ff; box-shadow: 0 0 18px #a833ff;
+  border: 2px solid #a833ff;
+  overflow: hidden;
+  box-shadow: 0 0 18px #a833ff;
 }
 
 .radar::before {
-  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: repeating-linear-gradient(to bottom,
-    rgba(255,255,255,0.05),
-    rgba(255,255,255,0.05) 2px,
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05) 2px,
     transparent 2px,
-    transparent 4px);
-  pointer-events: none; z-index: 1; animation: scanlines 1.5s linear infinite;
+    transparent 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+  animation: scanlines 1.5s linear infinite;
 }
 
 @keyframes scanlines {
@@ -385,36 +401,46 @@ body {
   100% { background-position: 0 4px; }
 }
 
-.radar-grid { position: absolute; width: 100%; height: 100%; z-index: 0; }
+.radar-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
 
 .sweep {
-  position: absolute; width: 100%; height: 100%;
-  background: conic-gradient(from 0deg,
-    rgba(255, 255, 255, 0.3),
-    rgba(128, 0, 255, 0.05),
-    transparent);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(from 0deg, rgba(255, 255, 255, 0.3), rgba(128, 0, 255, 0.05), transparent);
   animation: spin 6s linear infinite;
-  border-radius: 50%; z-index: 2;
+  border-radius: 50%;
+  z-index: 1;
 }
 
 @keyframes spin {
   from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
 .ping {
-  position: absolute; width: 36px; height: 36px;
-  object-fit: cover; border-radius: 50%; z-index: 3;
-  transition: opacity 0.2s ease-in-out; filter: drop-shadow(0 0 4px #fff);
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 3;
+  transition: opacity 0.2s ease-in-out;
+  filter: drop-shadow(0 0 4px #fff);
   opacity: 0;
 }
 
-/* neu: Positionierung für acht Pings */
-.ping1 { top: 12%; left: 20%; }
-.ping2 { top: 36%; left: 16%; }
-.ping3 { top: 45%; left: 52%; }
-.ping4 { top: 58%; left: 62%; }
-.ping5 { top: 64%; left: 24%; }
-.ping6 { top: 68%; left: 56%; }
-.ping7 { top: 76%; left: 38%; }
-.ping8 { top: 82%; left: 48%; }
+/* ✅ Nur 8 aktive Börsen-Pings */
+.ping1 { top: 12%; left: 20%; }  /* BitMart */
+.ping3 { top: 36%; left: 16%; }  /* Slingshot */
+.ping4 { top: 45%; left: 52%; }  /* Biconomy */
+.ping6 { top: 64%; left: 24%; }  /* KCEX */
+.ping7 { top: 68%; left: 56%; }  /* LBank */
+.ping9 { top: 82%; left: 48%; }  /* Gate.io */
+.ping10 { top: 32%; left: 32%; } /* Solcex */
+.ping11 { top: 20%; left: 48%; } /* Robinhood */
