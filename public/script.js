@@ -147,8 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { src: "robinhood_logo.png", link: "https://robinhood.com/" },
     { src: "gateio_logo.png", link: "https://gate.io/" },
     { src: "lbank_logo.png", link: "https://www.lbank.info/" },
-    { src: "biconomy_logo.png", link: "https://biconomy.io/" },
-    { src: "solcex_logo.png", link: "https://solcex.com/" },
+    { src: "biconomy_logo.png", link: "https://b1.biconomy.com/" },
+    { src: "solcex_logo.png", link: "https://solcex.io/" },
     { src: "kcex_logo.png", link: "https://www.kcex.com/" }
   ];
 
