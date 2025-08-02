@@ -168,8 +168,8 @@ pingLogos.forEach((logo, i) => {
   img.alt = "Radar Icon";
   img.className = "radar-logo";
   img.style.position = "absolute";
-  img.style.left = `calc(${x}% - 26px)`;  // zentriert in beide Richtungen
-img.style.top = `calc(${y}% - 26px)`;
+  img.style.left = `${x}px`;
+img.style.top = `${y}px`;
 
   img.addEventListener("click", () => window.open(logo.link, "_blank"));
   radarWrapper.appendChild(img);
