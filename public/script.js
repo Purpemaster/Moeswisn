@@ -155,28 +155,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoAngles = [];
 
   const radarRadius = 50;
-  const logoSize = 52;
-  const r = radarRadius - (logoSize / 400 * 100);
+  const logoSize = 52; // px
+const radarRadiusPercent = 40; // Abstand von Mitte in %, weniger als 50 damit's drin bleibt
+const centerPercent = 50; // Mitte des Containers
 
-  pingLogos.forEach((logo, i) => {
-    const angleRad = (i / pingLogos.length) * 2 * Math.PI;
-    const x = 50 + r * Math.cos(angleRad);
-    const y = 50 + r * Math.sin(angleRad);
+pingLogos.forEach((logo, i) => {
+  const angleRad = (i / pingLogos.length) * 2 * Math.PI;
+  const x = centerPercent + radarRadiusPercent * Math.cos(angleRad);
+  const y = centerPercent + radarRadiusPercent * Math.sin(angleRad);
 
-    const img = document.createElement("img");
-    img.src = logo.src;
-    img.alt = "Radar Icon";
-    img.className = "radar-logo";
-    img.style.left = `${x}%`;
-    img.style.top = `${y}%`;
-    img.style.borderRadius = "50%";
+  const img = document.createElement("img");
+  img.src = logo.src;
+  img.alt = "Radar Icon";
+  img.className = "radar-logo";
+  img.style.position = "absolute";
+  img.style.width = `${logoSize}px`;
+  img.style.height = `${logoSize}px`;
+  img.style.left = `calc(${x}% - ${logoSize / 2}px)`;
+  img.style.top = `calc(${y}% - ${logoSize / 2}px)`;
+  img.style.borderRadius = "50%";
 
-    img.addEventListener("click", () => window.open(logo.link, "_blank"));
-    radarWrapper.appendChild(img);
+  img.addEventListener("click", () => window.open(logo.link, "_blank"));
+  radarWrapper.appendChild(img);
 
-    const angleDeg = (angleRad * 180 / Math.PI + 360) % 360;
-    logoAngles.push({ el: img, angle: angleDeg });
-  });
+  const angleDeg = (angleRad * 180 / Math.PI + 360) % 360;
+  logoAngles.push({ el: img, angle: angleDeg });
+});
 
   function updateSweep() {
     const now = performance.now();
