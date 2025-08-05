@@ -354,8 +354,8 @@ body {
   background: conic-gradient(
     from 90deg,
     rgba(0, 255, 0, 0.5
-) 0deg 40deg,
-    transparent 40deg 360deg
+) -20deg 20deg,
+    transparent 20deg 340deg
   );
   border-radius: 50%;
   animation: rotateSweep 6s linear infinite;
