@@ -352,7 +352,7 @@ body {
   width: 100%;
   height: 100%;
   background: conic-gradient(
-    from 0deg,
+    from 90deg,
     rgba(0, 255, 0, 0.5
 ) 0deg 40deg,
     transparent 40deg 360deg
