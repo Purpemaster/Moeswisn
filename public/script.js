@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     logoAngles.forEach(({el, angle}) => {
       const diff = Math.abs(sweep - angle);
       const ad = Math.min(diff, 360-diff);
-      el.classList.toggle("highlighted", ad < 12);
+      el.classList.toggle("highlighted", ad < 6);
     });
     requestAnimationFrame(updateSweep);
   }
