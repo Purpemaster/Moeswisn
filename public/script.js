@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateSweep() {
     const now = performance.now();
-    const sweep = ((now % 6000) / 6000) * 360;
+    const sweep = (((now % 6000) / 6000) * 360 + 90) % 360;
     logoAngles.forEach(({el, angle}) => {
       const diff = Math.abs(sweep - angle);
       const ad = Math.min(diff, 360-diff);
