@@ -353,7 +353,8 @@ body {
   height: 100%;
   background: conic-gradient(
     from 0deg,
-    rgba(255, 0, 128, 0.5) 0deg 40deg,
+    rgba(0, 255, 0, 0.5
+) 0deg 40deg,
     transparent 40deg 360deg
   );
   border-radius: 50%;
