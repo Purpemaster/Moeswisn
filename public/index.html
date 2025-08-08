@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Purple Pepe Donation Tracker + Radio</title>
-  <link rel="stylesheet" href="style.css?v=131">
+  <link rel="stylesheet" href="style.css?v=final">
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 </head>
 <body class="fade-in">
@@ -27,6 +27,8 @@
       <a href="#" id="donate-purpe" class="glow-box">Donate PURPE</a>
       <button class="glow-box" onclick="toggleRadio()">🎵 Purpe Radio</button>
       <button class="glow-box" onclick="toggleAR()">🪐 PURPESPACE</button>
+      <button class="glow-box" onclick="toggleChart()">📈 PURPE Chart</button>
+      <button class="glow-box" onclick="openRadarModal()">📡 PURPE Radar</button>
     </div>
 
     <div id="qr-container" class="qr-section" style="display: none;">
@@ -49,16 +51,55 @@
       <audio id="radio-player" controls autoplay></audio>
     </div>
 
-    <!-- AR CAROUSEL -->
+    <!-- CHART -->
+    <div id="chart-container" style="display: none; margin-top: 30px;">
+      <h2 class="radio-title neon pulse neon-gas">📈 PURPE Chart</h2>
+      <iframe 
+        src="https://www.geckoterminal.com/solana/pools/CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj?embed=1" 
+        height="500" 
+        width="100%" 
+        frameborder="0" 
+        style="border:0; border-radius: 12px; overflow: hidden;"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- AR -->
     <div id="purpespace" class="purpespace-container" style="display: none;">
       <div class="ar-heading-box">
         <h3>🪐 WELCOME TO PURPESPACE</h3>
         <p>Choose your PURPE style and experience it in <span class="ar-highlight">Augmented Reality (AR)</span></p>
       </div>
-
       <div class="carousel">
-        <div class="carousel-track" id="carousel-track">
-          <!-- Modelle werden hier per JavaScript eingefügt -->
+        <div class="carousel-track" id="carousel-track"></div>
+      </div>
+    </div>
+
+    <!-- RADAR MODAL -->
+    <div id="radar-modal">
+      <div class="radar-modal-content">
+        <button id="radar-modal-close">Close ✖</button>
+        <h2 class="radio-title neon pulse neon-gas">📡 PURPE Radar</h2>
+
+        <!-- Begrüßungspopup -->
+        <div id="radar-welcome-popup" class="radar-welcome-popup" style="display: none;">
+          <div class="popup-content">
+            <button class="popup-close" onclick="closeRadarWelcome()">✖</button>
+            <p>
+              🚀 <strong>Welcome to the $PURPE RADAR!</strong><br><br>
+              Discover, track, and trade $PURPE with ease.<br>
+              🔍 Click on a trading platform icon in the radar to go directly to the exchange – currently Robinhood and Gate.io (wallet only at the moment)!<br><br>
+              Your access to the galactic world of PURPE starts here.
+            </p>
+          </div>
+        </div>
+
+        <!-- Radar Animation -->
+        <div class="radar-wrapper">
+          <div class="radar">
+            <div class="sweep"></div>
+            <!-- Blips werden von JS erzeugt -->
+          </div>
         </div>
       </div>
     </div>
@@ -72,31 +113,29 @@
       <a href="https://www.tiktok.com/@purpe.factory?_t=ZN-8vweUeJUFPC&_r=1" target="_blank"><img src="tiktok_icon.png" alt="TikTok"></a>
     </div>
 
+    <!-- FOOTER -->
     <footer style="text-align: center; margin-top: 40px;">
-      <a href="privacy.html" style="color: #ccc; font-size: 0.9em;">Privacy Policy</a>
+      <div style="font-size: 0.9em; color: #ccc;">
+        <a href="privacy.html" style="color: #ccc; margin-right: 12px; text-decoration: none;">Privacy Policy</a>
+        |
+        <a href="impressum.html" style="color: #ccc; margin-left: 12px; text-decoration: none;">Impressum</a>
+      </div>
     </footer>
+
+    <!-- UNIVERSAL CONSENT OVERLAY -->
+<div id="consent-overlay" class="consent-overlay" style="display: none;">
+  <div class="consent-box">
+    <p id="consent-message">
+      This feature loads content from third-party providers. Do you want to continue?
+    </p>
+    <div class="consent-buttons">
+      <button id="consent-accept">Accept</button>
+      <button id="consent-decline">Decline</button>
+    </div>
+  </div>
+</div>
   </div>
 
-  <!-- SCRIPTS -->
-  <script src="script.js?v=helius2025"></script>
-
-  <!-- AR Model Loader -->
-  <script>
-    fetch('ar_models.json')
-      .then(response => response.json())
-      .then(models => {
-        const track = document.getElementById('carousel-track');
-        models.forEach(model => {
-          const div = document.createElement('div');
-          div.className = 'carousel-item';
-          div.innerHTML = `
-            <img src="${model.img}" alt="${model.alt}" />
-            <a href="${model.usdz}" rel="ar" class="ar-button">📱 iOS</a>
-            <a href="${model.glb}" target="_blank" class="ar-button">🤖 Android</a>
-          `;
-          track.appendChild(div);
-        });
-      });
-  </script>
+  <script src="script.js?v=final-2025"></script>
 </body>
 </html>

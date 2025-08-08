@@ -4,29 +4,169 @@ const goalUSD1 = 20000;
 const goalUSD2 = 100000;
 
 const radioStations = [
-  {stream:"https://stream.laut.fm/house",icon:"house_icon.png"},
-  {stream:"https://stream.laut.fm/metalradio",icon:"heavy_metal_icon.png"},
-  {stream:"https://stream.laut.fm/pop",icon:"pop_music_icon.png"},
-  {stream:"https://stream.laut.fm/electropop",icon:"electro_icon.png"},
-  {stream:"http://ice.bassdrive.net/stream56",icon:"drum_and_bass_icon.png"},
-  {stream:"https://streaming.radio.co/s774887f7b/listen",icon:"jazz_soul_icon.png"},
-  {stream:"https://stream.laut.fm/jahfari",icon:"reggae_icon.png"},
-  {stream:"https://stream.laut.fm/gothic-radio-saar",icon:"gothic_icon.png"},
-  {stream:"https://stream.laut.fm/aufden-punk-t",icon:"skate_punk_icon.png"},
-  {stream:"https://stream.laut.fm/volksmusikradio",icon:"folk_music_icon.png"},
-  {stream:"http://live.powerhitz.com/hot108?aw_0_req.gdpr=true",icon:"hip_hop_icon.png"},
-  {stream:"https://strm112.1.fm/ccountry_mobile_mp3",icon:"country_icon.png"},
+  { stream: "https://stream.laut.fm/house", icon: "house_icon.png" },
+  { stream: "https://stream.laut.fm/metalradio", icon: "heavy_metal_icon.png" },
+  { stream: "https://stream.laut.fm/pop", icon: "pop_music_icon.png" },
+  { stream: "https://stream.laut.fm/electropop", icon: "electro_icon.png" },
+  { stream: "http://ice.bassdrive.net/stream56", icon: "drum_and_bass_icon.png" },
+  { stream: "https://streaming.radio.co/s774887f7b/listen", icon: "jazz_soul_icon.png" },
+  { stream: "https://stream.laut.fm/jahfari", icon: "reggae_icon.png" },
+  { stream: "https://stream.laut.fm/gothic-radio-saar", icon: "gothic_icon.png" },
+  { stream: "https://stream.laut.fm/aufden-punk-t", icon: "skate_punk_icon.png" },
+  { stream: "https://stream.laut.fm/volksmusikradio", icon: "folk_music_icon.png" },
+  { stream: "http://live.powerhitz.com/hot108?aw_0_req.gdpr=true", icon: "hip_hop_icon.png" },
+  { stream: "https://strm112.1.fm/ccountry_mobile_mp3", icon: "country_icon.png" }
 ];
 
+// DSGVO Consent
+function requestConsent(callback) {
+  const stored = localStorage.getItem("purpeConsent");
+  if (stored === "accepted") return callback(true);
+  if (stored === "declined") return callback(false);
+
+  const overlay = document.getElementById("consent-overlay");
+  overlay.style.display = "flex";
+
+  document.getElementById("consent-accept").onclick = () => {
+    overlay.style.display = "none";
+    localStorage.setItem("purpeConsent", "accepted");
+    callback(true);
+  };
+
+  document.getElementById("consent-decline").onclick = () => {
+    overlay.style.display = "none";
+    localStorage.setItem("purpeConsent", "declined");
+    callback(false);
+  };
+}
+
+// Section Toggles
 function toggleSection(id) {
   const el = document.getElementById(id);
-  if (el) el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
+  el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
 }
 
 function toggleQR() { toggleSection("qr-container"); }
 function toggleAddress() { toggleSection("address-container"); }
-function toggleRadio() { toggleSection("radio-container"); }
 function toggleAR() { toggleSection("purpespace"); }
+
+function toggleRadio() {
+  requestConsent(consent => {
+    if (consent) toggleSection("radio-container");
+  });
+}
+
+function toggleChart() {
+  requestConsent(consent => {
+    if (consent) toggleSection("chart-container");
+  });
+}
+
+// Radar Modal inkl. Begrüßung
+function openRadarModal() {
+  requestConsent(consent => {
+    if (!consent) return;
+    document.getElementById("radar-modal").style.display = "flex";
+    setTimeout(() => {
+      const popup = document.getElementById("radar-welcome-popup");
+      if (popup) popup.style.display = "block";
+    }, 1200);
+  });
+}
+
+function closeRadarWelcome() {
+  const popup = document.getElementById("radar-welcome-popup");
+  if (popup) popup.style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("radar-modal-close").addEventListener("click", () => {
+    document.getElementById("radar-modal").style.display = "none";
+    closeRadarWelcome();
+  });
+
+  setupRadioButtons();
+  setupCopyButton();
+  setupDonationButtons();
+  updateTracker();
+  setInterval(updateTracker, 30000);
+
+  // AR Models laden
+  fetch("ar_models.json")
+    .then(res => res.json())
+    .then(models => {
+      const track = document.getElementById("carousel-track");
+      models.forEach(model => {
+        const div = document.createElement("div");
+        div.className = "carousel-item";
+        div.innerHTML = `
+          <img src="${model.img}" alt="${model.alt}" />
+          <a href="${model.usdz}" rel="ar" class="ar-button">📱 iOS</a>
+          <a href="${model.glb}" target="_blank" class="ar-button">🤖 Android</a>
+        `;
+        track.appendChild(div);
+      });
+    });
+
+  // Radar blips
+  const radarWrapper = document.querySelector("#radar-modal .radar");
+  const pingLogos = [
+    { src: "bitmart_logo.png", link: "https://www.bitmart.com/" },
+    { src: "slingshot_logo.png", link: "https://slingshot.app/" },
+    { src: "robinhood_logo.png", link: "https://robinhood.com/" },
+    { src: "gateio_logo.png", link: "https://gate.io/" },
+    { src: "lbank_logo.png", link: "https://www.lbank.info/" },
+    { src: "biconomy_logo.png", link: "https://b1.biconomy.com/" },
+    { src: "solcex_logo.png", link: "https://solcex.io/" },
+    { src: "kcex_logo.png", link: "https://www.kcex.com/" }
+  ];
+
+  const logoAngles = [];
+  const radarRadiusPercent = 40;
+  const centerPercent = 50;
+  const logoSize = 52;
+
+  pingLogos.forEach((logo, i) => {
+    const angleRad = (i / pingLogos.length) * 2 * Math.PI;
+    const x = centerPercent + radarRadiusPercent * Math.cos(angleRad);
+    const y = centerPercent + radarRadiusPercent * Math.sin(angleRad);
+
+    const img = document.createElement("img");
+    img.src = logo.src;
+    img.alt = "Radar Icon";
+    img.className = "radar-logo";
+    img.style.position = "absolute";
+    img.style.width = `${logoSize}px`;
+    img.style.height = `${logoSize}px`;
+    img.style.left = `calc(${x}% - ${logoSize/2}px)`;
+    img.style.top = `calc(${y}% - ${logoSize/2}px)`;
+    img.addEventListener("click", () => window.open(logo.link, "_blank"));
+
+    radarWrapper.appendChild(img);
+    logoAngles.push({ el: img, angle: (angleRad * 180 / Math.PI + 360) % 360 });
+  });
+
+  function updateSweep() {
+    const now = performance.now();
+    const sweep = ((now % 6000) / 6000) * 360;
+    logoAngles.forEach(({ el, angle }) => {
+      const diff = Math.abs(sweep - angle);
+      const ad = Math.min(diff, 360 - diff);
+      el.classList.toggle("highlighted", ad < 10);
+    });
+    requestAnimationFrame(updateSweep);
+  }
+
+  updateSweep();
+});
+
+function setupCopyButton() {
+  document.getElementById("copy-button").addEventListener("click", () => {
+    navigator.clipboard.writeText(walletAddress)
+      .then(() => alert("Wallet-Adresse kopiert!"))
+      .catch(() => alert("Fehler beim Kopieren"));
+  });
+}
 
 function setupRadioButtons() {
   const container = document.getElementById("radio-buttons");
@@ -49,14 +189,6 @@ function setupRadioButtons() {
       }
     });
     container.appendChild(img);
-  });
-}
-
-function setupCopyButton() {
-  document.getElementById("copy-button").addEventListener("click", () => {
-    navigator.clipboard.writeText(walletAddress)
-      .then(() => alert("Wallet-Adresse kopiert!"))
-      .catch(() => alert("Fehler beim Kopieren"));
   });
 }
 
@@ -93,17 +225,15 @@ async function fetchSolPrice() {
 }
 
 async function fetchPurpePrice() {
-  const data = await fetchJson("https://api.geckoterminal.com/api/v2/networks/solana/pools/CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj");
+  const data = await fetchJson("https://api.geckoterminal.com/api/v2/networks/solana/pools/CpoYFgaNA6MJRuJSGeXu9mPdghmtwd5RvYesgej4Zofj?embed=1");
   return parseFloat(data?.data?.attributes?.base_token_price_usd) || 0;
 }
 
 async function fetchBalance() {
   const data = await fetchJson(`https://api.helius.xyz/v0/addresses/${walletAddress}/balances?api-key=${heliusApiKey}`);
   const sol = (data?.nativeBalance || 0) / 1e9;
-
   const token = data?.tokens?.find(t => t.mint === "HBoNJ5v8g71s2boRivrHnfSB5MVPLDHHyVjruPfhGkvL");
   const purpe = token ? token.amount / Math.pow(10, token.decimals || 1) : 0;
-
   return { sol, purpe };
 }
 
@@ -118,7 +248,7 @@ async function updateTracker() {
   document.getElementById("last-updated").textContent = new Date().toLocaleTimeString();
 }
 
-// Init
+// QR
 new QRious({
   element: document.getElementById("wallet-qr"),
   value: `solana:${walletAddress}`,
@@ -126,9 +256,3 @@ new QRious({
   background: "white",
   foreground: "#8000ff"
 });
-
-setupRadioButtons();
-setupCopyButton();
-setupDonationButtons();
-updateTracker();
-setInterval(updateTracker, 30000);
